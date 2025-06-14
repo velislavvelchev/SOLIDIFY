@@ -1,0 +1,2 @@
+# SOLIDIFY
+Habit Manager Application
