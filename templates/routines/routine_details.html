@@ -3,8 +3,13 @@
 
 {% block content %}
 <h2>Routine Details</h2>
-<p><strong>Name:</strong> {{ routine.name }}</p>
-<p><strong>Category:</strong> {{ routine.category.name }}</p>
+<p><strong>Name:</strong> Morning Health Routine</p>
+<p><strong>Category:</strong> Health</p>
+<p><strong>Recommended Habits:</strong> Morning Workout, Drink Water, Read Books</p>
 <!-- More routine info -->
 <a href="#">Edit Routine</a> | <a href="#">Delete Routine</a>
 {% endblock %}
+
+{#<p><strong>Name:</strong> {{ routine.routine_name }}</p>#}
+{#<p><strong>Category:</strong> {{ routine.category_name }}</p>#}
+{#<p><strong>Recommended Habits:</strong> {{ routine.recommended_habits.all|join:", " }}</p>#}

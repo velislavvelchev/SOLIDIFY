@@ -1,11 +1,16 @@
 <!-- templates/habits/habit_details.html -->
-{% extends 'habits/base.html' %}
+{% extends 'common/base.html' %}
+{% load static %}
 
 {% block content %}
 <h2>Habit Details</h2>
-<p><strong>Name:</strong> {{ habit.name }}</p>
-<p><strong>Category:</strong> {{ habit.category.name }}</p>
-<p><strong>Description:</strong> {{ habit.description }}</p>
+<p><strong>Name:</strong> Morning Workout</p>
+<p><strong>Category:</strong> Sports</p>
+<p><strong>Description:</strong> 30-minute morning exercise routine including cardio and strength training</p>
 <!-- More habit info -->
 <a href="#">Edit Habit</a> | <a href="#">Delete Habit</a>
 {% endblock %}
+
+{#<p><strong>Name:</strong> {{ habit.name }}</p>#}
+{#<p><strong>Category:</strong> {{ habit.category.name }}</p>#}
+{#<p><strong>Description:</strong> {{ habit.description }}</p>#}

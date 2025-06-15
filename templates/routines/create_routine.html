@@ -4,8 +4,35 @@
 {% block content %}
 <h2>Create New Routine</h2>
 <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
+    <p>
+        <label for="routine_name">Routine name:</label>
+        <input type="text" id="routine_name" name="routine_name" maxlength="30" required>
+    </p>
+    <p>
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+            <option value="">---------</option>
+            <option value="1">Sports</option>
+            <option value="2">Health</option>
+            <option value="3">Study</option>
+        </select>
+    </p>
+    <p>
+        <label for="recommended_habits">Recommended habits:</label>
+        <select id="recommended_habits" name="recommended_habits" multiple>
+            <option value="1">Morning Workout</option>
+            <option value="2">Drink Water</option>
+            <option value="3">Read Books</option>
+        </select>
+    </p>
     <button type="submit">Create Routine</button>
 </form>
+
 {% endblock %}
+
+{##}
+{#<form method="post">#}
+{#    {% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#    <button type="submit">Create Routine</button>#}
+{#</form>#}
