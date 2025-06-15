@@ -1,0 +1,15 @@
+/* static/css/navigation.css */
+header {
+    background-color: #343a40;
+    padding: 1rem;
+}
+
+header nav a {
+    color: #fff;
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}

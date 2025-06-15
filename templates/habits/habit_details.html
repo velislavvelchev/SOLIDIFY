@@ -1,0 +1,11 @@
+<!-- templates/habits/habit_details.html -->
+{% extends 'habits/base.html' %}
+
+{% block content %}
+<h2>Habit Details</h2>
+<p><strong>Name:</strong> {{ habit.name }}</p>
+<p><strong>Category:</strong> {{ habit.category.name }}</p>
+<p><strong>Description:</strong> {{ habit.description }}</p>
+<!-- More habit info -->
+<a href="#">Edit Habit</a> | <a href="#">Delete Habit</a>
+{% endblock %}

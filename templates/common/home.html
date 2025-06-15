@@ -1,0 +1,10 @@
+<!-- templates/habits/home.html -->
+{% extends 'habits/base.html' %}
+
+{% block content %}
+<h1>Welcome to Habit Manager!</h1>
+<p id="dynamic-text"></p>
+
+<!-- Link to external JavaScript file -->
+<script src="{% static 'js/typing.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,11 @@
+<!-- templates/habits/create_routine.html -->
+{% extends 'habits/base.html' %}
+
+{% block content %}
+<h2>Create New Routine</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Routine</button>
+</form>
+{% endblock %}
