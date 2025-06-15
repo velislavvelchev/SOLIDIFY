@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="326d6b21-a488-427a-bca4-603474421a6a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/common/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/style/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routines/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/routines/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SOLIDIFY/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/SOLIDIFY/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/common/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/common/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/habits/create_habit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/habits/create_habit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/habits/edit_habit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/habits/edit_habit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/habits/habit_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/habits/habit_details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/routines/create_routine.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/routines/create_routine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/routines/edit_routine.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/routines/edit_routine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/routines/routine_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/routines/routine_details.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +23,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="Python Script" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -118,7 +116,7 @@
       <option name="presentableId" value="Default" />
       <updated>1749893939615</updated>
       <workItem from="1749893940824" duration="9830000" />
-      <workItem from="1749980047499" duration="2459000" />
+      <workItem from="1749980047499" duration="6121000" />
     </task>
     <servers />
   </component>

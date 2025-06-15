@@ -1,11 +1,20 @@
-<!-- templates/habits/home.html -->
 {% extends 'common/base.html' %}
 {% load static %}
 
 {% block content %}
+<style>
+body {
+    background-image: url('{% static 'images/background.jpg' %}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+</style>
+
+
 <h1>Welcome to Habit Manager!</h1>
 <p id="dynamic-text"></p>
 
-<!-- Link to external JavaScript file -->
 <script src="{% static 'js/typing.js' %}"></script>
 {% endblock %}
