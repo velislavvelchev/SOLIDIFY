@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'common.apps.CommonConfig',
-    'categories.apps.CategoriesConfig',
-    'habits.apps.HabitsConfig',
-    'routines.apps.RoutinesConfig'
+    'SOLIDIFY.common.apps.CommonConfig',
+    'SOLIDIFY.categories.apps.CategoriesConfig',
+    'SOLIDIFY.habits.apps.HabitsConfig',
+    'SOLIDIFY.routines.apps.RoutinesConfig',
+    'SOLIDIFY.accounts.apps.AccountsConfig'
+
 ]
 
 MIDDLEWARE = [
@@ -137,3 +139,4 @@ STATICFILES_DIRS = (
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'accounts.AppUser'
