@@ -1,25 +1,20 @@
-/* static/css/nav.css */
 header {
-    background-color: #343a40;
-    padding: 1rem;
+    background-color: rgba(52, 58, 64, 0.85); /* matching transparency */
+    padding: 0.5rem 1rem; /* reduced padding */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
-
 
 header nav a {
     color: #fff;
     margin-right: 1rem;
     text-decoration: none;
+    font-size: 0.9rem; /* slightly smaller text */
 }
 
 header nav a:hover {
     text-decoration: underline;
 }
-

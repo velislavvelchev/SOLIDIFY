@@ -12,7 +12,7 @@ body::before {
   content: "";
   position: fixed;  /* change from absolute to fixed for full viewport */
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* black overlay with 50% opacity */
+  background-color: rgba(2, 12, 7, 0.32); /* black overlay with 50% opacity */
   pointer-events: none;
   z-index: 1;
 }
@@ -28,8 +28,8 @@ body::before {
 }
 
 h1, #dynamic-text {
-  color: rgba(255, 255, 255, 0.5); /* Slight transparency */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  color: rgba(255, 255, 255, 0.76); /* Slight transparency */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
   max-width: 700px;
   margin: 0 auto;
   white-space: pre-wrap;
