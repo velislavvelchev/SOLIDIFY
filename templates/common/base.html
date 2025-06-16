@@ -3,31 +3,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Habit Manager</title>
     <link rel="stylesheet" href="{% static 'style/style.css' %}">
 </head>
 <body>
+<div id="particles-js"></div>
+<header>
+    <nav>
+        <a href={% url 'login' %}>Login</a>
+        <a href={% url 'register' %}>Register</a>
+        <a href="#">Create Category</a>
+        <a href="#">Create Habit</a>
+        <a href="#">Create Routine</a>
+    </nav>
+</header>
 
-    <header>
-        <nav>
-            <a href={% url 'login' %}>Login</a>
-            <a href={% url 'register' %}>Register</a>
-            <a href="#">Create Category</a>
-            <a href="#">Create Habit</a>
-            <a href="#">Create Routine</a>
-        </nav>
-    </header>
-
-    <main>
-        {% block content %}
+<main>
+    {% block content %}
         <!-- Page specific content will go here -->
-        {% endblock %}
-    </main>
+    {% endblock %}
+</main>
 
-    <footer>
-        <p>&copy; 2025 Habit Manager App</p>
-    </footer>
+<footer>
+    <p>&copy; 2025 Habit Manager App</p>
+</footer>
+<!-- Load particles.js -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<!-- Load your external particles config -->
+<script src="{% static 'js/particles-init.js' %}"></script>
 </body>
 </html>

@@ -2,15 +2,15 @@
 {% load static %}
 
 {% block content %}
-<div class="login-container">
-    <div class="login-card">
+    <div class="login-container">
+        <div class="login-card">
 
-        <form method="post">
-            {% csrf_token %}
-            {{ form }}
-            <button type="submit" class="login-btn">Login</button>
-        </form>
+            <form method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class="login-btn">Login</button>
+            </form>
 
+        </div>
     </div>
-</div>
 {% endblock %}

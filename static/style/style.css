@@ -1,6 +1,6 @@
 /* static/css/styles.css */
 @import url('base.css');
-@import url('navigation.css');
+@import url('nav.css');
 @import url('footer.css');
 @import url('forms.css');
 @import url('details.css');
