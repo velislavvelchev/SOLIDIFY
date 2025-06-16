@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="{% static 'style/style.css' %}">
 </head>
 <body>
+
     <header>
         <nav>
-            <a href="#">Habit Manager</a>
+            <a href={% url 'login' %}>Login</a>
             <a href={% url 'register' %}>Register</a>
             <a href="#">Create Category</a>
             <a href="#">Create Habit</a>

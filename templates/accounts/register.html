@@ -2,8 +2,15 @@
 {% load static %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-</form>
+<div class="register-container">
+    <div class="register-card">
+        <h2 class="register-title">Create Account</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="register-btn">Register</button>
+        </form>
+        <p class="login-link">Already have an account? <a href="#">Login here</a></p>
+    </div>
+</div>
 {% endblock %}

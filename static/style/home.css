@@ -18,6 +18,13 @@ body {
 h1, #dynamic-text {
     color: white;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    max-width: 80%; /* or specific px value */
+    margin: 0 auto;
+    white-space: pre-wrap; /* preserves line breaks and wraps text */
+    word-break: break-word; /* breaks long words if needed */
+    text-align: center; /* optional, for centering text */
+    line-height: 1.8;      /* increases space between lines */
+    font-size: 1.2rem;     /* adjust as needed, or use px like 24px */
 }
 
 .home-page::before {
@@ -30,3 +37,4 @@ h1, #dynamic-text {
     background: rgba(0,0,0,0.4);
     z-index: -1;
 }
+
