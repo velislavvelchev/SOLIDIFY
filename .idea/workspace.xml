@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="326d6b21-a488-427a-bca4-603474421a6a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/SOLIDIFY/accounts/managers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64/storage_v2/_src_/database/solidify_db.DGPAWQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64/storage_v2/_src_/database/solidify_db.DGPAWQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64/storage_v2/_src_/database/solidify_db.DGPAWQ/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64/storage_v2/_src_/database/solidify_db.DGPAWQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64/storage_v2/_src_/database/solidify_db.DGPAWQ/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/style/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style/footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/common/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/common/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/common/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/common/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SOLIDIFY/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/SOLIDIFY/accounts/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SOLIDIFY/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/SOLIDIFY/accounts/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,10 +27,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -115,7 +121,7 @@
       <option name="presentableId" value="Default" />
       <updated>1749893939615</updated>
       <workItem from="1749893940824" duration="9830000" />
-      <workItem from="1749980047499" duration="35790000" />
+      <workItem from="1749980047499" duration="42582000" />
     </task>
     <servers />
   </component>
