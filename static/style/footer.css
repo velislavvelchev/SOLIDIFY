@@ -1,11 +1,61 @@
 footer {
-    background-color: rgba(52, 58, 64, 0.85); /* dark gray with ~85% opacity */
-    color: #fff;
-    text-align: center;
-    padding: 0.5rem 1rem; /* smaller vertical padding */
-    font-size: 0.85rem;   /* smaller text */
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    z-index: 1000;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(52, 58, 64, 0.9); /* semi-transparent dark */
+  color: #fff;
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  z-index: 1000;
+  font-size: 0.85rem;
+}
+
+.footer-links,
+.footer-social {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-links div,
+.footer-social div {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-links h6,
+.footer-social h6 {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+footer a {
+  color: #ddd;
+  text-decoration: none;
+  margin: 2px 0;
+  font-size: 0.8rem;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.social-icons img {
+  height: 20px;
+  width: 20px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.social-icons img:hover {
+  opacity: 1;
 }
