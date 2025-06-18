@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="326d6b21-a488-427a-bca4-603474421a6a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/SOLIDIFY/accounts/managers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64/storage_v2/_src_/database/solidify_db.DGPAWQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64/storage_v2/_src_/database/solidify_db.DGPAWQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64/storage_v2/_src_/database/solidify_db.DGPAWQ/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64/storage_v2/_src_/database/solidify_db.DGPAWQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64/storage_v2/_src_/database/solidify_db.DGPAWQ/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64/storage_v2/_src_/database/solidify_db.DGPAWQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8423ede5-9740-4396-86a2-e5ce202e8e64/storage_v2/_src_/database/solidify_db.DGPAWQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SOLIDIFY/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/SOLIDIFY/accounts/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SOLIDIFY/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/SOLIDIFY/accounts/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SOLIDIFY/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/SOLIDIFY/accounts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SOLIDIFY/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/SOLIDIFY/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,30 +43,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.SOLIDIFY.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "django.template.preview.state": "SHOW_EDITOR",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/PC/Documents/GitHub/my-first-repo/tasty_recipes",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.SOLIDIFY.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Documents/GitHub/my-first-repo/tasty_recipes&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\PC\Documents\GitHub\SOLIDIFY\SOLIDIFY" />
@@ -121,7 +119,8 @@
       <option name="presentableId" value="Default" />
       <updated>1749893939615</updated>
       <workItem from="1749893940824" duration="9830000" />
-      <workItem from="1749980047499" duration="42582000" />
+      <workItem from="1749980047499" duration="46295000" />
+      <workItem from="1750234063758" duration="11012000" />
     </task>
     <servers />
   </component>
