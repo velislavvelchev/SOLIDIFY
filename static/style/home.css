@@ -1,12 +1,12 @@
-body {
-  position: relative;
-  background-image: url('/static/images/background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  margin: 0; /* good to reset default margin */
-}
+/*body {*/
+/*  position: relative;*/
+/*  background-image: url('/static/images/background.jpg');*/
+/*  background-size: cover;*/
+/*  background-position: center;*/
+/*  background-repeat: no-repeat;*/
+/*  min-height: 100vh;*/
+/*  margin: 0; !* good to reset default margin *!*/
+/*}*/
 
 body::before {
   content: "";
