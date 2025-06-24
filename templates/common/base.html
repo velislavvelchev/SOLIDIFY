@@ -11,14 +11,17 @@
 <body>
 <div id="particles-js"></div>
 <header>
-    <nav>
-        <a href={% url 'login' %}>Login</a>
-        <a href={% url 'register' %}>Register</a>
-        <a href="#">Create Category</a>
-        <a href="#">Create Habit</a>
-        <a href="#">Create Routine</a>
-    </nav>
+  <nav>
+    <div class="nav-links">
+      <a href="{% url 'login' %}">Login</a>
+      <a href="{% url 'register' %}">Register</a>
+      <a href="#">Create Category</a>
+      <a href="#">Create Habit</a>
+      <a href="#">Create Routine</a>
+    </div>
+  </nav>
 </header>
+
 
 <main>
     {% block content %}
@@ -27,7 +30,7 @@
 </main>
 
 <footer>
-  <section class="footer-links">
+  <div class="footer-grid">
     <div>
       <h6>Your Account</h6>
       <a href="/auth/register/">Sign Up</a>
@@ -47,27 +50,28 @@
       <a href="/contact/">Contact</a>
       <a href="/privacy/">Privacy Policy</a>
     </div>
-  </section>
 
-  <section class="footer-social">
-    <h6>Follow Us</h6>
-    <div class="social-icons">
-      <a href="https://github.com/your-profile" target="_blank">
-        <img src="{% static 'images/github.png' %}" alt="GitHub">
-      </a>
-      <a href="https://linkedin.com/in/your-profile" target="_blank">
-        <img src="{% static 'images/linkedin.png' %}" alt="LinkedIn">
-      </a>
-      <a href="https://facebook.com/your-profile" target="_blank">
-        <img src="{% static 'images/facebook.png' %}" alt="Facebook">
-      </a>
+    <div>
+      <h6>Follow Us</h6>
+      <div class="social-icons">
+        <a href="https://github.com/your-profile" target="_blank">
+          <img src="{% static 'images/github.png' %}" alt="GitHub">
+        </a>
+        <a href="https://linkedin.com/in/your-profile" target="_blank">
+          <img src="{% static 'images/linkedin.png' %}" alt="LinkedIn">
+        </a>
+        <a href="https://facebook.com/your-profile" target="_blank">
+          <img src="{% static 'images/facebook.png' %}" alt="Facebook">
+        </a>
+      </div>
     </div>
-  </section>
+  </div>
 </footer>
 
+
 <!-- Load particles.js -->
-{#<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>#}
-{#<!-- Load your external particles config -->#}
-{#<script src="{% static 'js/particles-init.js' %}"></script>#}
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<!-- Load your external particles config -->
+<script src="{% static 'js/particles-init.js' %}"></script>
 </body>
 </html>
