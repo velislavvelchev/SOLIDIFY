@@ -13,12 +13,16 @@ class Habit(models.Model):
 		default=False,
 	)
 
+	created_at = models.DateTimeField(
+		auto_now_add = True,
+	)
+
 	priority = models.IntegerField(
 		default=1,
 		validators = [
 			MaxValueValidator(5),
 		]
-	) # values from 1 to 5, put validator
+	)
 
 	notes = models.TextField(
 		null=True, blank=True

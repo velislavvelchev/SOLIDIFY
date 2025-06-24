@@ -1,12 +1,13 @@
-/* Make the container fill the viewport and center content */
 .login-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start; /* or flex-start */
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  padding: 20px;
+  padding-top: 150px; /* moves it down */
 }
+
+
 
 .login-card {
   max-width: 400px;
@@ -85,3 +86,5 @@ input:focus {
   text-decoration: none;
   font-weight: 500;
 }
+
+

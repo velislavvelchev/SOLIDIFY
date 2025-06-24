@@ -4,6 +4,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy  as _
 
 from SOLIDIFY.accounts.managers import AppUserManager
+from SOLIDIFY.accounts.validators import NameValidator
 
 
 # Create your models here.
@@ -50,20 +51,34 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
 class Profile(models.Model):
     # additional fields that are not vital for authentication
 
-    user = models.OneToOneField(
-        to = 'accounts.AppUser',
-        on_delete=models.CASCADE,
-        related_name = 'profile',
-    )
-
     age = models.IntegerField()
 
     first_name = models.CharField(
         max_length = 30,
+        null=True,
+        blank=True,
+        validators=[NameValidator('First name')]
     )
 
     last_name = models.CharField(
         max_length=30,
+        null=True,
+        blank=True,
+        validators=[NameValidator('Last name')]
     )
+
+    user = models.OneToOneField(
+        to='accounts.AppUser',
+        on_delete=models.CASCADE,
+        related_name='profile',
+    )
+
+    def __str__(self):
+        name_parts = filter(None, [self.first_name, self.last_name])
+        full_name = " ".join(name_parts)
+        return full_name or self.user.email
+
+
+
     # will not a direct join on the two tables
 
