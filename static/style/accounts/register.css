@@ -11,4 +11,7 @@
   font-weight: 500;
 }
 
-/* Password requirement list formatting */
+.form-card#register {
+  margin-top: 25px !important;
+}
+

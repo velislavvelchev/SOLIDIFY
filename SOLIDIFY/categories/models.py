@@ -12,4 +12,5 @@ class Category(models.Model):
 		max_length=35, choices=CategoryChoices.choices
 	)
 
-	
+	def __str__(self):
+		return self.category_type

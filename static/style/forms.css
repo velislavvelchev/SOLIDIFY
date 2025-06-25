@@ -14,24 +14,25 @@ form {
 
 
 .form-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 
 .form-card {
-  padding: 40px;
-  border-radius: 30px;
-  box-shadow: 0 20px 40px rgb(47, 36, 36);
-  max-width: 400px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  backdrop-filter: blur(18px); /* optional: smooth glass effect */
-  text-align: center;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgb(47, 36, 36);
+    max-width: 400px;
+    max-height: 700px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(18px); /* optional: smooth glass effect */
+    text-align: center;
 }
 
 form p {
@@ -51,71 +52,71 @@ button:hover {
 }
 
 .form-btn {
-  padding: 12px;
-  background: linear-gradient(135deg, #667eea, #68ea66);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea, #68ea66);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
 
 .form-btn:hover {
-  transform: translateY(-2px);
+    transform: translateY(-2px);
 }
 
 
 form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 label {
-  margin-bottom: 5px;
-  display: block;
-  font-weight: 700;
+    margin-bottom: 5px;
+    display: block;
+    font-weight: 700;
 }
 
 /* Ensure inputs are fully symmetrical and boxed properly */
 input {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px 15px;
-  border: 2px solid #e1e5e9;
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-  margin-bottom: 12px; /* Add space below input */
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    margin-bottom: 12px; /* Add space below input */
 }
 
 input:focus {
-  outline: none;
-  border-color: #667eea;
+    outline: none;
+    border-color: #667eea;
 }
 
 
 .helptext,
 .helptext * {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 ul {
-  padding-left: 20px;
+    padding-left: 20px;
 }
 
 
 .helptext {
-  margin-top: -5px;
-  margin-bottom: 12px; /* Space below helptext (list) */
-  text-align: left; /* Optional: better UX for lists */
+    margin-top: -5px;
+    margin-bottom: 12px; /* Space below helptext (list) */
+    text-align: left; /* Optional: better UX for lists */
 }
 
 ul.helptext {
-  margin-top: 5px;
-  margin-bottom: 12px;
-  padding-left: 20px;
-  text-align: left;
+    margin-top: 5px;
+    margin-bottom: 12px;
+    padding-left: 20px;
+    text-align: left;
 }

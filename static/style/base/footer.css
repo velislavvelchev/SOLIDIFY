@@ -1,21 +1,37 @@
 footer {
   position: fixed;
+  bottom: -150px; /* Hidden below the viewport */
+  left: 0;
+  width: 100%;
+  color: white;
+  transition: bottom 0.4s ease-in-out;
+  z-index: 1000;
+  padding: 20px 60px;
+  backdrop-filter: blur(12px);
+}
+
+footer:hover {
+  bottom: 0;
+}
+
+body::after {
+  content: "";
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  color: #fff;
-  padding: 0.5rem 2rem;
-  z-index: 1000;
-  font-size: 0.85rem;
+  height: 40px;
+  z-index: 999;
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 40px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+
 }
 
 .footer-grid > div {
@@ -23,11 +39,22 @@ footer {
   flex-direction: column;
 }
 
-.footer-grid h6 {
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-  font-weight: 700;
+.footer-grid a {
+  display: block;
+  color: #ddd;
+  margin-bottom: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
 }
+
+footer h6 {
+  margin-bottom: 10px;
+  font-size: 1rem;    /* Optional: consistent styling */
+  font-weight: 600;   /* Optional: bold for section titles */
+}
+
+
 
 footer a {
   color: #ddd;
@@ -40,15 +67,25 @@ footer a:hover {
   text-decoration: underline;
 }
 
+.footer-grid a:hover {
+  color: #38bdf8; /* Tailwind-style sky-blue hover */
+}
+
 .social-icons {
   display: flex;
   gap: 0.5rem;
   margin-top: 5px;
 }
 
+.social-icons a {
+  margin-right: 10px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
 .social-icons img {
-  height: 20px;
-  width: 20px;
+  width: 24px;
+  height: 24px;
   opacity: 0.8;
   transition: opacity 0.3s ease;
 }
@@ -56,3 +93,8 @@ footer a:hover {
 .social-icons img:hover {
   opacity: 1;
 }
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+

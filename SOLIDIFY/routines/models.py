@@ -27,3 +27,6 @@ class Routine(models.Model):
 		blank=True,
 		related_name='habits_routines'
     )
+
+	def __str__(self):
+		return self.routine_name
