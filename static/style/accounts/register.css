@@ -1,0 +1,14 @@
+
+/* Center form contents with even spacing */
+
+.login-link {
+  margin-top: 15px;
+}
+
+.login-link a {
+  color: #051b75;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Password requirement list formatting */

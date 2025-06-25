@@ -1,12 +1,10 @@
-<!-- templates/habits/create_routine.html -->
-
 {% extends 'common/base.html' %}
 {% load static %}
 
 {% block content %}
 <div class="form-container">
     <div class="form-card">
-        <h2 class="form-title">Create Routine</h2>
+        <h2 class="form-title">Create Category</h2>
         <form method="post">
             {% csrf_token %}
             {{ form }}

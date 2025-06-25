@@ -2,14 +2,17 @@
 {% extends 'common/base.html' %}
 {% load static %}
 
-
 {% block content %}
-<h2>Create New Habit</h2>
-<form>
-    <p><label for="name">Habit Name:</label> <input type="text" id="name" name="name"></p>
-    <p><label for="category">Category:</label> <input type="text" id="category" name="category"></p>
-    <button type="submit">Create Habit</button>
-</form>
+<div class="form-container">
+    <div class="form-card">
+        <h2 class="form-title">Create Habit</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="form-btn">Create</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
 
 {#{% block content %}#}

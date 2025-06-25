@@ -2,13 +2,13 @@
 {% load static %}
 
 {% block content %}
-<div class="register-container">
-    <div class="register-card">
-        <h2 class="register-title">Create Account</h2>
+<div class="form-container">
+    <div class="form-card">
+        <h2 class="form-title">Create Account</h2>
         <form method="post">
             {% csrf_token %}
             {{ form }}
-            <button type="submit" class="register-btn">Register</button>
+            <button type="submit" class="form-btn">Register</button>
         </form>
         <p class="login-link">Already have an account? <a href="#">Login here</a></p>
     </div>
