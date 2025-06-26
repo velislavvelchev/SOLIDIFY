@@ -1,19 +1,52 @@
-/*!* static/css/details.css *!*/
-/*h2 {*/
-/*    margin-top: 2rem;*/
-/*    margin-bottom: 1rem;*/
-/*}*/
+/* details.css */
 
-/*p {*/
-/*    margin-bottom: 0.5rem;*/
-/*}*/
+.details-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
 
-/*a {*/
-/*    margin-right: 1rem;*/
-/*    color: #007bff;*/
-/*    text-decoration: none;*/
-/*}*/
+.details-card {
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgb(47, 36, 36);
+    max-width: 400px;
+    width: 100%;
+    backdrop-filter: blur(18px);
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-/*a:hover {*/
-/*    text-decoration: underline;*/
-/*}*/
+/* Move h1 higher: reduce bottom margin to tighten spacing */
+.details-card h1 {
+    text-align: center;
+    margin-top: 0;       /* push it to the very top of the card */
+    margin-bottom: 10px; /* smaller gap below */
+    font-weight: 700;
+}
+
+.details-card h2,
+.details-card h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.details-card p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* Remove text color from strong for inherited styles */
+.details-card strong {
+    font-weight: 700;
+}
+
+/* Optional: style for empty/default values */
+.details-card .empty {
+    font-style: italic;
+    color: inherit; /* remove gray color, inherit text color */
+}

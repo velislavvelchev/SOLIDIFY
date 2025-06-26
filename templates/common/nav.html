@@ -1,0 +1,18 @@
+<nav>
+    <div class="nav-links">
+        {% if not request.user.is_authenticated %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+        {% else %}
+            <a href="{% url 'profile-details' request.user.pk %}">Profile Details</a>
+            <a href="{% url 'profile-edit' request.user.pk %}">Edit Profile</a>
+            <a href="{% url 'create-category' %}">Create Category</a>
+            <a href="{% url 'create-habit' %}">Create Habit</a>
+            <a href="{% url 'create-routine' %}">Create Routine</a>
+            <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
+                {% csrf_token %}
+            </form>
+            <a href="#" onclick="document.getElementById('logout-form').submit(); return false;">Logout</a>
+        {% endif %}
+    </div>
+</nav>

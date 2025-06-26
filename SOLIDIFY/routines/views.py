@@ -11,3 +11,9 @@ class CreateRoutineView(CreateView):
     form_class = CreateRoutineForm
     template_name = 'routines/create_routine.html'
     success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        user = self.request.user
+        form.instance.user = user
+        return super().form_valid(form)
+

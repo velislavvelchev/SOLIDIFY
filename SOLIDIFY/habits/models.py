@@ -1,5 +1,7 @@
+from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator
 from django.db import models
+UserModel = get_user_model()
 
 # Create your models here.
 class Habit(models.Model):
@@ -30,6 +32,11 @@ class Habit(models.Model):
 
 	notes = models.TextField(
 		null=True, blank=True
+	)
+
+	user = models.ForeignKey(
+		to=UserModel,
+		on_delete = models.CASCADE,
 	)
 
 	def __str__(self):

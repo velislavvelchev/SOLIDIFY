@@ -1,0 +1,22 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block body_class %}details-page{% endblock %}
+
+{% block content %}
+
+<div class="details-container">
+  <div class="details-card">
+    <h1>Profile Details</h1>
+
+    <p><strong>First Name:</strong>
+       {% if profile.first_name %}{{ profile.first_name }}{% else %}<span class="empty">Not provided</span>{% endif %}
+    </p>
+
+    <p><strong>Last Name:</strong>
+       {% if profile.last_name %}{{ profile.last_name }}{% else %}<span class="empty">Not provided</span>{% endif %}
+    </p>
+
+    <p><strong>Age:</strong> {{ profile.age }}</p>
+  </div>
+</div>
+{% endblock %}

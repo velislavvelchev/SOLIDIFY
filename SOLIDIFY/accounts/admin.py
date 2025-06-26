@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
-from SOLIDIFY.accounts.forms import AppUserChangeForm, AppUserForm
+from SOLIDIFY.accounts.forms import AppUserChangeForm, AppUserCreationForm
 from SOLIDIFY.accounts.models import Profile
 
 # Register your models here.
@@ -12,10 +12,13 @@ UserModel = get_user_model()
 @admin.register(UserModel)
 class AppUserAdmin(UserAdmin):
     form = AppUserChangeForm
-    add_form = AppUserForm
+    add_form = AppUserCreationForm
 
     list_display = ('username', 'email')
+    search_fields = ('email', )
+    ordering = ('pk',)
 
+    # what fields will be shown when we create new user
     add_fieldsets = (
         (
             None,

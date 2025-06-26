@@ -6,7 +6,7 @@ from SOLIDIFY.routines.models import Routine
 class RoutineBaseForm(forms.ModelForm):
     class Meta:
         model = Routine
-        fields = '__all__'
+        exclude = ('user', )
 
 
 class CreateRoutineForm(RoutineBaseForm):

@@ -1,10 +1,11 @@
+from django.contrib.auth import get_user_model
 from django.core.validators import MinLengthValidator
 from django.db import models
-
 from SOLIDIFY.routines.validators import RoutineNameValidator
 
+UserModel = get_user_model()
 
-# Create your models here.
+
 class Routine(models.Model):
 	routine_name = models.CharField(
 		unique=True,
@@ -27,6 +28,11 @@ class Routine(models.Model):
 		blank=True,
 		related_name='habits_routines'
     )
+
+	user = models.ForeignKey(
+		to=UserModel,
+		on_delete=models.CASCADE,
+	)
 
 	def __str__(self):
 		return self.routine_name

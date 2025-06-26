@@ -120,3 +120,94 @@ ul.helptext {
     padding-left: 20px;
     text-align: left;
 }
+
+
+input,
+select,
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    display: block;
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+#id_notes {
+    min-height: 150px;
+    height: 150px; /* Ensures consistent height */
+    resize: vertical; /* Still allows resizing if needed */
+}
+
+
+/* Wrapper to align label and checkbox nicely */
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    gap: 10px;
+}
+
+/* Larger checkbox styling */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #667eea; /* Accent to match form */
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    gap: 10px;
+}
+
+/* Base checkbox style */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 28px;
+    height: 28px;
+    border: 2px solid #051b75;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Tick style */
+input[type="checkbox"]::after {
+    content: '✔';
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+
+
+input[type="checkbox"]:checked::after {
+    opacity: 1;
+}

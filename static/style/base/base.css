@@ -17,7 +17,8 @@ body {
     font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, sans-serif;
 }
 
-body.create-page {
+body.create-page,
+body.details-page {
     background-size: auto;
 }
 

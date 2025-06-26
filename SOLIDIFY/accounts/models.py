@@ -48,6 +48,8 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.email
 
+
+
 class Profile(models.Model):
     # additional fields that are not vital for authentication
 
@@ -67,10 +69,17 @@ class Profile(models.Model):
         validators=[NameValidator('Last name')]
     )
 
+    # change this to image field with pillow
+    profile_picture = models.URLField(
+        null=True,
+        blank=True,
+    )
+
     user = models.OneToOneField(
         to='accounts.AppUser',
         on_delete=models.CASCADE,
         related_name='profile',
+        primary_key=True
     )
 
     def __str__(self):
@@ -79,6 +88,4 @@ class Profile(models.Model):
         return full_name or self.user.email
 
 
-
-    # will not a direct join on the two tables
 
