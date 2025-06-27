@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from django.urls import path, include
 
@@ -8,6 +7,7 @@ urlpatterns = [
     path('accounts/', include('SOLIDIFY.accounts.urls')),
     path('categories/', include('SOLIDIFY.categories.urls')),
     path('routines/', include('SOLIDIFY.routines.urls')),
-    path('habits/', include('SOLIDIFY.habits.urls'))
+    path('habits/', include('SOLIDIFY.habits.urls')),
 
+    path('calendar/', include('SOLIDIFY.schedule.urls')),
 ]

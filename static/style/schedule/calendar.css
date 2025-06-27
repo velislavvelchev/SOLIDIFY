@@ -1,0 +1,20 @@
+#calendar {
+    max-width: 900px;
+    margin: 40px auto;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    height: 700px;
+    z-index: 1;
+}
+
+.calendar-heading {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ffffff; /* Or dark color if needed */
+    z-index: 2;
+    position: relative;
+}
