@@ -5,6 +5,18 @@ UserModel = get_user_model()
 
 # Create your models here.
 class Habit(models.Model):
+
+	class HabitChoices(models.TextChoices):
+		DEFAULT = '', ''
+		ANTICIPATORY = 'Anticipatory', 'Anticipatory'
+		REWARD = 'Reward', 'Reward'
+		BOTH = 'Both', 'Both'
+
+	dopamine_type = models.CharField(
+		max_length=35, choices=HabitChoices.choices,
+		default=HabitChoices.DEFAULT
+	)
+
 	habit_name = models.CharField(
 		max_length=30,
 	)

@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'SOLIDIFY.categories.apps.CategoriesConfig',
     'SOLIDIFY.habits.apps.HabitsConfig',
     'SOLIDIFY.routines.apps.RoutinesConfig',
-    'SOLIDIFY.accounts.apps.AccountsConfig'
-
+    'SOLIDIFY.accounts.apps.AccountsConfig',
+    'SOLIDIFY.schedule.apps.ScheduleConfig'
 ]
 
 MIDDLEWARE = [
