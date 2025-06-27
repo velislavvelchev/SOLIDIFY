@@ -53,7 +53,10 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
 class Profile(models.Model):
     # additional fields that are not vital for authentication
 
-    age = models.IntegerField()
+    age = models.IntegerField(
+        null=True,
+        blank=True,
+    )
 
     first_name = models.CharField(
         max_length = 30,

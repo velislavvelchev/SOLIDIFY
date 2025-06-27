@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
@@ -7,7 +8,7 @@ from SOLIDIFY.categories.models import Category
 
 
 # Create your views here.
-class CreateCategoryView(CreateView):
+class CreateCategoryView(LoginRequiredMixin, CreateView):
     model = Category
     form_class = CreateCategoryForm
     template_name = 'categories/create_category.html'
