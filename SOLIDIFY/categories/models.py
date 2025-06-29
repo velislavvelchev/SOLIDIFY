@@ -23,3 +23,6 @@ class Category(models.Model):
     min_habits_per_day = models.IntegerField(
         default=1,
     )
+
+    def __str__(self):
+        return self.category_type

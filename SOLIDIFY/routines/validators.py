@@ -16,5 +16,9 @@ class RoutineNameValidator:
         self.__message = value or "Routine Name must contain only letters!"
 
     def __call__(self, value):
-        if not value.isalpha():
+        # Remove leading/trailing spaces
+        stripped = value.strip()
+
+        # Split into words and check each word is alphabetic
+        if not all(word.isalpha() for word in stripped.split()):
             raise ValidationError(self.message)

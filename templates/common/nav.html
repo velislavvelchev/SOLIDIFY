@@ -9,6 +9,7 @@
             <a href="{% url 'create-category' %}">Create Category</a>
             <a href="{% url 'create-habit' %}">Create Habit</a>
             <a href="{% url 'create-routine' %}">Create Routine</a>
+            <a href="{% url 'schedule-create' %}">Create Schedule</a>
             <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
                 {% csrf_token %}
             </form>

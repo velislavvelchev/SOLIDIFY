@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import ValidationError
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from SOLIDIFY.routines.forms import CreateRoutineForm
@@ -15,5 +16,18 @@ class CreateRoutineView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         user = self.request.user
         form.instance.user = user
+
+        routine = form.save(commit=False)
+        habits = form.cleaned_data['habits']
+        category = routine.category
+
+        matching_habits = [h for h in habits if h.category == category]
+        required = category.min_habits_per_day
+
+        if len(matching_habits) < required:
+            form.add_error('habits', f"Select at least {required} habit(s) from the '{category}' category.")
+            return self.form_invalid(form)
+
         return super().form_valid(form)
+
 

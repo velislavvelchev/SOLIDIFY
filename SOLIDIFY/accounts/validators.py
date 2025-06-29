@@ -17,7 +17,8 @@ class NameValidator:
         self.__message = value or f'{self.field_name} should contain only letters!'
 
     def __call__(self, value):
-        clean_value = value.strip().replace('-', '')
-        if not clean_value.isalpha():
+        stripped = value.strip().replace('-', '')
+
+        if not all(word.isalpha() for word in stripped.split()):
             raise ValidationError(self.message)
 

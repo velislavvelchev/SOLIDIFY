@@ -6,7 +6,7 @@ footer {
   color: white;
   transition: bottom 0.4s ease-in-out;
   z-index: 1000;
-  padding: 20px 60px;
+  padding: 5px 60px;
   backdrop-filter: blur(12px);
 }
 
