@@ -13,6 +13,7 @@ class Category(models.Model):
         max_length=35,
         choices=CategoryChoices.choices,
         default=CategoryChoices.DEFAULT,
+        unique=True
     )
 
     description = models.TextField(

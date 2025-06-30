@@ -29,9 +29,6 @@ class Routine(models.Model):
         related_name='habits_routines',
     )
 
-    start_date = models.DateField()
-
-    end_date = models.DateField()
 
     user = models.ForeignKey(
         to=UserModel,

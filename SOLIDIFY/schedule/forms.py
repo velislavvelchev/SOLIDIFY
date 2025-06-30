@@ -1,13 +1,13 @@
 from django import forms
 
-from SOLIDIFY.schedule.models import ScheduledHabit
+from SOLIDIFY.schedule.models import ScheduledRoutine
 
 
-class ScheduleHabitBaseForm(forms.ModelForm):
+class ScheduleRoutineBaseForm(forms.ModelForm):
     class Meta:
-        model = ScheduledHabit
+        model = ScheduledRoutine
         fields = '__all__'
 
 
-class ScheduleHabitCreateForm(ScheduleHabitBaseForm):
+class ScheduleRoutineCreateForm(ScheduleRoutineBaseForm):
     pass
