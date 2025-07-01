@@ -3,7 +3,7 @@ from django.db import models
 
 class Category(models.Model):
     class CategoryChoices(models.TextChoices):
-        DEFAULT = '', ''
+        DEFAULT = '', 'Select a category type'
         PHYSICAL = 'Physical', 'Physical'
         MENTAL = 'Mental', 'Mental'
         CREATIVE = 'Creative', 'Creative'

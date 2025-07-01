@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DetailView
-from SOLIDIFY.accounts.forms import AppUserCreationForm, ProfileEditForm
+from SOLIDIFY.accounts.forms import AppUserCreationForm, ProfileEditForm, AppUserLoginForm
 from SOLIDIFY.accounts.models import Profile
 
 
@@ -21,6 +21,7 @@ class UserRegisterView(CreateView):
 
 class UserLoginView(LoginView):
     template_name = 'accounts/login.html'
+    form_class = AppUserLoginForm
 
 
 class ProfileDetailsView(LoginRequiredMixin, DetailView):

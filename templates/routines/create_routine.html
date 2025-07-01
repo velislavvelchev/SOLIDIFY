@@ -4,23 +4,27 @@
 {% block body_class %}create-page{% endblock %}
 
 {% block content %}
-<div class="form-container">
-    <div class="form-card">
-        <h2 class="form-title">Create Routine</h2>
-        <form method="post">
-            {% csrf_token %}
-            <div>
-                {% render_field form.routine_name placeholder="Routine Name" %}
-            </div>
-            <div>
-                {% render_field form.category id="id_category" %}
-            </div>
-            <div>
-                {% render_field form.habits id="id_habits" multiple="multiple" %}
-            </div>
-            <button type="submit" class="form-btn">Create</button>
-        </form>
+    <div class="form-container">
+        <div class="form-card">
+            <h2 class="form-title">Create Routine</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div>
+                    {{ form.routine_name.label_tag }}
+                    {% render_field form.routine_name %}
+                </div>
+                <div>
+                    {{ form.category.label_tag }}
+                    {% render_field form.category id="id_category" %}
+                </div>
+                <div>
+                    {{ form.habits.label_tag }}
+                    {% render_field form.habits id="id_habits" multiple="multiple" %}
+                </div>
+                <button type="submit" class="form-btn">Create</button>
+            </form>
+
+        </div>
     </div>
-</div>
-<script src="{% static 'js/habits-for-category.js' %}"></script>
+    <script src="{% static 'js/habits-for-category.js' %}"></script>
 {% endblock %}

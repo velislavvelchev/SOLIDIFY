@@ -7,7 +7,7 @@ UserModel = get_user_model()
 class Habit(models.Model):
 
 	class HabitChoices(models.TextChoices):
-		DEFAULT = '', ''
+		DEFAULT = '', 'Select dopamine type'
 		ANTICIPATORY = 'Anticipatory', 'Anticipatory'
 		REWARD = 'Reward', 'Reward'
 		BOTH = 'Both', 'Both'

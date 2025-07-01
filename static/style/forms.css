@@ -9,7 +9,7 @@ form {
 .form-title {
     text-align: center;
     font-size: 24px; /* Optional: make the heading look nicer */
-    margin-bottom: 20px; /* Optional: space between heading and form */
+    margin-bottom: 5px; /* Optional: space between heading and form */
 }
 
 
@@ -210,4 +210,8 @@ input[type="checkbox"]::after {
 
 input[type="checkbox"]:checked::after {
     opacity: 1;
+}
+
+.helptext, .helptext * {
+    font-weight: 500;
 }
