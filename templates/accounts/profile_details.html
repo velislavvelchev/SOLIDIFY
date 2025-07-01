@@ -4,19 +4,27 @@
 
 {% block content %}
 
-<div class="details-container">
-  <div class="details-card">
-    <h1>Profile Details</h1>
+    <div class="details-container">
+        <div class="details-card">
+            <h1>Profile Details</h1>
 
-    <p><strong>First Name:</strong>
-       {% if profile.first_name %}{{ profile.first_name }}{% else %}<span class="empty">Not provided</span>{% endif %}
-    </p>
+            {% if profile.profile_picture %}
+                <img src="{{ profile.profile_picture }}" alt="Profile photo" class="profile-picture-idcard">
+            {% else %}
+                <img src="{% static 'images/user.png' %}" alt="Profile photo" class="profile-picture-idcard">
+            {% endif %}
 
-    <p><strong>Last Name:</strong>
-       {% if profile.last_name %}{{ profile.last_name }}{% else %}<span class="empty">Not provided</span>{% endif %}
-    </p>
+            <p><strong>First Name:</strong>
+                {% if profile.first_name %}{{ profile.first_name }}{% else %}
+                    <span class="empty">Not provided</span>{% endif %}
+            </p>
 
-    <p><strong>Age:</strong> {{ profile.age }}</p>
-  </div>
-</div>
+            <p><strong>Last Name:</strong>
+                {% if profile.last_name %}{{ profile.last_name }}{% else %}
+                    <span class="empty">Not provided</span>{% endif %}
+            </p>
+
+            <p><strong>Age:</strong> {{ profile.age }}</p>
+        </div>
+    </div>
 {% endblock %}
