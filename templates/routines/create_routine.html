@@ -1,5 +1,5 @@
-<!-- templates/habits/create_routine.html -->
 {% extends 'common/base.html' %}
+{% load widget_tweaks %}
 {% load static %}
 {% block body_class %}create-page{% endblock %}
 
@@ -9,9 +9,18 @@
         <h2 class="form-title">Create Routine</h2>
         <form method="post">
             {% csrf_token %}
-            {{ form }}
+            <div>
+                {% render_field form.routine_name placeholder="Routine Name" %}
+            </div>
+            <div>
+                {% render_field form.category id="id_category" %}
+            </div>
+            <div>
+                {% render_field form.habits id="id_habits" multiple="multiple" %}
+            </div>
             <button type="submit" class="form-btn">Create</button>
         </form>
     </div>
 </div>
+<script src="{% static 'js/habits-for-category.js' %}"></script>
 {% endblock %}

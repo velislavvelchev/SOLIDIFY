@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'SOLIDIFY.habits.apps.HabitsConfig',
     'SOLIDIFY.routines.apps.RoutinesConfig',
     'SOLIDIFY.accounts.apps.AccountsConfig',
-    'SOLIDIFY.schedule.apps.ScheduleConfig'
+    'SOLIDIFY.schedule.apps.ScheduleConfig',
+    "widget_tweaks"
 ]
 
 MIDDLEWARE = [

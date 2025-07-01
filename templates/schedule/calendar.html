@@ -27,12 +27,12 @@
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
       events: {
-        url: '/calendar/events/',
+        url: '/schedule/api/events/',
         failure: function() {},
         success: function(events) {}
       },
       eventClick: function (info) {
-        alert('Habit: ' + info.event.title + '\nRoutine: ' + info.event.extendedProps.routine);
+        alert('Routine: ' + info.event.title + '\nStart Date: ' + info.event.start.toLocaleString());
       }
     });
 

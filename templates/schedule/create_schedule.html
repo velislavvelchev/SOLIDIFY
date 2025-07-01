@@ -1,3 +1,4 @@
+<!-- templates/habits/create_routine.html -->
 {% extends 'common/base.html' %}
 {% load static %}
 {% block body_class %}create-page{% endblock %}
@@ -5,7 +6,7 @@
 {% block content %}
 <div class="form-container">
     <div class="form-card">
-        <h2 class="form-title">Create Habit</h2>
+        <h2 class="form-title">Create Schedule</h2>
         <form method="post">
             {% csrf_token %}
             {{ form }}
@@ -14,3 +15,4 @@
     </div>
 </div>
 {% endblock %}
+

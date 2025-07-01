@@ -9,5 +9,5 @@ urlpatterns = [
     path('routines/', include('SOLIDIFY.routines.urls')),
     path('habits/', include('SOLIDIFY.habits.urls')),
 
-    path('calendar/', include('SOLIDIFY.schedule.urls')),
+    path('schedule/', include('SOLIDIFY.schedule.urls')),
 ]
