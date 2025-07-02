@@ -4,15 +4,22 @@
 {% block body_class %}create-page{% endblock %}
 
 {% block content %}
-<div class="form-container">
-    <div class="form-card">
-        <h2 class="form-title">Create Schedule</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form }}
-            <button type="submit" class="form-btn">Create</button>
-        </form>
+    <div class="form-container">
+        <div class="form-card">
+            <h2 class="form-title">Create Schedule</h2>
+            <form method="post" id="schedule-form">
+                {% csrf_token %}
+                {{ form }}
+                <!-- Add the hidden UTC field right below your form fields -->
+                <input type="hidden" name="scheduled_time_utc" id="scheduled_time_utc">
+                <button type="submit" class="form-btn">Create</button>
+            </form>
+        </div>
     </div>
-</div>
+
+    {% block scripts %}
+        <script src="{% static 'js/date-to-utc.js' %}"></script>
+    {% endblock %}
+
 {% endblock %}
 
