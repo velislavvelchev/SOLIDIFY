@@ -1,5 +1,5 @@
 from django.contrib.auth import login
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DetailView
@@ -8,7 +8,7 @@ from SOLIDIFY.accounts.models import Profile
 
 
 # Create your views here.
-class UserRegisterView(CreateView):
+class UserRegisterView(UserPassesTestMixin, CreateView):
     form_class = AppUserCreationForm
     template_name = 'accounts/register.html'
     success_url = reverse_lazy('home')
@@ -24,14 +24,22 @@ class UserLoginView(LoginView):
     form_class = AppUserLoginForm
 
 
-class ProfileDetailsView(LoginRequiredMixin, DetailView):
+
+class ProfileDetailsView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = Profile
     template_name = 'accounts/profile_details.html'
 
-class ProfileEditView(LoginRequiredMixin, UpdateView):
+    def test_func(self):
+        return self.request.user.pk == self.get_object().user.pk
+
+
+class ProfileEditView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
     model = Profile
     form_class = ProfileEditForm
     template_name = 'accounts/profile_edit.html'
+
+    def test_func(self):
+        return self.request.user.pk == self.get_object().user.pk
 
     def get_success_url(self):
         return reverse_lazy(

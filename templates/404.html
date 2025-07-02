@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>404 Not Found – Nerdy Brain</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'style/404.css' %}">
+</head>
+<body>
+  <div class="container">
+    <!-- Animated SVG Brain with connections -->
+    <svg class="brain-anim" viewBox="0 0 250 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="brainGrad2" cx="50%" cy="50%" r="70%">
+          <stop offset="0%" stop-color="#c7eafd"/>
+          <stop offset="100%" stop-color="#a8a3ff"/>
+        </radialGradient>
+        <linearGradient id="glassesGrad2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#6ec3f8"/>
+          <stop offset="100%" stop-color="#5e72eb"/>
+        </linearGradient>
+        <radialGradient id="connectionPulse" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#67e8f9" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#5e72eb" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <!-- Main Brain shape -->
+      <ellipse cx="130" cy="90" rx="90" ry="78" fill="url(#brainGrad2)" stroke="#7696e7" stroke-width="5"/>
+      <!-- Brain squiggles -->
+      <path d="M68 100 Q78 70 110 90 Q120 110 150 80 Q200 90 170 130" stroke="#b2bdf6" stroke-width="5" fill="none" />
+      <path d="M130 110 Q135 150 160 120" stroke="#b2bdf6" stroke-width="4" fill="none"/>
+      <!-- Animated brain "connections" (use pulsating circles at node points, lines) -->
+      <g id="connections">
+        <!-- lines between nodes -->
+        <line x1="100" y1="75" x2="160" y2="65" stroke="#66c6fa" stroke-width="3" id="conn1"/>
+        <line x1="160" y1="65" x2="175" y2="110" stroke="#8fd6f9" stroke-width="3" id="conn2"/>
+        <line x1="100" y1="75" x2="90" y2="120" stroke="#89c5f7" stroke-width="3" id="conn3"/>
+        <line x1="90" y1="120" x2="175" y2="110" stroke="#6bb2e7" stroke-width="3" id="conn4"/>
+        <line x1="130" y1="135" x2="175" y2="110" stroke="#67e8f9" stroke-width="3" id="conn5"/>
+        <!-- glowing nodes -->
+        <circle id="node1" cx="100" cy="75" r="11" fill="url(#connectionPulse)" opacity="0.8"/>
+        <circle id="node2" cx="160" cy="65" r="11" fill="url(#connectionPulse)" opacity="0.8"/>
+        <circle id="node3" cx="175" cy="110" r="11" fill="url(#connectionPulse)" opacity="0.8"/>
+        <circle id="node4" cx="90" cy="120" r="11" fill="url(#connectionPulse)" opacity="0.8"/>
+        <circle id="node5" cx="130" cy="135" r="11" fill="url(#connectionPulse)" opacity="0.8"/>
+      </g>
+      <!-- Face -->
+      <ellipse id="eyeL" cx="100" cy="100" rx="16" ry="14" fill="#fff"/>
+      <ellipse id="eyeR" cx="160" cy="104" rx="16" ry="14" fill="#fff"/>
+      <!-- Glasses -->
+      <ellipse cx="100" cy="100" rx="19" ry="16" stroke="url(#glassesGrad2)" stroke-width="6" fill="none"/>
+      <ellipse cx="160" cy="104" rx="19" ry="16" stroke="url(#glassesGrad2)" stroke-width="6" fill="none"/>
+      <rect x="119" y="102" width="22" height="6" fill="url(#glassesGrad2)" rx="2"/>
+      <!-- Eyes -->
+      <ellipse id="pupilL" cx="100" cy="104" rx="5" ry="5.8" fill="#283d68"/>
+      <ellipse id="pupilR" cx="160" cy="108" rx="5" ry="5.8" fill="#283d68"/>
+      <!-- Blush -->
+      <ellipse cx="90" cy="118" rx="6" ry="3" fill="#86c8f7" opacity="0.6"/>
+      <ellipse cx="170" cy="122" rx="6" ry="3" fill="#b2e5fc" opacity="0.6"/>
+      <!-- Smile -->
+      <path d="M115 135 Q130 144 145 135" stroke="#283d68" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <!-- Pointer (teacher stick) -->
+      <rect x="198" y="144" width="7" height="55" rx="3.5" fill="#4c84ce" transform="rotate(12 198 144)"/>
+      <!-- Hand holding pointer -->
+      <ellipse cx="207" cy="200" rx="13" ry="10" fill="#c7eafd" stroke="#7696e7" stroke-width="4"/>
+      <ellipse cx="200" cy="188" rx="7" ry="6" fill="#c7eafd" stroke="#7696e7" stroke-width="3"/>
+      <!-- Book under other arm -->
+      <rect x="42" y="145" width="36" height="22" rx="4" fill="#6ec3f8" stroke="#415a87" stroke-width="3"/>
+      <rect x="42" y="163" width="36" height="7" rx="3.5" fill="#b1dbfc"/>
+      <rect x="42" y="150" width="36" height="4" rx="2" fill="#fff" opacity="0.7"/>
+    </svg>
+    <!-- Speech bubble -->
+    <div class="speech-bubble" id="speech">Brain pathway not found</div>
+    <div class="err-code">404</div>
+    <div class="err-label">Not Found</div>
+    <div class="note">The page or resource you’re looking for can’t be found in this brain.<br>Double check the address or use the main navigation.</div>
+  </div>
+  <script src="{% static 'js/404.js' %}"></script>
+</body>
+</html>

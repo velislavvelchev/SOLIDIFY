@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>403 Forbidden – Nerdy Brain</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'style/403.css' %}">
+
+</head>
+<body>
+  <div class="container">
+    <!-- Animated SVG Brain -->
+    <svg class="brain-anim" viewBox="0 0 250 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="brainGrad" cx="50%" cy="50%" r="70%">
+          <stop offset="0%" stop-color="#fed0fa"/>
+          <stop offset="100%" stop-color="#b89fff"/>
+        </radialGradient>
+        <linearGradient id="glassesGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#6ec3f8"/>
+          <stop offset="100%" stop-color="#b388eb"/>
+        </linearGradient>
+      </defs>
+      <!-- Main Brain shape -->
+      <ellipse cx="130" cy="90" rx="90" ry="78" fill="url(#brainGrad)" stroke="#ab68bc" stroke-width="5"/>
+      <!-- Brain squiggles -->
+      <path d="M68 100 Q78 70 110 90 Q120 110 150 80 Q200 90 170 130" stroke="#e180d7" stroke-width="5" fill="none" />
+      <path d="M130 110 Q135 150 160 120" stroke="#e180d7" stroke-width="4" fill="none"/>
+      <!-- Face -->
+      <ellipse id="eyeL" cx="100" cy="100" rx="16" ry="14" fill="#fff"/>
+      <ellipse id="eyeR" cx="160" cy="104" rx="16" ry="14" fill="#fff"/>
+      <!-- Glasses -->
+      <ellipse cx="100" cy="100" rx="19" ry="16" stroke="url(#glassesGrad)" stroke-width="6" fill="none"/>
+      <ellipse cx="160" cy="104" rx="19" ry="16" stroke="url(#glassesGrad)" stroke-width="6" fill="none"/>
+      <rect x="119" y="102" width="22" height="6" fill="url(#glassesGrad)" rx="2"/>
+      <!-- Eyes -->
+      <ellipse id="pupilL" cx="100" cy="104" rx="5" ry="5.8" fill="#442760"/>
+      <ellipse id="pupilR" cx="160" cy="108" rx="5" ry="5.8" fill="#442760"/>
+      <!-- Blush -->
+      <ellipse cx="90" cy="118" rx="6" ry="3" fill="#fbb1eb" opacity="0.7"/>
+      <ellipse cx="170" cy="122" rx="6" ry="3" fill="#fbb1eb" opacity="0.7"/>
+      <!-- Smile -->
+      <path d="M115 135 Q130 144 145 135" stroke="#442760" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <!-- Pointer (teacher stick) -->
+      <rect x="198" y="144" width="7" height="55" rx="3.5" fill="#79a2f2" transform="rotate(12 198 144)"/>
+      <!-- Hand holding pointer -->
+      <ellipse cx="207" cy="200" rx="13" ry="10" fill="#fed0fa" stroke="#ab68bc" stroke-width="4"/>
+      <ellipse cx="200" cy="188" rx="7" ry="6" fill="#fed0fa" stroke="#ab68bc" stroke-width="3"/>
+      <!-- Book under other arm -->
+      <rect x="42" y="145" width="36" height="22" rx="4" fill="#6ec3f8" stroke="#413887" stroke-width="3"/>
+      <rect x="42" y="163" width="36" height="7" rx="3.5" fill="#c3b4f3"/>
+      <rect x="42" y="150" width="36" height="4" rx="2" fill="#fff" opacity="0.7"/>
+    </svg>
+    <!-- Speech bubble -->
+    <div class="speech-bubble" id="speech">Don’t make it a habit</div>
+    <div class="err-code">403</div>
+    <div class="err-label">Forbidden</div>
+    <div class="note">Looks like you wandered a little too far into the brain's knowledge vault.<br>Please check your permissions or head back home.</div>
+  </div>
+  <script src="{% static 'js/403.js' %}"></script>
+</body>
+</html>
