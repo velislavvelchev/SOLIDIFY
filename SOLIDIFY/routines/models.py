@@ -8,6 +8,9 @@ UserModel = get_user_model()
 
 
 class Routine(models.Model):
+    class Meta:
+        verbose_name_plural = "Routines"
+
     routine_name = models.CharField(
         unique=True,
         max_length=30,

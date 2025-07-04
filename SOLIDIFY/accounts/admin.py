@@ -9,6 +9,10 @@ from SOLIDIFY.accounts.models import Profile
 # Register your models here.
 UserModel = get_user_model()
 
+admin.site.site_header = "SOLIDIFY Admin"
+admin.site.site_title = "YourAppName Admin Portal"
+admin.site.index_title = "Welcome to SOLIDIFY Administration"
+
 @admin.register(UserModel)
 class AppUserAdmin(UserAdmin):
     form = AppUserChangeForm

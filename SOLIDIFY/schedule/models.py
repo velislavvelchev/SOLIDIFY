@@ -2,6 +2,8 @@ from django.db import models
 
 
 class ScheduledRoutine(models.Model):
+    class Meta:
+        verbose_name_plural = "Scheduled Routines"
 
     routine = models.ForeignKey(
         to='routines.Routine',

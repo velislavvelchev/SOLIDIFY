@@ -1,19 +1,18 @@
-
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById("schedule-form");
-    alert("Form loaded!"); // Add this!
+
     const startInput = document.getElementById("start_time");
     const endInput = document.getElementById("end_time");
     const startHidden = document.getElementById("start_time_utc");
     const endHidden = document.getElementById("end_time_utc");
 
     if (!form || !startInput || !endInput || !startHidden || !endHidden) {
-        alert("A field is missing!"); // Add this!
+
         return;
     }
 
     form.addEventListener("submit", function(event) {
-        alert("Form submit event fired!");
+
         if (startInput.value) {
             const localStart = new Date(startInput.value);
             const year = localStart.getUTCFullYear();
@@ -35,4 +34,3 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("start_time_utc:", startHidden.value, "end_time_utc:", endHidden.value);
     });
 });
-

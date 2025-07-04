@@ -32,8 +32,6 @@ class CalendarEventView(View):
 
 
 
-
-
 class CalendarPageView(LoginRequiredMixin, TemplateView):
     template_name = 'schedule/calendar.html'
 

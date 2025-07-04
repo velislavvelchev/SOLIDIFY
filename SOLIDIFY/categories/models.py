@@ -2,6 +2,9 @@ from django.db import models
 
 
 class Category(models.Model):
+    class Meta:
+        verbose_name_plural = "Categories"
+
     class CategoryChoices(models.TextChoices):
         DEFAULT = '', 'Select a category type'
         PHYSICAL = 'Physical', 'Physical'

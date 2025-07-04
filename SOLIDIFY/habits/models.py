@@ -1,10 +1,13 @@
 from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator
 from django.db import models
+
 UserModel = get_user_model()
 
 # Create your models here.
 class Habit(models.Model):
+	class Meta:
+		verbose_name_plural = "Habits"
 
 	class HabitChoices(models.TextChoices):
 		DEFAULT = '', 'Select dopamine type'
