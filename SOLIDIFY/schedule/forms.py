@@ -6,9 +6,10 @@ from SOLIDIFY.schedule.models import ScheduledRoutine
 class ScheduleRoutineBaseForm(forms.ModelForm):
     class Meta:
         model = ScheduledRoutine
-        fields = '__all__'
+        exclude = ['scheduled_time', ]
         widgets = {
-            'scheduled_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'id': 'scheduled_time'})
+            'start_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'id': 'start_time'}),
+            'end_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'id': 'end_time'})
         }
 
     def __init__(self, *args, **kwargs):

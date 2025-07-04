@@ -19,16 +19,17 @@ class CalendarEventView(View):
     def get(self, request):
         user = request.user
         scheduled_routines = ScheduledRoutine.objects.filter(routine__user=user)
-
         events = [
             {
                 "title": s.routine.routine_name,
-                "start": s.scheduled_time.isoformat(),
+                "start": s.start_time.isoformat() if s.start_time else None,
+                "end": s.end_time.isoformat() if s.end_time else None,
                 "id": s.id,
-                                            }
+            }
             for s in scheduled_routines
         ]
         return JsonResponse(events, safe=False)
+
 
 
 
@@ -44,26 +45,40 @@ class ScheduleRoutineCreateView(LoginRequiredMixin, CreateView):
     template_name = 'schedule/create_schedule.html'
     success_url = reverse_lazy('calendar')
 
-
     def form_valid(self, form):
         scheduled = form.save(commit=False)
 
-        # Get the hidden UTC field from POST
-        utc_string = self.request.POST.get('scheduled_time_utc')
-        dt_utc = parse_datetime(utc_string) if utc_string else None
+        # Grab the hidden UTC fields from POST data
+        start_utc_str = self.request.POST.get('start_time_utc')
+        end_utc_str = self.request.POST.get('end_time_utc')
 
-        # If we have a value, use it
-        # ... inside your view
-        if dt_utc is not None:
-            dt_utc = timezone.make_aware(dt_utc, datetime.timezone.utc)
-            scheduled.scheduled_time = dt_utc
+        start_dt_utc = parse_datetime(start_utc_str) if start_utc_str else None
+        end_dt_utc = parse_datetime(end_utc_str) if end_utc_str else None
 
-        # Validate time is not in the past
-        if scheduled.scheduled_time < timezone.now():
-            form.add_error('scheduled_time', "You cannot schedule a habit in the past.")
+        # Assign to model fields, making sure they're timezone aware
+        if start_dt_utc is not None:
+            start_dt_utc = timezone.make_aware(start_dt_utc, datetime.timezone.utc)
+            scheduled.start_time = start_dt_utc
+
+
+        if end_dt_utc is not None:
+            end_dt_utc = timezone.make_aware(end_dt_utc, datetime.timezone.utc)
+            scheduled.end_time = end_dt_utc
+
+        # Validate: start < end
+        if scheduled.start_time and scheduled.end_time:
+            if scheduled.start_time >= scheduled.end_time:
+                form.add_error('start_time', "Start time must be before end time.")
+                form.add_error('end_time', "End time must be after start time.")
+                return self.form_invalid(form)
+
+        # Validate: can't schedule in the past
+        now = timezone.now()
+        if scheduled.start_time and scheduled.start_time < now:
+            form.add_error('start_time', "You cannot schedule a routine in the past.")
             return self.form_invalid(form)
 
-
         return super().form_valid(form)
+
 
 

@@ -9,5 +9,14 @@ class ScheduledRoutine(models.Model):
         related_name='scheduled_habits',
     )
 
-    scheduled_time = models.DateTimeField()
+    start_time = models.DateTimeField(
+        null=True,
+        blank=True
+    )
+
+    end_time = models.DateTimeField(
+        null=True,
+        blank=True
+    )
+
 

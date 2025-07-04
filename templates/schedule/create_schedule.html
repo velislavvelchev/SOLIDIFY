@@ -1,7 +1,10 @@
 <!-- templates/habits/create_routine.html -->
 {% extends 'common/base.html' %}
 {% load static %}
-{% block body_class %}create-page{% endblock %}
+
+{% block body_class %}
+    create-page
+{% endblock %}
 
 {% block content %}
     <div class="form-container">
@@ -10,16 +13,17 @@
             <form method="post" id="schedule-form">
                 {% csrf_token %}
                 {{ form }}
-                <!-- Add the hidden UTC field right below your form fields -->
-                <input type="hidden" name="scheduled_time_utc" id="scheduled_time_utc">
+
+                <!-- Hidden UTC fields for start and end times -->
+                <input type="hidden" name="start_time_utc" id="start_time_utc">
+                <input type="hidden" name="end_time_utc" id="end_time_utc">
+
                 <button type="submit" class="form-btn">Create</button>
             </form>
         </div>
     </div>
-
-    {% block scripts %}
-        <script src="{% static 'js/date-to-utc.js' %}"></script>
-    {% endblock %}
-
 {% endblock %}
 
+{% block scripts %}
+    <script src="{% static 'js/date-to-utc.js' %}"></script>
+{% endblock %}
