@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import ValidationError
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
@@ -12,6 +12,7 @@ class CreateRoutineView(LoginRequiredMixin, CreateView):
     form_class = CreateRoutineForm
     template_name = 'routines/create_routine.html'
     success_url = reverse_lazy('home')
+
 
     def form_valid(self, form):
         user = self.request.user

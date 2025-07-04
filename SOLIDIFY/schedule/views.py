@@ -1,6 +1,6 @@
 import datetime
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.utils import timezone
@@ -10,6 +10,8 @@ from django.views import View
 from .forms import ScheduleRoutineCreateForm
 from .models import ScheduledRoutine
 from django.views.generic import TemplateView, CreateView
+
+from ..routines.models import Routine
 
 
 # Create your views here.
@@ -43,6 +45,13 @@ class ScheduleRoutineCreateView(LoginRequiredMixin, CreateView):
     template_name = 'schedule/create_schedule.html'
     success_url = reverse_lazy('calendar')
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        # Limit routines to those belonging to the current user
+        form.fields['routine'].queryset = Routine.objects.filter(user=self.request.user)
+        return form
+
+
     def form_valid(self, form):
         scheduled = form.save(commit=False)
 
@@ -50,8 +59,8 @@ class ScheduleRoutineCreateView(LoginRequiredMixin, CreateView):
         start_utc_str = self.request.POST.get('start_time_utc')
         end_utc_str = self.request.POST.get('end_time_utc')
 
-        start_dt_utc = parse_datetime(start_utc_str) if start_utc_str else None
-        end_dt_utc = parse_datetime(end_utc_str) if end_utc_str else None
+        start_dt_utc = parse_datetime(start_utc_str)
+        end_dt_utc = parse_datetime(end_utc_str)
 
         # Assign to model fields, making sure they're timezone aware
         if start_dt_utc is not None:
@@ -75,6 +84,19 @@ class ScheduleRoutineCreateView(LoginRequiredMixin, CreateView):
         if scheduled.start_time and scheduled.start_time < now:
             form.add_error('start_time', "You cannot schedule a routine in the past.")
             return self.form_invalid(form)
+
+        # Validate: no overlap with existing routines for this user
+        if scheduled.routine and scheduled.start_time and scheduled.end_time:
+            user = scheduled.routine.user
+            conflicts = ScheduledRoutine.objects.filter(
+                routine__user=user,
+                start_time__lt=scheduled.end_time,
+                end_time__gt=scheduled.start_time,
+            )
+            # If editing, exclude self: .exclude(pk=scheduled.pk)
+            if conflicts.exists():
+                form.add_error(None, "This routine overlaps with another scheduled routine.")
+                return self.form_invalid(form)
 
         return super().form_valid(form)
 

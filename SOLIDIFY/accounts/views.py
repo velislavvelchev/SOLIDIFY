@@ -8,7 +8,7 @@ from SOLIDIFY.accounts.models import Profile
 
 
 # Create your views here.
-class UserRegisterView(UserPassesTestMixin, CreateView):
+class UserRegisterView(CreateView):
     form_class = AppUserCreationForm
     template_name = 'accounts/register.html'
     success_url = reverse_lazy('home')
