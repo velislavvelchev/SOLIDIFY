@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import ValidationError
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from SOLIDIFY.routines.forms import CreateRoutineForm
 from SOLIDIFY.routines.models import Routine
 
@@ -32,3 +32,11 @@ class CreateRoutineView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+class ListRoutinesView(LoginRequiredMixin, ListView):
+    model = Routine
+    template_name = 'routines/routine_list.html'
+    context_object_name = 'routines'
+
+
+    def get_queryset(self):
+        return Routine.objects.filter(user=self.request.user)

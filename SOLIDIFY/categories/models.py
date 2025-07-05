@@ -1,5 +1,6 @@
+from django.contrib.auth import get_user_model
 from django.db import models
-
+UserModel = get_user_model()
 
 class Category(models.Model):
     class Meta:
@@ -26,6 +27,11 @@ class Category(models.Model):
 
     min_habits_per_day = models.IntegerField(
         default=1,
+    )
+
+    user = models.ForeignKey(
+        to=UserModel,
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):

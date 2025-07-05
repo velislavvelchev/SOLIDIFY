@@ -9,7 +9,7 @@ from .models import Category
 class CategoryBaseForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = '__all__'
+        exclude = ('user', )
         widgets = {
             'category_type': forms.Select(attrs={
                 'placeholder': 'Select category type',  # Note: placeholder has no effect on <select>, but label/empty_label can help

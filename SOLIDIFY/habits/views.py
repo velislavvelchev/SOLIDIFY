@@ -22,8 +22,6 @@ class CreateHabitView(LoginRequiredMixin, CreateView):
 
 
 
-
-
 class HabitsForCategoryView(ListView):
     model = Habit
 
@@ -35,3 +33,13 @@ class HabitsForCategoryView(ListView):
             for h in habits
         ]
         return JsonResponse({'habits': data})
+
+
+class ListHabitView(LoginRequiredMixin, ListView):
+    model = Habit
+    template_name = 'habits/habits_list.html'
+    context_object_name = 'habits'
+
+
+    def get_queryset(self):
+        return Habit.objects.filter(user=self.request.user)

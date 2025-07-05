@@ -1,0 +1,33 @@
+{% extends "common/base.html" %}
+{% block body_class %}details-page{% endblock %}
+{% block content %}
+    <div class="object-list-container">
+        <h2 class="section-heading">Your Categories</h2>
+        {% if categories %}
+            <div class="object-cards">
+                {% for category in categories %}
+                    <div class="object-card">
+                        <div class="object-card-header">
+                            <h3 class="object-card-title">{{ category.category_type }}</h3>
+                            {% if category.description %}
+                                <span class="object-card-category">{{ category.description }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="object-card-info">
+                            <span>Minimum habits per day: {{ category.min_habits_per_day }}</span>
+                        </div>
+                        <div class="object-card-actions">
+                            <a href="" class="object-btn">Details</a>
+                            <a href="" class="object-btn">Edit</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-objects-msg">
+                You have no categories yet. <a href="{% url 'create-category' %}" class="no-object-btn">Create one
+                now.</a>
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}

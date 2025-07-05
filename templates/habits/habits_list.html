@@ -1,0 +1,29 @@
+{% extends "common/base.html" %}
+{% block body_class %}details-page{% endblock %}
+{% block content %}
+    <div class="object-list-container">
+        <h2 class="section-heading">Your Habits</h2>
+        {% if habits %}
+            <div class="object-cards">
+                {% for habit in habits %}
+                    <div class="object-card">
+                        <div class="object-card-header">
+                            <h3 class="object-card-title">{{ habit.habit_name }}</h3>
+                            <span class="object-card-category">{{ habit.get_dopamine_type_display }}</span>
+                        </div>
+                        <div class="object-card-info">
+                            <span>Category: {{ habit.category.category_type }}</span>
+                        </div>
+                        <div class="object-card-actions">
+                            <a href="" class="object-btn">Details</a>
+                            <a href="" class="object-btn">Edit</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-objects-msg">You have no habits yet. <a class="no-object-btn" href="{% url 'create-habit' %}">Create
+                one now.</a></p>
+        {% endif %}
+    </div>
+{% endblock %}

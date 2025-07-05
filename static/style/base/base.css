@@ -25,3 +25,12 @@ body.details-page {
 body.calendar-page {
        background-size: auto;
 }
+
+.section-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 0.02em;
+}
