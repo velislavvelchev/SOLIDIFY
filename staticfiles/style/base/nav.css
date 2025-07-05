@@ -48,3 +48,109 @@ nav {
   text-decoration: underline;
   color: #38bdf8;
 }
+
+
+/* Add to your existing CSS */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+.dropdown-toggle:hover {
+  color: #38bdf8;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: rgba(213, 105, 193, 0.09); /* slightly more opaque for legibility */
+  min-width: 170px;
+  width: 190px;  /* Set explicit width, can adjust as needed */
+  box-sizing: border-box;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  z-index: 2000;
+  right: 0;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0;   /* Top/bottom only. Remove left/right, handled by items */
+}
+
+.dropdown-menu a,
+.dropdown-logout-btn {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.05rem;
+  border: none;
+  background: none;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+.dropdown-menu a:hover,
+.dropdown-logout-btn:hover {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+/* Optional: Space below dropdown in case your header is fixed */
+header {
+  margin-bottom: 70px; /* Adjust as needed for your fixed header */
+}
+
+.dropdown-menu a,
+.dropdown-logout-btn {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;   /* Adjusted for width */
+  font-size: 1.05rem;
+  border: none;
+  background: none;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.dropdown-menu a:hover,
+.dropdown-logout-btn:hover {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.13);
+}
+
+#logout-form {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.dropdown-logout-btn {
+  margin: 0;
+  padding: 0.5rem 1rem; /* Keep the padding you want for the button style */
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.05rem;
+  cursor: pointer;
+  box-sizing: border-box;
+}

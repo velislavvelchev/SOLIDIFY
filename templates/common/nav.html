@@ -1,19 +1,53 @@
 <nav>
-    <div class="nav-links">
-        {% if not request.user.is_authenticated %}
-            <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'register' %}">Register</a>
-        {% else %}
-            <a href="{% url 'profile-details' request.user.pk %}">Profile Details</a>
-            <a href="{% url 'profile-edit' request.user.pk %}">Edit Profile</a>
-            <a href="{% url 'create-category' %}">Create Category</a>
-            <a href="{% url 'create-habit' %}">Create Habit</a>
-            <a href="{% url 'create-routine' %}">Create Routine</a>
-            <a href="{% url 'schedule-create' %}">Create Schedule</a>
-            <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
-                {% csrf_token %}
-            </form>
-            <a href="#" onclick="document.getElementById('logout-form').submit(); return false;">Logout</a>
-        {% endif %}
-    </div>
+  <div class="nav-links">
+    {% if not request.user.is_authenticated %}
+      <a href="{% url 'login' %}">Login</a>
+      <a href="{% url 'register' %}">Register</a>
+    {% else %}
+
+      <!-- Account Dropdown (Already Done) -->
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle">Account ▾</a>
+        <div class="dropdown-menu">
+          <a href="{% url 'profile-details' request.user.pk %}">Profile Details</a>
+          <a href="{% url 'profile-edit' request.user.pk %}">Edit Profile</a>
+          <form id="logout-form" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="dropdown-logout-btn">Logout</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Categories Dropdown -->
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle">Categories ▾</a>
+        <div class="dropdown-menu">
+{#          <a href="{% url 'all-categories' %}">All Categories</a>#}
+          <a href="{% url 'create-category' %}">Create Category</a>
+        </div>
+      </div>
+
+      <!-- Habits Dropdown -->
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle">Habits ▾</a>
+        <div class="dropdown-menu">
+{#          <a href="{% url 'all-habits' %}">All Habits</a>#}
+          <a href="{% url 'create-habit' %}">Create Habit</a>
+        </div>
+      </div>
+
+      <!-- Routines Dropdown -->
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle">Routines ▾</a>
+        <div class="dropdown-menu">
+{#          <a href="{% url 'all-routines' %}">All Routines</a>#}
+          <a href="{% url 'create-routine' %}">Create Routine</a>
+        </div>
+      </div>
+
+      <!-- Any other links (like Schedule, Calendar, etc.) -->
+      <a href="{% url 'schedule-create' %}">Schedule Routine</a>
+      <a href="{% url 'calendar' %}">Calendar</a>
+    {% endif %}
+  </div>
 </nav>
