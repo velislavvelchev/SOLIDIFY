@@ -33,3 +33,6 @@ class HabitBaseForm(forms.ModelForm):
 
 class CreateHabitForm(HabitBaseForm):
     pass
+
+class EditHabitForm(HabitBaseForm):
+    pass

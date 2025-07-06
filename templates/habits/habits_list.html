@@ -15,8 +15,8 @@
                             <span>Category: {{ habit.category.category_type }}</span>
                         </div>
                         <div class="object-card-actions">
-                            <a href="" class="object-btn">Details</a>
-                            <a href="" class="object-btn">Edit</a>
+                            <a href="{% url 'details-habit' habit.pk %}" class="object-btn">Details</a>
+                            <a href="{% url 'edit-habit' habit.pk %}" class="object-btn">Edit</a>
                         </div>
                     </div>
                 {% endfor %}

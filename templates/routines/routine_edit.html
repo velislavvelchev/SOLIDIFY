@@ -1,0 +1,31 @@
+{% extends 'common/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+{% block content %}
+    <div class="form-container">
+        <div class="form-card">
+            <h2 class="form-title">Edit Routine</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div>
+                    {{ form.routine_name.label_tag }}
+                    {% render_field form.routine_name %}
+                </div>
+                <div>
+                    {{ form.category.label_tag }}
+                    {% render_field form.category id="id_category" %}
+                </div>
+                <div>
+                    {{ form.habits.label_tag }}
+                    {% render_field form.habits id="id_habits" multiple="multiple" %}
+                </div>
+                <button type="submit" class="form-btn">Edit</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/habits-for-category.js' %}"></script>
+{% endblock %}
+
+

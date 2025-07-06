@@ -1,8 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import ValidationError
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
-from SOLIDIFY.routines.forms import CreateRoutineForm
+from django.views.generic import CreateView, ListView, UpdateView, DetailView
+from SOLIDIFY.routines.forms import CreateRoutineForm, EditRoutineForm
 from SOLIDIFY.routines.models import Routine
 
 
@@ -10,7 +10,7 @@ from SOLIDIFY.routines.models import Routine
 class CreateRoutineView(LoginRequiredMixin, CreateView):
     model = Routine
     form_class = CreateRoutineForm
-    template_name = 'routines/create_routine.html'
+    template_name = 'routines/routine_create.html'
     success_url = reverse_lazy('home')
 
 
@@ -40,3 +40,21 @@ class ListRoutinesView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Routine.objects.filter(user=self.request.user)
+
+
+class EditRoutineView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
+    model = Routine
+    form_class = EditRoutineForm
+    template_name = 'routines/routine_edit.html'
+    success_url = reverse_lazy('all-routines')
+
+    def test_func(self):
+        return self.request.user.pk == self.get_object().user.pk
+
+
+class DetailsRoutineView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+    model = Routine
+    template_name = 'routines/routine_details.html'
+
+    def test_func(self):
+        return self.request.user.pk == self.get_object().user.pk

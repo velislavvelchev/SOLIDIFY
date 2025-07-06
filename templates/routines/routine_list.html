@@ -15,8 +15,8 @@
             <span>Habits: {{ routine.habits.count }}</span>
           </div>
           <div class="object-card-actions">
-            <a href="" class="object-btn">Details</a>
-            <a href="" class="object-btn">Edit</a>
+            <a href="{% url 'details-routine' routine.pk %}" class="object-btn">Details</a>
+            <a href="{% url 'edit-routine' routine.pk %}" class="object-btn">Edit</a>
           </div>
         </div>
       {% endfor %}

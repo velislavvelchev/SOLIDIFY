@@ -9,16 +9,13 @@
                     <div class="object-card">
                         <div class="object-card-header">
                             <h3 class="object-card-title">{{ category.category_type }}</h3>
-                            {% if category.description %}
-                                <span class="object-card-category">{{ category.description }}</span>
-                            {% endif %}
                         </div>
                         <div class="object-card-info">
                             <span>Minimum habits per day: {{ category.min_habits_per_day }}</span>
                         </div>
                         <div class="object-card-actions">
-                            <a href="" class="object-btn">Details</a>
-                            <a href="" class="object-btn">Edit</a>
+                            <a href="{% url 'details-category' category.pk %}" class="object-btn">Details</a>
+                            <a href="{% url 'edit-category' category.pk %}" class="object-btn">Edit</a>
                         </div>
                     </div>
                 {% endfor %}

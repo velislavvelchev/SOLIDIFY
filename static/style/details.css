@@ -9,15 +9,19 @@
 }
 
 .details-card {
-    padding: 40px;
-    border-radius: 30px;
-    box-shadow: 0 20px 40px rgb(47, 36, 36);
-    max-width: 400px;
-    width: 100%;
+    padding: 32px 32px 24px 32px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(47, 36, 36, 0.3);
+    width: 480px;
+    height: 300px;
     backdrop-filter: blur(18px);
     text-align: left;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: center;
 }
+
 
 /* Move h1 higher: reduce bottom margin to tighten spacing */
 .details-card h1 {

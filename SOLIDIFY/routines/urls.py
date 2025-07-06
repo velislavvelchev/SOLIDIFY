@@ -1,8 +1,12 @@
-from django.urls import path
+from django.urls import path, include
 
-from SOLIDIFY.routines.views import CreateRoutineView, ListRoutinesView
+from SOLIDIFY.routines.views import CreateRoutineView, ListRoutinesView, EditRoutineView, DetailsRoutineView
 
 urlpatterns = [
     path('create/', CreateRoutineView.as_view(), name='create-routine'),
     path('all-routines/', ListRoutinesView.as_view(), name='all-routines'),
+    path('<int:pk>/', include([
+        path('edit/', EditRoutineView.as_view(), name='edit-routine'),
+        path('details/',  DetailsRoutineView.as_view(), name='details-routine'),
+    ]))
 ]

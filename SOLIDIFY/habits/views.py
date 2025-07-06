@@ -1,8 +1,7 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
-from .forms import CreateHabitForm
-
+from django.views.generic import CreateView, ListView, UpdateView, DetailView
+from .forms import CreateHabitForm, EditHabitForm
 
 from django.http import JsonResponse
 from .models import Habit
@@ -12,7 +11,7 @@ from .models import Habit
 class CreateHabitView(LoginRequiredMixin, CreateView):
     model = Habit
     form_class = CreateHabitForm
-    template_name = 'habits/create_habit.html'
+    template_name = 'habits/habit_create.html'
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
@@ -43,3 +42,23 @@ class ListHabitView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Habit.objects.filter(user=self.request.user)
+
+
+
+class EditHabitView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
+    model = Habit
+    form_class = EditHabitForm
+    template_name = 'habits/habit_edit.html'
+    success_url = reverse_lazy('all-habits')
+
+    def test_func(self):
+        return self.request.user.pk == self.get_object().user.pk
+
+
+
+class DetailsHabitView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+    model = Habit
+    template_name = 'habits/habit_details.html'
+
+    def test_func(self):
+        return self.request.user.pk == self.get_object().user.pk

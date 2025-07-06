@@ -27,3 +27,7 @@ class CategoryBaseForm(forms.ModelForm):
 
 class CreateCategoryForm(CategoryBaseForm):
     pass
+
+class EditCategoryForm(CategoryBaseForm):
+    class Meta(CategoryBaseForm.Meta):
+        exclude = ('user', 'min_habits_per_day')

@@ -42,7 +42,7 @@ class CalendarPageView(LoginRequiredMixin, TemplateView):
 class ScheduleRoutineCreateView(LoginRequiredMixin, CreateView):
     model = ScheduledRoutine
     form_class = ScheduleRoutineCreateForm
-    template_name = 'schedule/create_schedule.html'
+    template_name = 'schedule/schedule_create.html'
     success_url = reverse_lazy('calendar')
 
     def get_form(self, form_class=None):

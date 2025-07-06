@@ -1,15 +1,21 @@
-<!-- templates/habits/routine_details.html -->
-{% extends 'habits/base.html' %}
+{% extends 'common/base.html' %}
+{% load static %}
+{% block body_class %}details-page{% endblock %}
 
 {% block content %}
-<h2>Routine Details</h2>
-<p><strong>Name:</strong> Morning Health Routine</p>
-<p><strong>Category:</strong> Health</p>
-<p><strong>Recommended Habits:</strong> Morning Workout, Drink Water, Read Books</p>
-<!-- More routine info -->
-<a href="#">Edit Routine</a> | <a href="#">Delete Routine</a>
-{% endblock %}
 
-{#<p><strong>Name:</strong> {{ routine.routine_name }}</p>#}
-{#<p><strong>Category:</strong> {{ routine.category_name }}</p>#}
-{#<p><strong>Recommended Habits:</strong> {{ routine.recommended_habits.all|join:", " }}</p>#}
+    <div class="details-container">
+        <div class="details-card">
+            {% if routine.habits.count > 0 %}
+                <p><strong>Habits in this routine:</strong></p>
+                <ul>
+                    {% for habit in routine.habits.all %}
+                        <li>{{ habit.habit_name }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <span class="empty">No habits in this routine.</span>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

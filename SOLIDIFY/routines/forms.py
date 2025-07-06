@@ -20,3 +20,6 @@ class RoutineBaseForm(forms.ModelForm):
 
 class CreateRoutineForm(RoutineBaseForm):
     pass
+
+class EditRoutineForm(RoutineBaseForm):
+    pass
