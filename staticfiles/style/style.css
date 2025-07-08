@@ -9,4 +9,6 @@
 @import url('accounts/login.css');
 @import url('schedule/calendar.css');
 @import url('routines/all-routines.css');
+@import url('categories/edit-category.css');
+@import url('schedule/modal-calendar.css');
 /* Add any additional global styles here */
