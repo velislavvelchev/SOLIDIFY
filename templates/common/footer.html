@@ -3,20 +3,23 @@
     <div class="footer-grid">
         <div>
             <h6>Your Account</h6>
-            <a href="/auth/register/">Sign Up</a>
-            <a href="/auth/login/">Log In</a>
+            <a href="{% url 'register' %}">Sign Up</a>
+            {% if not request.user.is_authenticated %}
+                <a href="{% url 'login' %}">Sign Up</a>
+            {% endif %}
+
         </div>
 
         <div>
             <h6>Features</h6>
-            <a href="/habits/">Track Habits</a>
+            <a href="{% url 'all-habits' %}">Track Habits</a>
             <a href="/goals/">Set Goals</a>
             <a href="/statistics/">View Progress</a>
         </div>
 
         <div>
             <h6>SOLIDIFY</h6>
-            <a href="/about/">About</a>
+            <a href="{% url 'home' %}">About</a>
             <a href="/contact/">Contact</a>
             <a href="/privacy/">Privacy Policy</a>
         </div>
