@@ -1,11 +1,14 @@
 import datetime
+import json
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.utils.dateparse import parse_datetime
+from django.utils.decorators import method_decorator
 from django.views import View
+from django.views.decorators.csrf import csrf_exempt
 
 from .forms import ScheduleRoutineCreateForm
 from .models import ScheduledRoutine
@@ -32,6 +35,34 @@ class CalendarEventView(View):
         ]
         return JsonResponse(events, safe=False)
 
+
+
+@method_decorator(csrf_exempt, name='dispatch')  # Optional if you add CSRF in JS
+class CalendarEventUpdateView(View):
+    def post(self, request):
+        try:
+            data = json.loads(request.body)
+            event_id = data.get("id")
+            start = data.get("start")
+            end = data.get("end")
+
+            if not event_id or not start:
+                return JsonResponse({"success": False, "error": "Missing required fields."})
+
+            scheduled = ScheduledRoutine.objects.filter(
+                id=event_id,
+                routine__user=request.user
+            ).first()
+            if not scheduled:
+                return JsonResponse({"success": False, "error": "Event not found or no permission."})
+
+            scheduled.start_time = parse_datetime(start)
+            scheduled.end_time = parse_datetime(end) if end else None
+            scheduled.save()
+
+            return JsonResponse({"success": True})
+        except Exception as e:
+            return JsonResponse({"success": False, "error": str(e)})
 
 
 class CalendarPageView(LoginRequiredMixin, TemplateView):
