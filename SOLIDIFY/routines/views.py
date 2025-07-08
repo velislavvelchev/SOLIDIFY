@@ -51,7 +51,6 @@ class EditRoutineView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
     def test_func(self):
         return self.request.user.pk == self.get_object().user.pk
 
-
 class DetailsRoutineView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = Routine
     template_name = 'routines/routine_details.html'
