@@ -3,14 +3,15 @@
 {% block body_class %}calendar-page{% endblock %}
 
 {% block content %}
-<h2 class="section-heading"> Habit Schedule Calendar</h2>
+    <h2 class="section-heading"> Habit Schedule Calendar</h2>
 
-<div id="calendar"></div>
-{% include 'common/calendar_modal.html' %}
+    <div id="calendar"></div>
+    {% include 'common/calendar_modal.html' %}
 {% endblock %}
 
 {% block scripts %}
-<!-- FullCalendar JS -->
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-<script src="{% static 'js/fullcalendar-init.js' %}"></script>
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="{% static 'js/edit-event.js' %}"></script>
+    <script src="{% static 'js/fullcalendar-init.js' %}"></script>
 {% endblock %}

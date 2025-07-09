@@ -69,7 +69,6 @@ class CalendarPageView(LoginRequiredMixin, TemplateView):
     template_name = 'schedule/calendar.html'
 
 
-
 class ScheduleRoutineCreateView(LoginRequiredMixin, CreateView):
     model = ScheduledRoutine
     form_class = ScheduleRoutineCreateForm
