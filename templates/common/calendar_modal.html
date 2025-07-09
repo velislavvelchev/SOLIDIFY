@@ -6,7 +6,12 @@
         <p id="modalDescription"></p>
         <div class="modal-actions">
             <button id="modalClose" class="btn btn-cancel">Close</button>
-            <!-- Add "Edit", "Reschedule", "Delete" buttons here as needed -->
+            <form id="modalDeleteForm" method="POST" action="">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </form>
         </div>
     </div>
 </div>

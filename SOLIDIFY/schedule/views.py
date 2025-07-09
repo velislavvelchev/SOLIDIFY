@@ -2,7 +2,7 @@ import datetime
 import json
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.utils.dateparse import parse_datetime
@@ -12,14 +12,14 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .forms import ScheduleRoutineCreateForm
 from .models import ScheduledRoutine
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, DeleteView
 
 from ..routines.models import Routine
 
 
 # Create your views here.
 
-# for test purpose at this point
+
 class CalendarEventView(View):
     def get(self, request):
         user = request.user
@@ -132,3 +132,13 @@ class ScheduleRoutineCreateView(LoginRequiredMixin, CreateView):
 
 
 
+class ScheduleRoutineDeleteView(DeleteView):
+    model = ScheduledRoutine
+    success_url = reverse_lazy('calendar')
+
+    def get(self, request, *args, **kwargs):
+        return HttpResponseRedirect(self.success_url)
+
+    def get_queryset(self):
+        # Only allow deletion of user's own routines
+        return ScheduledRoutine.objects.filter(routine__user=self.request.user)

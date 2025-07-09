@@ -1,12 +1,94 @@
 .modal-overlay {
-    position: fixed; left: 0; top: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.6); z-index: 1000;
-    display: flex; align-items: center; justify-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .modal-content {
-    background: white; border-radius: 16px; padding: 2rem 2.5rem;
-    max-width: 400px; box-shadow: 0 4px 32px rgba(0,0,0,0.3); text-align: center;
+    /* Animated purple-pink gradient */
+    background: linear-gradient(135deg, #8928ff 0%, rgba(255, 70, 163, 0.23) 100%);
+    background-size: 200% 200%;
+    animation: modalShimmer 4s ease-in-out infinite alternate;
+    max-width: 400px;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+    border-radius: 18px;
+    text-align: center;
+    color: #fff; /* makes all text white */
+    padding: 2.2em 2em 1.5em 2em;
+    position: relative;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    /* Add subtle border for more contrast */
+    border: 2px solid #fff2;
+    /* Optional: Soft backdrop blur */
+    backdrop-filter: blur(3px);
 }
+
+@keyframes modalShimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Make modal headings and text stand out even more */
+.modal-content h3,
+.modal-content p {
+    color: #fff;
+    text-shadow: 0 2px 10px #a5006c88, 0 1px 2px #0008;
+    letter-spacing: 0.04em;
+}
+
+/* Buttons */
 .btn-cancel {
-    background: #3d3d3d; color: #fff; border-radius: 8px; padding: 0.5em 1.5em; border: none;
+    background: #ff46a3;
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.5em 1.2em;
+    border: none;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px #a5006c44;
+    outline: none;
+}
+
+.btn-cancel:hover,
+.btn-cancel:focus {
+    background: #a5006c;
+    color: #fff;
+    outline: none;
+}
+
+
+.btn-danger {
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.5em 1.2em;
+    border: none;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px #a5006c44;
+}
+
+.btn-danger:hover {
+    background: #a5006c;
+    color: #fff;
+}
+
+.btn-danger .bi-trash,
+.btn-danger svg {
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+
+.modal-actions {
+    margin-top: 2.1em;
+    justify-content: center;
+    gap: 1em;
 }

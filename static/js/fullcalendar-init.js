@@ -19,11 +19,15 @@ document.addEventListener('DOMContentLoaded', function () {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
+        eventTimeFormat: { hour: 'numeric', minute: '2-digit', meridiem: 'short' },
+
         editable: true, // <-- Allow drag-and-drop
         events: {
             url: '/schedule/api/events/',
-            failure: function () { },
-            success: function (events) { }
+            failure: function () {
+            },
+            success: function (events) {
+            }
         },
         eventClick: function (info) {
             // Fill modal content
@@ -32,10 +36,16 @@ document.addEventListener('DOMContentLoaded', function () {
             modalEnd.textContent = info.event.end ? "End: " + info.event.end.toLocaleString() : '';
             modalDescription.textContent = info.event.extendedProps.description || '';
 
+            // Set delete form action using event id (this line is new)
+            let deleteForm = document.getElementById('modalDeleteForm');
+            if (deleteForm) {
+                setDeleteFormAction(deleteForm, info.event.id); // This function will be in delete-event.js
+            }
+
             // Show modal
             modal.style.display = 'flex';
         },
-        eventDrop: function(info) {
+        eventDrop: function (info) {
             updateCalendarEvent(
                 info,
                 function onSuccess() {
