@@ -1,7 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, UpdateView, DetailView
+from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 from SOLIDIFY.categories.forms import CreateCategoryForm, EditCategoryForm
 from SOLIDIFY.categories.models import Category
 
@@ -46,3 +47,15 @@ class DetailsCategoryView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 
     def test_func(self):
         return self.request.user.pk == self.get_object().user.pk
+
+
+class DeleteCategoryView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Category
+    success_url = reverse_lazy('all-categories')
+
+    def test_func(self):
+        obj = self.get_object()
+        return obj.user == self.request.user
+
+    def get(self, request, *args, **kwargs):
+        return HttpResponseRedirect(self.success_url)

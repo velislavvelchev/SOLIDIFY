@@ -132,13 +132,15 @@ class ScheduleRoutineCreateView(LoginRequiredMixin, CreateView):
 
 
 
-class ScheduleRoutineDeleteView(DeleteView):
+class ScheduleRoutineDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = ScheduledRoutine
     success_url = reverse_lazy('calendar')
+
+    def test_func(self):
+        obj = self.get_object()
+        return obj.user == self.request.user
 
     def get(self, request, *args, **kwargs):
         return HttpResponseRedirect(self.success_url)
 
-    def get_queryset(self):
-        # Only allow deletion of user's own routines
-        return ScheduledRoutine.objects.filter(routine__user=self.request.user)
+

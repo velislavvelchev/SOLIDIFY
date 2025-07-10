@@ -18,6 +18,12 @@
                             <a href="{% url 'details-habit' habit.pk %}" class="object-btn">Details</a>
                             <a href="{% url 'edit-habit' habit.pk %}" class="object-btn">Edit</a>
                         </div>
+                        <form id="" method="POST" action="{% url 'delete-habit' habit.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </form>
                     </div>
                 {% endfor %}
             </div>

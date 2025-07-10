@@ -21,6 +21,7 @@ class Category(models.Model):
     )
 
     description = models.TextField(
+        max_length=50,
         blank=True,
         null=True,
     )

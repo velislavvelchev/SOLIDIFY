@@ -46,7 +46,9 @@ class Habit(models.Model):
 	)
 
 	notes = models.TextField(
-		null=True, blank=True
+		max_length=50,
+		null=True,
+		blank=True
 	)
 
 	user = models.ForeignKey(

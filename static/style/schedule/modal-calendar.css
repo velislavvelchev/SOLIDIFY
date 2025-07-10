@@ -13,7 +13,7 @@
 
 .modal-content {
     /* Animated purple-pink gradient */
-    background: linear-gradient(135deg, #8928ff 0%, rgba(255, 70, 163, 0.23) 100%);
+    background: rgba(56, 189, 248, 0.51);;
     background-size: 200% 200%;
     animation: modalShimmer 4s ease-in-out infinite alternate;
     max-width: 400px;

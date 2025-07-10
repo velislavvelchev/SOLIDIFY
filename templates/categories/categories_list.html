@@ -17,6 +17,12 @@
                             <a href="{% url 'details-category' category.pk %}" class="object-btn">Details</a>
                             <a href="{% url 'edit-category' category.pk %}" class="object-btn">Edit</a>
                         </div>
+                        <form id="" method="POST" action="{% url 'delete-category' category.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </form>
                     </div>
                 {% endfor %}
             </div>

@@ -1,7 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import ValidationError
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, UpdateView, DetailView
+from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 from SOLIDIFY.routines.forms import CreateRoutineForm, EditRoutineForm
 from SOLIDIFY.routines.models import Routine
 
@@ -57,3 +58,15 @@ class DetailsRoutineView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 
     def test_func(self):
         return self.request.user.pk == self.get_object().user.pk
+
+
+class DeleteRoutineView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Routine
+    success_url = reverse_lazy('all-routines')
+
+    def test_func(self):
+        obj = self.get_object()
+        return obj.user == self.request.user
+
+    def get(self, request, *args, **kwargs):
+        return HttpResponseRedirect(self.success_url)
