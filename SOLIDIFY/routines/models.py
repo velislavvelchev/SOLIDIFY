@@ -10,9 +10,14 @@ UserModel = get_user_model()
 class Routine(models.Model):
     class Meta:
         verbose_name_plural = "Routines"
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'routine_name'],
+                name='unique_routine_per_user'
+            )
+        ]
 
     routine_name = models.CharField(
-        unique=True,
         max_length=30,
         validators=[
             MinLengthValidator(3, message="The routine name must be at least 3 characters long."),

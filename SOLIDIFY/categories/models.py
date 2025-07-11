@@ -5,6 +5,12 @@ UserModel = get_user_model()
 class Category(models.Model):
     class Meta:
         verbose_name_plural = "Categories"
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'category_type'],
+                name='unique_category_type_per_user'
+            )
+        ]
 
     class CategoryChoices(models.TextChoices):
         DEFAULT = '', 'Select a category type'
@@ -17,7 +23,6 @@ class Category(models.Model):
         max_length=35,
         choices=CategoryChoices.choices,
         default=CategoryChoices.DEFAULT,
-        unique=True
     )
 
     description = models.TextField(

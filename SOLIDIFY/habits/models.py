@@ -8,6 +8,12 @@ UserModel = get_user_model()
 class Habit(models.Model):
 	class Meta:
 		verbose_name_plural = "Habits"
+		constraints = [
+			models.UniqueConstraint(
+				fields=['user', 'habit_name'],
+				name='unique_habit_per_user'
+			)
+		]
 
 	class HabitChoices(models.TextChoices):
 		DEFAULT = '', 'Select dopamine type'

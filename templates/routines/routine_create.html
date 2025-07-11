@@ -12,6 +12,11 @@
                 <div>
                     {{ form.routine_name.label_tag }}
                     {% render_field form.routine_name %}
+                    {% if form.routine_name.errors %}
+                        <div class="field-error">
+                            {{ form.routine_name.errors }}
+                        </div>
+                    {% endif %}
                 </div>
                 <div>
                     {{ form.category.label_tag }}

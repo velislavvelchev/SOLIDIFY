@@ -5,6 +5,7 @@ from .forms import CreateHabitForm, EditHabitForm
 
 from django.http import JsonResponse, HttpResponseRedirect
 from .models import Habit
+from ..categories.models import Category
 
 
 # Create your views here.
@@ -12,12 +13,20 @@ class CreateHabitView(LoginRequiredMixin, CreateView):
     model = Habit
     form_class = CreateHabitForm
     template_name = 'habits/habit_create.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('all-habits')
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def form_valid(self, form):
         user = self.request.user
         form.instance.user = user
         return super().form_valid(form)
+
+
+
 
 
 

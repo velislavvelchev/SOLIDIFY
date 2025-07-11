@@ -69,7 +69,7 @@ class CalendarPageView(LoginRequiredMixin, TemplateView):
     template_name = 'schedule/calendar.html'
 
 
-class ScheduleRoutineCreateView(LoginRequiredMixin, CreateView):
+class CreateScheduleRoutineView(LoginRequiredMixin, CreateView):
     model = ScheduledRoutine
     form_class = ScheduleRoutineCreateForm
     template_name = 'schedule/schedule_create.html'
@@ -132,13 +132,13 @@ class ScheduleRoutineCreateView(LoginRequiredMixin, CreateView):
 
 
 
-class ScheduleRoutineDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class DeleteScheduleRoutineView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = ScheduledRoutine
     success_url = reverse_lazy('calendar')
 
     def test_func(self):
         obj = self.get_object()
-        return obj.user == self.request.user
+        return obj.routine.user == self.request.user
 
     def get(self, request, *args, **kwargs):
         return HttpResponseRedirect(self.success_url)
