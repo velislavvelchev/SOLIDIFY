@@ -35,6 +35,7 @@ class HabitBaseForm(forms.ModelForm):
         if self._user is not None:
             self.fields['category'].queryset = Category.objects.filter(user=self._user)
 
+
     def clean(self):
         cleaned_data = super().clean()
         user = self._user

@@ -34,8 +34,9 @@ class HabitsForCategoryView(ListView):
     model = Habit
 
     def get(self, request, *args, **kwargs):
+        user = request.user
         category_id = request.GET.get('category_id')
-        habits = Habit.objects.filter(category_id=category_id)
+        habits = Habit.objects.filter(category_id=category_id, user=user)
         data = [
             {'id': h.id, 'name': h.habit_name}
             for h in habits
@@ -59,6 +60,11 @@ class EditHabitView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
     form_class = EditHabitForm
     template_name = 'habits/habit_edit.html'
     success_url = reverse_lazy('all-habits')
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def test_func(self):
         return self.request.user.pk == self.get_object().user.pk

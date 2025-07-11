@@ -53,6 +53,11 @@ class EditRoutineView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
     template_name = 'routines/routine_edit.html'
     success_url = reverse_lazy('all-routines')
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
     def test_func(self):
         return self.request.user.pk == self.get_object().user.pk
 

@@ -1,6 +1,7 @@
 from django import forms
 from .models import Routine
 from ..categories.models import Category
+from ..habits.models import Habit
 
 
 class RoutineBaseForm(forms.ModelForm):
@@ -19,6 +20,8 @@ class RoutineBaseForm(forms.ModelForm):
         self.fields['category'].empty_label = "Select an existing category"
         if self._user is not None:
             self.fields['category'].queryset = Category.objects.filter(user=self._user)
+
+        self.fields['habits'].queryset = Habit.objects.none()
 
 
     def clean(self):
