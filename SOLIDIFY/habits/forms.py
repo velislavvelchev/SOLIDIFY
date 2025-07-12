@@ -1,13 +1,19 @@
 from django import forms
 from SOLIDIFY.habits.models import Habit
 
-
 from django import forms
 from .models import Habit
 from ..categories.models import Category
+from ..mixins import CoreModelFormMixin
 
 
-class HabitBaseForm(forms.ModelForm):
+class HabitBaseForm(CoreModelFormMixin, forms.ModelForm):
+    unique_field_name = 'habit_name'
+    unique_error_msg = 'You already have a habit with this name.'
+    user_queryset_fields = ['category']
+    empty_labels = {'category': 'Select an existing category'}
+
+
     class Meta:
         model = Habit
         exclude = ('user', 'is_completed',)
@@ -28,27 +34,7 @@ class HabitBaseForm(forms.ModelForm):
             }),
         }
 
-    def __init__(self, *args, **kwargs):
-        self._user = kwargs.pop('user', None)  # get the user passed from the view
-        super().__init__(*args, **kwargs)
-        self.fields['category'].empty_label = "Select an existing category"
-        if self._user is not None:
-            self.fields['category'].queryset = Category.objects.filter(user=self._user)
 
-
-    def clean(self):
-        cleaned_data = super().clean()
-        user = self._user
-        habit_name = cleaned_data.get('habit_name')
-
-        if user and habit_name:
-            qs = Habit.objects.filter(user=user, habit_name=habit_name)
-            # Exclude current instance on update
-            if self.instance.pk:
-                qs = qs.exclude(pk=self.instance.pk)
-            if qs.exists():
-                self.add_error('habit_name', 'You already have a habit with this name.')
-        return cleaned_data
 
 
 

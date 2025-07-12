@@ -1,12 +1,17 @@
 from django import forms
 
 from SOLIDIFY.categories.models import Category
-
-
 from django import forms
 from .models import Category
+from ..mixins import CoreModelFormMixin
 
-class CategoryBaseForm(forms.ModelForm):
+
+class CategoryBaseForm(CoreModelFormMixin, forms.ModelForm):
+    unique_field_name = 'category_type'
+    unique_error_msg = 'You already have a category with this type.'
+    user_queryset_fields = ['category_type']
+    empty_labels = {'category_type': 'Select an existing category'}
+
     class Meta:
         model = Category
         exclude = ('user', )
@@ -23,26 +28,7 @@ class CategoryBaseForm(forms.ModelForm):
             }),
         }
 
-    def __init__(self, *args, **kwargs):
-        self._user = kwargs.pop('user', None)  # get the user passed from the view
-        super().__init__(*args, **kwargs)
-        self.fields['category_type'].empty_label = "Select an existing category"
-        if self._user is not None:
-            self.fields['category_type'].queryset = Category.objects.filter(user=self._user)
 
-    def clean(self):
-        cleaned_data = super().clean()
-        user = self._user
-        category_type = cleaned_data.get('category_type')
-
-        if user and category_type:
-            qs = Category.objects.filter(user=user, category_type=category_type)
-            # Exclude current instance on update
-            if self.instance.pk:
-                qs = qs.exclude(pk=self.instance.pk)
-            if qs.exists():
-                self.add_error('category_type', 'You already have a category with this type.')
-        return cleaned_data
 
 
 class CreateCategoryForm(CategoryBaseForm):

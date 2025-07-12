@@ -13,11 +13,6 @@
             <form method="post" id="schedule-form">
                 {% csrf_token %}
                 {{ form }}
-
-{#                <!-- Hidden UTC fields for start and end times -->#}
-{#                <input type="hidden" name="start_time_utc" id="start_time_utc">#}
-{#                <input type="hidden" name="end_time_utc" id="end_time_utc">#}
-
                 <button type="submit" class="form-btn">Create</button>
             </form>
         </div>

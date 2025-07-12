@@ -36,25 +36,20 @@ class ScheduleRoutineBaseForm(forms.ModelForm):
         start_utc_str = cleaned_data.get('start_time_utc')
         end_utc_str = cleaned_data.get('end_time_utc')
         routine = cleaned_data.get('routine')
-        print("DEBUG: start_time_utc from POST:", start_utc_str)
-        print("DEBUG: end_time_utc from POST:", end_utc_str)
-        print("DEBUG: start_time (before processing):", cleaned_data.get('start_time'))
-        print("DEBUG: end_time (before processing):", cleaned_data.get('end_time'))
-
 
 
         start_time = parse_datetime(start_utc_str)
         if start_time is not None:
             start_time = timezone.make_aware(start_time, datetime.timezone.utc)
             cleaned_data['start_time'] = start_time
-            print("DEBUG: assigned start_time (UTC, aware):", start_time)
+
 
 
         end_time = parse_datetime(end_utc_str)
         if end_time is not None:
             end_time = timezone.make_aware(end_time, datetime.timezone.utc)
             cleaned_data['end_time'] = end_time
-            print("DEBUG: assigned end_time (UTC, aware):", end_time)
+
 
         # Validate: start < end
         if start_time and end_time:
