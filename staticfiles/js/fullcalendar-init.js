@@ -10,21 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalDescription = document.getElementById('modalDescription');
     const modalClose = document.getElementById('modalClose');
 
-    // CSRF helper (Django AJAX CSRF)
-    function getCookie(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
 
     const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -34,11 +19,15 @@ document.addEventListener('DOMContentLoaded', function () {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
+        eventTimeFormat: { hour: 'numeric', minute: '2-digit', meridiem: 'short' },
+
         editable: true, // <-- Allow drag-and-drop
         events: {
             url: '/schedule/api/events/',
-            failure: function () { },
-            success: function (events) { }
+            failure: function () {
+            },
+            success: function (events) {
+            }
         },
         eventClick: function (info) {
             // Fill modal content
@@ -47,34 +36,26 @@ document.addEventListener('DOMContentLoaded', function () {
             modalEnd.textContent = info.event.end ? "End: " + info.event.end.toLocaleString() : '';
             modalDescription.textContent = info.event.extendedProps.description || '';
 
+            // Set delete form action using event id (this line is new)
+            let deleteForm = document.getElementById('modalDeleteForm');
+            if (deleteForm) {
+                setDeleteFormAction(deleteForm, info.event.id); // This function will be in delete-event.js
+            }
+
             // Show modal
             modal.style.display = 'flex';
         },
-        eventDrop: function(info) {
-            // AJAX to update event time
-            fetch('/schedule/api/update/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken')
+        eventDrop: function (info) {
+            updateCalendarEvent(
+                info,
+                function onSuccess() {
+                    // Optionally, do something on success
                 },
-                body: JSON.stringify({
-                    id: info.event.id,
-                    start: info.event.start ? info.event.start.toISOString() : null,
-                    end: info.event.end ? info.event.end.toISOString() : null
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (!data.success) {
+                function onError() {
                     alert('Could not update event. Reverting.');
                     info.revert();
                 }
-            })
-            .catch(error => {
-                alert('Error updating event.');
-                info.revert();
-            });
+            );
         }
     });
 

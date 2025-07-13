@@ -9,3 +9,47 @@
 }
 
 
+/* Style all FullCalendar events */
+.fc-event, .fc-timegrid-event {
+    background: linear-gradient(135deg, rgba(1, 222, 64, 0.5) 0%, rgba(137, 40, 255, 0.45) 100%) !important;  /* Purple-pink gradient */
+    border: none !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px #a5006c44;
+    font-weight: 500;
+    transition: box-shadow 0.2s;
+}
+
+/* Optional: On hover, make the event glow a bit */
+.fc-event:hover, .fc-timegrid-event:hover {
+    box-shadow: 0 4px 16px #ff46a388;
+    filter: brightness(1.15);
+}
+
+/* Optional: Make event corners more round */
+.fc-event, .fc-timegrid-event {
+    border-radius: 6px !important;
+}
+
+
+/* Style for the "today" column in week/day view */
+.fc-day-today,
+.fc-timegrid-col.fc-day-today {
+    background: linear-gradient(135deg, rgba(112, 145, 95, 0.67) 0%, rgba(255, 162, 40, 0.37) 100%) !important;
+    /* Add a subtle glow border */
+    box-shadow: 0 0 16px 2px #ff46a355, 0 0 32px 2px #8928ff44;
+    /* Optional: Make text more readable if needed */
+    color: #fff !important;
+    /* Optional: animated shimmer */
+    animation: todayGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes todayGlow {
+    from { box-shadow: 0 0 16px 2px #ff46a355, 0 0 32px 2px #8928ff44; }
+    to   { box-shadow: 0 0 24px 4px rgba(255, 70, 163, 0.29), 0 0 48px 4px rgba(137, 40, 255, 0.3); }
+}
+
+
+.fc-event-time {
+    text-transform: uppercase;
+    letter-spacing: 0.04em; /* optional for style */
+}

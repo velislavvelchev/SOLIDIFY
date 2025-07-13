@@ -35,10 +35,6 @@ class HabitBaseForm(CoreModelFormMixin, forms.ModelForm):
         }
 
 
-
-
-
-
 class CreateHabitForm(HabitBaseForm):
     pass
 

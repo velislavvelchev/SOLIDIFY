@@ -18,10 +18,10 @@ class CoreModelFormMixin:
                 if hasattr(form_field, "queryset"):
                     Model = form_field.queryset.model
                     form_field.queryset = Model.objects.filter(**{self.user_field_name: self._user})
-                # If ChoiceField, set empty_label if needed
+                # If ChoiceField, set empty_label
                 elif field in self.empty_labels and hasattr(form_field, "empty_label"):
                     form_field.empty_label = self.empty_labels[field]
-            # Always set empty_label, in case you want default text
+            # Always set empty_label, in case of default text
             if field in self.empty_labels and field in self.fields and hasattr(self.fields[field], "empty_label"):
                 self.fields[field].empty_label = self.empty_labels[field]
 

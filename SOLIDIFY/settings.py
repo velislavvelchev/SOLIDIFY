@@ -27,8 +27,8 @@ SECRET_KEY = config('SECRET_KEY', None)
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', None) == "True"
-
+DEBUG = config('DEBUG', None) == "False"
+print("DEBUG is set to:", DEBUG)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 
