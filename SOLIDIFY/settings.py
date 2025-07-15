@@ -28,6 +28,8 @@ SECRET_KEY = config('SECRET_KEY', None)
 DEBUG = config('DEBUG', None) == "False"
 print("DEBUG is set to:", DEBUG)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(', ')
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS').split(', ')
+
 
 # Application definition
 
