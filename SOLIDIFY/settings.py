@@ -27,9 +27,10 @@ SECRET_KEY = config('SECRET_KEY', None)
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', None) == "False"
+DEBUG = config('DEBUG', None) == "True"
 print("DEBUG is set to:", DEBUG)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(', ')
+
 
 
 # Application definition
@@ -141,3 +142,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.AppUser'
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
+
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
