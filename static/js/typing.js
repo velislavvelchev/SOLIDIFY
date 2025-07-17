@@ -1,23 +1,30 @@
-const message = "Solidify is an application that serves to optimize our habits and align them to our personal goals, so that we can both enjoy our lives while also achieving our goals.\n" +
-    "Most people nowadays, especially in urban cities,  have extremely fast and busy lives, where they try to constantly keep up with their numerous aspirations related to things like career paths, physical fitness, personal relationships etc. This very often leads to redundant stress, especially when any of the above-mentioned domains is compromised.";
-const textElement = document.getElementById('dynamic-text');
-let index = 0;
+function typeWriterEffect(elementId, message, speed = 10, delay = 30000, callback = null) {
+    const textElement = document.getElementById(elementId);
+    if (!textElement) return;
+    let index = 0;
 
-function typeWriter() {
-  if (index < message.length) {
-    textElement.innerHTML += message.charAt(index);
-    index++;
-    setTimeout(typeWriter, 10);
-  } else {
-    setTimeout(() => {
-      textElement.innerHTML = '';
-      index = 0;
-      typeWriter();
-    }, 30000);
-  }
+    function typeWriter() {
+        if (index < message.length) {
+            // Handle double newline as paragraph break
+            if (message.substring(index, index + 2) === '\n\n') {
+                textElement.innerHTML += '<br><br>';
+                index += 2;
+            }
+            // Handle single newline as line break
+            else if (message.charAt(index) === '\n') {
+                textElement.innerHTML += '<br>';
+                index += 1;
+            }
+            // Regular character
+            else {
+                textElement.innerHTML += message.charAt(index);
+                index += 1;
+            }
+            setTimeout(typeWriter, speed);
+        }
+    }
+    typeWriter();
 }
 
-// Start the animation
-window.onload = () => {
-  typeWriter();
-};
+
+

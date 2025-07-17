@@ -2,15 +2,15 @@
 @import url('base/base.css');
 @import url('base/nav.css');
 @import url('base/footer.css');
-@import url('forms.css');
-@import url('details.css');
-@import url('list.css');
-@import url('common/home.css');
 @import url('accounts/register.css');
 @import url('accounts/login.css');
 @import url('schedule/calendar.css');
+@import url('schedule/modal-calendar.css');
 @import url('routines/all-routines.css');
 @import url('categories/edit-category.css');
-@import url('schedule/modal-calendar.css');
 @import url('habits/all-habits.css');
+@import url('dynamic-pages.css');
+@import url('forms.css');
+@import url('details.css');
+@import url('list.css');
 /* Add any additional global styles here */

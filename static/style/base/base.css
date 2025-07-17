@@ -1,10 +1,11 @@
-/*body {*/
-/*    font-family: Arial, sans-serif;*/
-/*    background-color: #f8f9fa;*/
-/*    margin-top: 150px !important;*/
-/*    padding: 0;*/
-/*    color: #333;*/
-/*}*/
+body::before {
+  content: "";
+  position: fixed;  /* change from absolute to fixed for full viewport */
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(2, 12, 7, 0.32); /* black overlay with 50% opacity */
+  pointer-events: none;
+  z-index: 1;
+}
 
 body {
     position: relative;

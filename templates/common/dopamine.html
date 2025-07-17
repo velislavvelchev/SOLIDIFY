@@ -1,0 +1,20 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>Understanding Dopamine</h1>
+<p id="dynamic-text-dopamine"></p>
+
+
+<div id="dopamine-video-container" class="fade-in video-responsive">
+    <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/2po3w5oFygY?rel=0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+    </iframe>
+</div>
+
+<script src="{% static 'js/typing.js' %}"></script>
+<script src="{% static 'js/page_typing_messages.js' %}"></script>
+{% endblock %}

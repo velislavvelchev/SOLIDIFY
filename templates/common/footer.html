@@ -3,7 +3,7 @@
     <div class="footer-grid">
         <div>
             <h6>Your Account</h6>
-            <a href="{% url 'register' %}">Sign Up</a>
+            <a href="{% url 'register' %}">Register</a>
             {% if not request.user.is_authenticated %}
                 <a href="{% url 'login' %}">Sign Up</a>
             {% endif %}
@@ -11,9 +11,9 @@
         </div>
 
         <div>
-            <h6>Features</h6>
+            <h6>Learn More</h6>
             <a href="{% url 'all-habits' %}">Track Habits</a>
-            <a href="/goals/">Set Goals</a>
+            <a href="{% url 'dopamine' %}">Dopamine</a>
             <a href="/statistics/">View Progress</a>
         </div>
 
@@ -27,13 +27,13 @@
         <div>
             <h6>Follow Us</h6>
             <div class="social-icons">
-                <a href="https://github.com/your-profile" target="_blank">
+                <a href="https://github.com/velislavvelchev" target="_blank">
                     <img src="{% static 'images/github.png' %}" alt="GitHub">
                 </a>
-                <a href="https://linkedin.com/in/your-profile" target="_blank">
+                <a href="https://www.linkedin.com/" target="_blank">
                     <img src="{% static 'images/linkedin.png' %}" alt="LinkedIn">
                 </a>
-                <a href="https://facebook.com/your-profile" target="_blank">
+                <a href="https://www.facebook.com/profile.php?id=100000858366061" target="_blank">
                     <img src="{% static 'images/facebook.png' %}" alt="Facebook">
                 </a>
             </div>
