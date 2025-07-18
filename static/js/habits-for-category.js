@@ -16,10 +16,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Save current selection to try to preserve it after reload
                 const selected = Array.from(habitsSelect.selectedOptions).map(opt => opt.value);
                 habitsSelect.innerHTML = '';
-                data.habits.forEach(habit => {
+                // -------- EDIT 1: Loop over 'data' directly, not data.habits
+                data.forEach(habit => {
                     const option = document.createElement('option');
                     option.value = habit.id;
-                    option.textContent = habit.name;
+                    // -------- EDIT 2: Use 'habit.habit_name' instead of 'habit.name'
+                    option.textContent = habit.habit_name;
                     if (selected.includes(String(habit.id))) {
                         option.selected = true; // try to restore selection
                     }

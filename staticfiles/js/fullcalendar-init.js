@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        eventTimeFormat: { hour: 'numeric', minute: '2-digit', meridiem: 'short' },
+        eventTimeFormat: {hour: 'numeric', minute: '2-digit', meridiem: 'short'},
 
         editable: true, // <-- Allow drag-and-drop
         events: {
@@ -45,20 +45,20 @@ document.addEventListener('DOMContentLoaded', function () {
             // Show modal
             modal.style.display = 'flex';
         },
+
         eventDrop: function (info) {
             updateCalendarEvent(
                 info,
                 function onSuccess() {
                     // Optionally, do something on success
                 },
-                function onError() {
-                    alert('Could not update event. Reverting.');
+                function onError(errorMsg) { // <-- Accept error message!
+                    showErrorModal(errorMsg); // <-- Show error in modal!
                     info.revert();
                 }
             );
         }
     });
-
     calendar.render();
 
     // Close modal logic
@@ -76,3 +76,26 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 });
+
+
+function showErrorModal(message) {
+    const errorModal = document.getElementById('errorModal');
+    const errorModalMsg = document.getElementById('errorModalMessage');
+    const errorModalOk = document.getElementById('errorModalOk');
+    errorModalMsg.textContent = message || 'An error occurred.';
+    errorModal.style.display = 'flex';
+
+    // OK button closes modal
+    if (errorModalOk) {
+        errorModalOk.onclick = function () {
+            errorModal.style.display = 'none';
+        };
+    }
+    if (errorModal) {
+        errorModal.onclick = function (e) {
+            if (e.target === errorModal) {
+                errorModal.style.display = 'none';
+            }
+        };
+    }
+}

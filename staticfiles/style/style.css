@@ -5,10 +5,7 @@
 @import url('accounts/register.css');
 @import url('accounts/login.css');
 @import url('schedule/calendar.css');
-@import url('schedule/modal-calendar.css');
-@import url('routines/all-routines.css');
-@import url('categories/edit-category.css');
-@import url('habits/all-habits.css');
+@import url('modal.css');
 @import url('dynamic-pages.css');
 @import url('forms.css');
 @import url('details.css');

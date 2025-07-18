@@ -16,8 +16,8 @@
     }
 
 function updateCalendarEvent(info, onSuccess, onError) {
-    fetch('/schedule/api/update/', {
-        method: 'POST',
+    fetch('/schedule/api/update/' + info.event.id + '/', {
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
             'X-CSRFToken': getCookie('csrftoken')
@@ -33,10 +33,14 @@ function updateCalendarEvent(info, onSuccess, onError) {
         if (data.success) {
             if (onSuccess) onSuccess(data);
         } else {
+            console.log('Error from backend:', data.error);  // <--- ADD THIS LINE
             if (onError) onError(data.error || 'Update failed');
         }
     })
     .catch(error => {
+        console.log('Network or JS error:', error);         // <--- ADD THIS LINE
         if (onError) onError(error);
     });
 }
+
+

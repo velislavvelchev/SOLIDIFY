@@ -92,3 +92,8 @@
     justify-content: center;
     gap: 1em;
 }
+
+.modal-actions { margin-top: 1.5rem; }
+.btn { padding: 0.5em 1.5em; margin: 0 0.5em; border-radius: 8px; border: none; }
+.btn-confirm { background: #24cc89; color: #fff; }
+.btn-cancel { background: #222; color: #fff; }

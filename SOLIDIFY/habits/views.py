@@ -1,10 +1,14 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
+
 from .forms import CreateHabitForm, EditHabitForm
 
 from django.http import JsonResponse, HttpResponseRedirect
 from .models import Habit
+from .serializers import HabitSimpleSerializer
 from ..categories.models import Category
 
 
@@ -27,21 +31,14 @@ class CreateHabitView(LoginRequiredMixin, CreateView):
 
 
 
+class HabitsForCategoryAPIView(ListAPIView):
+    serializer_class = HabitSimpleSerializer
+    permission_classes = [IsAuthenticated]
 
-
-
-class HabitsForCategoryView(ListView):
-    model = Habit
-
-    def get(self, request, *args, **kwargs):
-        user = request.user
-        category_id = request.GET.get('category_id')
-        habits = Habit.objects.filter(category_id=category_id, user=user)
-        data = [
-            {'id': h.id, 'name': h.habit_name}
-            for h in habits
-        ]
-        return JsonResponse({'habits': data})
+    def get_queryset(self):
+        user = self.request.user
+        category_id = self.request.GET.get('category_id')
+        return Habit.objects.filter(category_id=category_id, user=user)
 
 
 class ListHabitView(LoginRequiredMixin, ListView):
