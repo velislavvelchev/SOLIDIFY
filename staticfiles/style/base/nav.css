@@ -15,20 +15,20 @@ nav {
 }
 
 .nav-links {
+    font-size: 0.95rem;
     display: flex;
     gap: 2rem; /* evenly space out links */
 }
 
 .nav-links a {
-    color: #fff;
+    color: #ddd;
     text-decoration: none;
-    font-size: 1.1rem;
     font-weight: 500;
 }
 
 .nav-links a:hover {
     text-decoration: underline;
-    color: #38bdf8;
+    color: #f86b38;
 }
 
 
@@ -36,7 +36,7 @@ nav {
     background: none;
     border: none;
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 500;
     text-decoration: none;
     cursor: pointer;
@@ -46,7 +46,7 @@ nav {
 
 .nav-link-button:hover {
     text-decoration: underline;
-    color: #38bdf8;
+    color: #f86b38;
 }
 
 
@@ -60,7 +60,7 @@ nav {
 .dropdown-toggle {
     color: #fff;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
     padding: 0;
@@ -68,14 +68,13 @@ nav {
 }
 
 .dropdown-toggle:hover {
-    color: #38bdf8;
+    color: #f86b38;
 }
 
 .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: rgba(7, 4, 77, 0.24);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(12px);
     min-width: 170px;
     width: 190px; /* Set explicit width, can adjust as needed */
     box-sizing: border-box;
@@ -83,6 +82,7 @@ nav {
     z-index: 2000;
     right: 0;
     border-radius: 0.5rem;
+
     padding: 0.2rem 0; /* Top/bottom only. Remove left/right, handled by items */
 }
 
@@ -91,8 +91,7 @@ nav {
     display: block;
     color: #fff;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     border: none;
     background: none;
     text-align: left;
@@ -102,8 +101,8 @@ nav {
 
 .dropdown-menu a:hover,
 .dropdown-logout-btn:hover {
-    color: #38bdf8;
-    background: rgba(56, 189, 248, 0.08);
+    color: #f86b38;
+    backdrop-filter: blur(12px);
 }
 
 .dropdown:hover .dropdown-menu,
@@ -122,7 +121,7 @@ header {
     color: #fff;
     text-decoration: none;
     padding: 0.5rem 1.2rem; /* Adjusted for width */
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     border: none;
     background: none;
     text-align: left;
@@ -133,8 +132,8 @@ header {
 
 .dropdown-menu a:hover,
 .dropdown-logout-btn:hover {
-    color: #38bdf8;
-    background: rgba(56, 189, 248, 0.13);
+    color: #f86b38;
+    backdrop-filter: blur(12px);
 }
 
 #logout-form {
@@ -145,13 +144,12 @@ header {
 
 .dropdown-logout-btn {
     margin: 0;
-    padding: 0.5rem 1rem; /* Keep the padding you want for the button style */
     width: 100%;
     text-align: left;
     background: none;
     border: none;
     color: #fff;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     cursor: pointer;
     box-sizing: border-box;
 }

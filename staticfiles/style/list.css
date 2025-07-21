@@ -13,8 +13,7 @@
 }
 
 .object-card {
-    background: rgb(7 4 77 / 44%);
-    backdrop-filter: blur(5px);
+    background: #1a252fe6;
     border-radius: 1.2rem;
     border: 1.5px solid #353a42;
     box-shadow: 0 20px 40px rgb(47, 36, 36);

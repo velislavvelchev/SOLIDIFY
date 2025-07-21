@@ -6,6 +6,7 @@
     justify-content: center;
     min-height: 100vh;
     padding: 20px;
+    backdrop-filter: blur(3px);
 }
 
 .details-card {
@@ -20,6 +21,8 @@
     box-sizing: border-box;
     flex-direction: column;
     justify-content: center;
+    color: #ffffffc2;
+    background:  #1a252fe6;
 }
 
 

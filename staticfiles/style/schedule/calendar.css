@@ -43,13 +43,19 @@
     animation: todayGlow 2s ease-in-out infinite alternate;
 }
 
+
 @keyframes todayGlow {
-    from { box-shadow: 0 0 16px 2px #ff46a355, 0 0 32px 2px #8928ff44; }
-    to   { box-shadow: 0 0 24px 4px rgba(255, 70, 163, 0.29), 0 0 48px 4px rgba(137, 40, 255, 0.3); }
+    from { box-shadow: 0 0 16px 2px #353a42, 0 0 32px 2px #8928ff44; }
+    to   { box-shadow: 0 0 24px 4px #353a42, 0 0 48px 4px rgba(137, 40, 255, 0.3); }
 }
 
 
 .fc-event-time {
     text-transform: uppercase;
     letter-spacing: 0.04em; /* optional for style */
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active {
+    background-color: #7c2d11;
+    border-color: #f86b38;
 }
