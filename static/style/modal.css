@@ -13,7 +13,7 @@
 
 .modal-content {
     /* Animated purple-pink gradient */
-    background: rgba(56, 189, 248, 0.51);;
+    background:  #1a252fe6;
     background-size: 200% 200%;
     animation: modalShimmer 4s ease-in-out infinite alternate;
     max-width: 400px;
@@ -69,6 +69,7 @@
 
 .btn-danger {
     color: #fff;
+    background: #f86b38;
     border-radius: 8px;
     padding: 0.5em 1.2em;
     border: none;
