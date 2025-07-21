@@ -27,8 +27,8 @@ nav {
 }
 
 .nav-links a:hover {
-    text-decoration: underline;
-    color: #f86b38;
+
+    color: #ddd;
 }
 
 
@@ -123,7 +123,6 @@ header {
     padding: 0.5rem 1.2rem; /* Adjusted for width */
     font-size: 0.95rem;
     border: none;
-    background: none;
     text-align: left;
     width: 100%;
     cursor: pointer;
@@ -139,6 +138,7 @@ header {
 #logout-form {
     margin: 0;
     padding: 0;
+    background: none;
     display: block;
 }
 
@@ -152,4 +152,14 @@ header {
     font-size: 0.95rem;
     cursor: pointer;
     box-sizing: border-box;
+}
+
+#logout-form button,
+#logout-form .dropdown-logout-btn {
+    background: transparent;
+    border: none;        /* Removes border */
+    box-shadow: none;    /* Removes shadow if any */
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
 }
