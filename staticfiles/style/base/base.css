@@ -9,7 +9,7 @@ body::before {
 
 body {
     position: relative;
-    background-image: url('/static/images/background.jpg');
+    background-image: url('/static/images/bbackground.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
