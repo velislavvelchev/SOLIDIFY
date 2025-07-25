@@ -1,0 +1,46 @@
+/* About Section Styles */
+.about-page {
+    background-color: #0d0d0d; /* luxury black background */
+    color: #f0f0f0; /* soft white text for contrast */
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem 0;
+}
+
+.about-section .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #1e2a35; /* darkish/military blue */
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.15); /* subtle orange glow */
+}
+
+.section-heading {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: #ff6600; /* vibrant orange nuance */
+    text-align: center;
+    border-bottom: 2px solid #ff6600;
+    padding-bottom: 0.5rem;
+}
+
+.about-section p {
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+}
+
+.about-section ul {
+    list-style-type: square;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-section ul li {
+    margin-bottom: 0.5rem;
+    color: #f9b0c3; /* soft pink for emphasis */
+}
+
+/* Optional: Highlight important text blocks */
+.about-section strong {
+    color: #ff6600;
+}

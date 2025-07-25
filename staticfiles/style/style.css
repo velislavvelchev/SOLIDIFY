@@ -2,6 +2,8 @@
 @import url('base/base.css');
 @import url('base/nav.css');
 @import url('base/footer.css');
+@import url('common/about-us.css');
+@import url('common/contact-us.css');
 @import url('accounts/register.css');
 @import url('accounts/login.css');
 @import url('schedule/calendar.css');
