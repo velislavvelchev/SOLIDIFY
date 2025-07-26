@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const {
+        Calendar
+    } = FullCalendar;
+
     const calendarEl = document.getElementById('calendar');
     if (!calendarEl) return;
 
@@ -10,24 +14,48 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalDescription = document.getElementById('modalDescription');
     const modalClose = document.getElementById('modalClose');
 
+    const calendar = new Calendar(calendarEl, {
+        plugins: FullCalendar.globalPlugins,
 
-    const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        timeZone: 'local',
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
+
         eventTimeFormat: {hour: 'numeric', minute: '2-digit', meridiem: 'short'},
 
-        editable: true, // <-- Allow drag-and-drop
+        editable: true,
+
+
         events: {
-            url: '/schedule/api/events/',
-            failure: function () {
-            },
-            success: function (events) {
+            url: '/schedule/api/events/'
+        },
+        eventDataTransform: function (eventData) {
+            if (eventData.rrule) {
+                return {
+                    id: eventData.id,
+                    title: eventData.title,
+                    rrule: {
+                        freq: eventData.rrule.freq?.toLowerCase(),
+                        dtstart: eventData.rrule.dtstart
+                    },
+                    duration: '01:00',
+                    extendedProps: {
+                        description: eventData.description || ''
+                    }
+                };
             }
+
+            return {
+                id: eventData.id,
+                title: eventData.title,
+                start: eventData.start,
+                end: eventData.end,
+                extendedProps: {
+                    description: eventData.description || ''
+                }
+            };
         },
         eventClick: function (info) {
             // Fill modal content

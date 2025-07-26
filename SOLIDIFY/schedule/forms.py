@@ -9,6 +9,19 @@ from SOLIDIFY.schedule.models import ScheduledRoutine
 
 
 class ScheduleRoutineBaseForm(forms.ModelForm):
+    RECURRENCE_CHOICES = [
+        ('none', 'Do not repeat'),
+        ('daily', 'Repeat daily'),
+        ('weekly', 'Repeat weekly'),
+        ('monthly', 'Repeat monthly'),
+    ]
+
+    recurrence = forms.ChoiceField(
+        choices=RECURRENCE_CHOICES,
+        required=False,
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+
     start_time_utc = forms.CharField(
         widget=forms.HiddenInput(attrs={'id': 'start_time_utc'}),
         required=False
