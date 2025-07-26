@@ -10,7 +10,7 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
-    background-color: #1e2a35; /* darkish/military blue */
+    background-color: #1e2a3575; /* darkish/military blue */
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(255, 102, 0, 0.15); /* subtle orange glow */
 }
