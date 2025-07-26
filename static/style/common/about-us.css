@@ -15,14 +15,6 @@
     box-shadow: 0 0 10px rgba(255, 102, 0, 0.15); /* subtle orange glow */
 }
 
-.section-heading {
-    font-size: 2.2rem;
-    margin-bottom: 1.5rem;
-    color: #ff6600; /* vibrant orange nuance */
-    text-align: center;
-    border-bottom: 2px solid #ff6600;
-    padding-bottom: 0.5rem;
-}
 
 .about-section p {
     line-height: 1.6;
