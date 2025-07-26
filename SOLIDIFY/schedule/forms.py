@@ -7,16 +7,10 @@ from django.utils import timezone
 from django.utils.dateparse import parse_datetime
 
 from SOLIDIFY.schedule.models import ScheduledRoutine
+from SOLIDIFY.schedule.utils import recurrences_conflict
 
 
 class ScheduleRoutineBaseForm(forms.ModelForm):
-    FREQ_MAP = {
-        'daily': DAILY,
-        'weekly': WEEKLY,
-        'monthly': MONTHLY
-    }
-
-    MAX_LOOKAHEAD_DAYS = 60  # how far ahead to simulate recurrence
 
     RECURRENCE_CHOICES = [
         ('none', 'Do not repeat'),
@@ -88,7 +82,6 @@ class ScheduleRoutineBaseForm(forms.ModelForm):
             self.add_error('start_time', "You cannot schedule a routine in the past.")
 
         # Validate: no overlap with existing routines for this user
-        # (Assuming self._user is set in __init__)
         if routine and start_time and end_time and hasattr(self, '_user') and self._user:
             conflicts = ScheduledRoutine.objects.filter(
                 routine__user=self._user,
@@ -101,38 +94,26 @@ class ScheduleRoutineBaseForm(forms.ModelForm):
             if conflicts.exists():
                 self.add_error(None, "This routine overlaps with another scheduled routine.")
 
-        if routine and start_time and end_time and hasattr(self, '_user') and self._user:
-            recurrence_conflicts = []
+        # Recurrence-based conflict check
+        recurrence = cleaned_data.get('recurrence')
+        if start_time and end_time and recurrence != 'none':
+            possible_conflicts = ScheduledRoutine.objects.filter(
+                routine__user=self._user,
+                start_time__time__lt=end_time.time(),
+                end_time__time__gt=start_time.time()
+            )
+            if self.instance.pk:
+                possible_conflicts = possible_conflicts.exclude(pk=self.instance.pk)
 
-            for existing in ScheduledRoutine.objects.filter(routine__user=self._user):
-                if existing.pk == self.instance.pk:
-                    continue  # Skip self
-
-                if existing.recurrence != 'none':
-                    freq = self.FREQ_MAP.get(existing.recurrence)
-                    if freq:
-                        # Build recurrence rule for next N days
-                        rule = rrule(
-                            freq,
-                            dtstart=existing.start_time,
-                            until=start_time + datetime.timedelta(days=self.MAX_LOOKAHEAD_DAYS)
-                        )
-                        for occ_start in rule:
-                            occ_end = occ_start + (existing.end_time - existing.start_time)
-                            if start_time < occ_end and end_time > occ_start:
-                                recurrence_conflicts.append((occ_start, occ_end))
-                                break  # One conflict is enough
-                else:
-                    # Single instance overlap (already handled but duplicated here for completeness)
-                    if start_time < existing.end_time and end_time > existing.start_time:
-                        recurrence_conflicts.append((existing.start_time, existing.end_time))
-
-            if recurrence_conflicts:
-                self.add_error(None, "This routine conflicts with a recurring routine already scheduled.")
-
+            for existing in possible_conflicts:
+                existing_recurrence = existing.recurrence
+                if recurrences_conflict(recurrence, existing_recurrence, start_time, existing.start_time):
+                    self.add_error(
+                        None,
+                        "This routine's recurrence and time overlaps with another existing recurring routine."
+                    )
+                    break
         return cleaned_data
-
-
 
 
 class ScheduleRoutineCreateForm(ScheduleRoutineBaseForm):
