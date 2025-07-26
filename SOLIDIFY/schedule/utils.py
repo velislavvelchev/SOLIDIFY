@@ -18,12 +18,12 @@ def recurrences_conflict(new_rule, existing_rule, new_date, existing_date):
     if new_rule == existing_rule == 'monthly':
         return new_date.day == existing_date.day
 
+    # assume eventual overlap if time windows collide
     if (new_rule == 'monthly' and existing_rule == 'weekly') or (
-        new_rule == 'weekly' and existing_rule == 'monthly'):
-        return new_date.weekday() == existing_date.weekday()
+            new_rule == 'weekly' and existing_rule == 'monthly'):
+        return True
 
     return False
-
 
 
 def matches_recurrence(rule, reference_date, test_date):

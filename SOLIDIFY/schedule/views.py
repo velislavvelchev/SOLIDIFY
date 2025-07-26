@@ -85,7 +85,6 @@ class CalendarEventAPIView(ListAPIView):
 #         return Response({"success": True})
 
 class CalendarEventUpdateAPIView(UpdateAPIView):
-    queryset = ScheduledRoutine.objects.all()
     serializer_class = ScheduledRoutineCalendarSerializer
     permission_classes = [IsAuthenticated]
 
@@ -93,7 +92,7 @@ class CalendarEventUpdateAPIView(UpdateAPIView):
         # Only allow users to update their own events
         return ScheduledRoutine.objects.filter(routine__user=self.request.user)
 
-    # Override partial_update to customize response shape for your frontend
+    # Override partial_update to customize response
     def partial_update(self, request, *args, **kwargs):
         # PATCH logic, called when PATCH is used
         partial = kwargs.pop('partial', True)
