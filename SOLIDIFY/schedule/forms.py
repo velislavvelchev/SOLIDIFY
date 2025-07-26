@@ -1,5 +1,4 @@
 import datetime
-from dateutil.rrule import rrule, DAILY, WEEKLY, MONTHLY
 
 from django import forms
 
@@ -96,23 +95,23 @@ class ScheduleRoutineBaseForm(forms.ModelForm):
 
         # Recurrence-based conflict check
         recurrence = cleaned_data.get('recurrence')
-        if start_time and end_time and recurrence != 'none':
-            possible_conflicts = ScheduledRoutine.objects.filter(
-                routine__user=self._user,
-                start_time__time__lt=end_time.time(),
-                end_time__time__gt=start_time.time()
-            )
-            if self.instance.pk:
-                possible_conflicts = possible_conflicts.exclude(pk=self.instance.pk)
 
-            for existing in possible_conflicts:
-                existing_recurrence = existing.recurrence
-                if recurrences_conflict(recurrence, existing_recurrence, start_time, existing.start_time):
-                    self.add_error(
-                        None,
-                        "This routine's recurrence and time overlaps with another existing recurring routine."
-                    )
-                    break
+        possible_conflicts = ScheduledRoutine.objects.filter(
+            routine__user=self._user,
+            start_time__time__lt=end_time.time(),
+            end_time__time__gt=start_time.time()
+        )
+        if self.instance.pk:
+            possible_conflicts = possible_conflicts.exclude(pk=self.instance.pk)
+
+        for existing in possible_conflicts:
+            existing_recurrence = existing.recurrence
+            if recurrences_conflict(recurrence, existing_recurrence, start_time, existing.start_time):
+                self.add_error(
+                    None,
+                    "This routine's recurrence and time overlaps with another existing recurring routine."
+                )
+                break
         return cleaned_data
 
 
