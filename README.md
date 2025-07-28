@@ -22,7 +22,8 @@
 
 - Provides a registration form to the user and displays relevant error messages.
 
-![[Pasted image 20250728210029.png]]
+<img width="701" height="376" alt="image" src="https://github.com/user-attachments/assets/b2959b00-c1ba-4930-a937-9b81f6b1fa00" />
+
 
 
 
@@ -54,10 +55,12 @@
 
 
 - UI if the user is not logged in:
- ![[Pasted image 20250728185704.png]]
+ <img width="1037" height="64" alt="image" src="https://github.com/user-attachments/assets/28a4c4bb-9fe6-40de-8d48-530d36c2e313" />
+
 - UI if the user is logged in:
 
-![[Pasted image 20250728190204.png]]
+<img width="815" height="64" alt="image" src="https://github.com/user-attachments/assets/b809a56b-38aa-4da6-a633-766e9403a401" />
+
 
 ### 👨‍💻 Footer
 
@@ -66,24 +69,28 @@
 - Links to `Homepage`, `About Us`, `Contact Us`, in the `Learn More` section.
 - Links to social media in the `Follow Us` section
 
-![[Pasted image 20250728193649.png]]
+<img width="1527" height="179" alt="image" src="https://github.com/user-attachments/assets/f2c91692-5fdb-436c-bca9-8f81617edeb6" />
+
 
 ### 🏠 Home
 
 - A page that renders text dynamically introducing the user to the purpose of the application.
 - Can be access regardless of the authentication of the user.
 
-![[Pasted image 20250728193826.png]]
+<img width="704" height="343" alt="image" src="https://github.com/user-attachments/assets/6ea2eac2-9b1d-4b59-93b4-5c229d59ddd6" />
+
 
 ### 📑 Create Category Page
 
 - Displays relevant error messages and imposes restrictions such as 
 
-![[Pasted image 20250728194234.png]]
+<img width="720" height="374" alt="image" src="https://github.com/user-attachments/assets/f149d074-e6e4-4993-8cc1-3bc8bd9ff161" />
+
 - Prompts the user to select a category from a dropdown menu which will eventually be used to group their habits and  routines.
 - Prompts the user to select minimum habits that would be included in this category.
 
-![[Pasted image 20250728194447.png]]
+<img width="672" height="583" alt="image" src="https://github.com/user-attachments/assets/c2e89e0d-71e3-49a9-887b-764de5ccbe90" />
+
 
 ### 📊 All Categories Page
 
@@ -93,14 +100,16 @@
 - Leads to Edit page for the respective category.
 
 
-![[Pasted image 20250728200010.png]]
+<img width="712" height="378" alt="image" src="https://github.com/user-attachments/assets/b4fcfe1c-9639-4cf6-b11e-384ed7bf87e7" />
+
 
 ### 🪂 Category Details Page
 
 - Displays the description of the respective category
 - If not description was provided upon creation, defaults to *'Not Provided'*
 
-![[Pasted image 20250728200541.png]]
+<img width="701" height="359" alt="image" src="https://github.com/user-attachments/assets/c3eadba4-b471-47a9-89bd-3c333ff13b8f" />
+
 
 ### 🖋️ Category Edit Page
 
@@ -119,7 +128,8 @@
 - The user must select dopamine type and name the habit (required fields)
 
 
-![[Pasted image 20250728202759.png]]
+<img width="712" height="345" alt="image" src="https://github.com/user-attachments/assets/613e7b14-e972-494a-893c-7c98e440bafc" />
+
 
 ### 📊 All Habits Page
 
@@ -128,7 +138,8 @@
 - Leads to Details page for the respective habit.
 - Leads to Edit page for the respective habit.
 
-![[Pasted image 20250728203058.png]]
+<img width="715" height="334" alt="image" src="https://github.com/user-attachments/assets/2752418a-a025-46ff-ad28-4941b8f33c91" />
+
 
 ### 🪂 Habit Details Page
 
