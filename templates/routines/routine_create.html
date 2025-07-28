@@ -7,6 +7,13 @@
     <div class="form-container">
         <div class="form-card">
             <h2 class="form-title">Create Routine</h2>
+            {% if form.habits.errors %}
+                <div class="field-error">
+                    {% for error in form.habits.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
             <form method="post">
                 {% csrf_token %}
                 <div>
