@@ -117,9 +117,11 @@
 - Displays warning message if they try to change a category type of an existing category.
 - Displays the relevant error messages. For example, if the user already has category of this type.
 
-![[Pasted image 20250728201030.png]]
+<img width="705" height="351" alt="image" src="https://github.com/user-attachments/assets/240a494c-3291-41d0-8f57-b14bb327b9c3" />
 
-![[Pasted image 20250728201155.png]]
+
+<img width="705" height="338" alt="image" src="https://github.com/user-attachments/assets/b9c288c0-956e-45aa-848a-c24bf04ce45a" />
+
 
 
 ### 📑 Create Habit Page
@@ -128,7 +130,8 @@
 - The user must select dopamine type and name the habit (required fields)
 
 
-<img width="712" height="345" alt="image" src="https://github.com/user-attachments/assets/613e7b14-e972-494a-893c-7c98e440bafc" />
+<img width="731" height="359" alt="image" src="https://github.com/user-attachments/assets/1ad57840-2e69-4db0-9f0e-3781ec3cd979" />
+
 
 
 ### 📊 All Habits Page
@@ -138,7 +141,8 @@
 - Leads to Details page for the respective habit.
 - Leads to Edit page for the respective habit.
 
-<img width="715" height="334" alt="image" src="https://github.com/user-attachments/assets/2752418a-a025-46ff-ad28-4941b8f33c91" />
+<img width="702" height="375" alt="image" src="https://github.com/user-attachments/assets/d613d195-bf5f-4de6-9399-7a61a86c7c2d" />
+
 
 
 ### 🪂 Habit Details Page
@@ -146,26 +150,30 @@
 - Displays the description of the respective habit
 - If not description was provided upon creation, defaults to *'Not Provided'*
 
-![[Pasted image 20250728203222.png]]
+<img width="695" height="419" alt="image" src="https://github.com/user-attachments/assets/49e91821-760b-4115-853f-3dca2df776bb" />
+
 
 ### 🖋️ Habit Edit Page
 
 - Allows the user to edit their existing habit object.
 - Displays the relevant error messages.
 
-![[Pasted image 20250728203345.png]]
+<img width="690" height="386" alt="image" src="https://github.com/user-attachments/assets/09fc85a4-d042-451f-8dc8-77144a41be29" />
+
 
 ### 🖋️ Profile Edit Page
 
 - Allows the user to edit their existing profile (automatically created upon register)
 
-![[Pasted image 20250728203600.png]]
+<img width="693" height="424" alt="image" src="https://github.com/user-attachments/assets/0f6765fe-8a79-425b-b8a8-73971654bdfa" />
+
 
 ### 🪂 Profile Details Page
 
 - Allows the user the see the details of their profile (allows you to see the picture of Boyko 😂)
 
-![[Pasted image 20250728203816.png]]
+<img width="708" height="493" alt="image" src="https://github.com/user-attachments/assets/1b32c553-0bb5-4a3e-a3b2-7c543dbbd339" />
+
 
 ### 🚀 Schedule Routine Page
 
@@ -176,7 +184,8 @@
 - Displays relevant error messages if the routine collides with any existing events/recurrent events
 - Displays relevant error messages in case of date mismatches - e.g. routine scheduled in the past.
 
-![[Pasted image 20250728204640.png]]
+<img width="695" height="581" alt="image" src="https://github.com/user-attachments/assets/b4ac709d-e889-4639-b72a-6b3b70ce7fa2" />
+
 
 ### 🧠 Calendar Page
 
@@ -187,19 +196,26 @@
 - Displays relevant error message if the calendar slot is already taken
 - Displays warning message for the user who tries to drag a recurring routine
 
-![[Pasted image 20250728204910.png]]
+<img width="687" height="427" alt="image" src="https://github.com/user-attachments/assets/6834cd81-cdc9-4911-8b6c-8adb2e5ac39c" />
 
-![[Pasted image 20250728205011.png]]
 
-![[Pasted image 20250728205039.png]]
+<img width="697" height="502" alt="image" src="https://github.com/user-attachments/assets/8408b6f3-f70f-4a4e-96b2-69e4826a597d" />
 
-![[Pasted image 20250728205328.png]]
 
-![[Pasted image 20250728205356.png]]
+<img width="695" height="450" alt="image" src="https://github.com/user-attachments/assets/0c363625-8e06-4031-b776-3288f9a080ee" />
 
-![[Pasted image 20250728205446.png]]
 
-![[Pasted image 20250728205631.png]]
+<img width="700" height="415" alt="image" src="https://github.com/user-attachments/assets/4a4d5425-5742-461f-aed1-27649ed1fb67" />
+
+
+<img width="681" height="466" alt="image" src="https://github.com/user-attachments/assets/07ce60ea-caf8-4952-aa6e-3862c63c2b0f" />
+
+
+<img width="694" height="457" alt="image" src="https://github.com/user-attachments/assets/0856e036-c695-4bf7-a358-61c8cd05c308" />
+
+
+<img width="699" height="507" alt="image" src="https://github.com/user-attachments/assets/9d3e6bdf-df2d-4d98-a367-104f2904c97e" />
+
 
 ## 💉Technologies
 
