@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const calendar = new Calendar(calendarEl, {
         plugins: FullCalendar.globalPlugins,
-
+        forceEventDuration: true,
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
@@ -39,25 +39,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 const hours = Math.floor(durationMin / 60);
                 const minutes = durationMin % 60;
 
-                // Forcefully always include both units if either is non-zero
-                let isoDuration = 'PT';
-                if (hours > 0) isoDuration += `${hours}H`;
-                if (minutes > 0) isoDuration += `${minutes}M`;
-                if (hours === 0 && minutes === 0) isoDuration = 'PT1M'; // fallback minimum duration
-
                 return {
                     id: eventData.id,
                     title: eventData.title,
                     rrule: {
                         freq: eventData.rrule.freq?.toLowerCase(),
                         dtstart: eventData.rrule.dtstart,
-                        interval: eventData.rrule.interval
+                        interval: eventData.rrule.interval,
+                        until: eventData.rrule.until || undefined // optional, if your backend supports it
                     },
-                    duration: isoDuration,
+                    duration: {
+                        hours,
+                        minutes
+                    },
                     extendedProps: {
                         description: eventData.description || '',
-                        startTime: start,
-                        endTime: end
+                        startTime: start.toISOString(),
+                        endTime: end.toISOString()
                     }
                 };
             }
@@ -72,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             };
         },
+
 
         eventClick: function (info) {
             modalTitle.textContent = info.event.title;
