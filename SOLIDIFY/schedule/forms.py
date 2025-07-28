@@ -33,6 +33,14 @@ class ScheduleRoutineBaseForm(forms.ModelForm):
         required=False
     )
 
+    interval = forms.IntegerField(
+        required=False,
+        min_value=1,
+        initial=1,
+        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Repeat every X days/weeks'}),
+        label="Repeat Interval"
+    )
+
     class Meta:
         model = ScheduledRoutine
         fields = '__all__'
@@ -55,6 +63,9 @@ class ScheduleRoutineBaseForm(forms.ModelForm):
         end_utc_str = cleaned_data.get('end_time_utc')
         routine = cleaned_data.get('routine')
 
+        interval = cleaned_data.get('interval') or 1
+        cleaned_data['interval'] = interval
+        self.instance.interval = interval
 
         start_time = parse_datetime(start_utc_str)
         if start_time is not None:
@@ -104,9 +115,9 @@ class ScheduleRoutineBaseForm(forms.ModelForm):
         if self.instance.pk:
             possible_conflicts = possible_conflicts.exclude(pk=self.instance.pk)
 
-        for existing in possible_conflicts:
-            existing_recurrence = existing.recurrence
-            if recurrences_conflict(recurrence, existing_recurrence, start_time, existing.start_time):
+        for conflict in possible_conflicts:
+
+            if recurrences_conflict(recurrence, conflict.recurrence, start_time, conflict.start_time, interval, conflict.interval):
                 self.add_error(
                     None,
                     "This routine's recurrence and time overlaps with another existing recurring routine."

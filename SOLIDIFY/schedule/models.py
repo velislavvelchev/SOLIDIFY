@@ -27,4 +27,6 @@ class ScheduledRoutine(models.Model):
         default=RecurrenceChoices.NONE
     )
 
+    interval = models.PositiveIntegerField(default=1)
+
 

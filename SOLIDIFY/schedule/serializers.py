@@ -24,9 +24,9 @@ class ScheduledRoutineCalendarSerializer(serializers.ModelSerializer):
             return None
 
         dtstart = obj.start_time.strftime('%Y%m%dT%H%M%SZ')
-        rule = {
-            'freq': obj.recurrence.upper(),  # DAILY, WEEKLY, MONTHLY
+        return {
+            'freq': obj.recurrence.upper(),
             'dtstart': dtstart,
+            'interval': obj.interval
         }
-        return rule
 

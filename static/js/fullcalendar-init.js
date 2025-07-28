@@ -38,7 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     title: eventData.title,
                     rrule: {
                         freq: eventData.rrule.freq?.toLowerCase(),
-                        dtstart: eventData.rrule.dtstart
+                        dtstart: eventData.rrule.dtstart,
+                        interval: eventData.rrule.interval
                     },
                     duration: '01:00',
                     extendedProps: {
