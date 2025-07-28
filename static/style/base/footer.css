@@ -107,3 +107,39 @@ footer a:hover {
   transform: scale(1.2);
 }
 
+footer {
+  position: static; /* Changed from fixed */
+  width: 100%;
+  color: white;
+  z-index: 1000;
+  padding: 5px 60px;
+  backdrop-filter: blur(12px);
+  margin-top: auto; /* Pushes footer to bottom */
+}
+
+/* Remove hover effect and ::after pseudo-element */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures footer stays at true bottom */
+}
+
+/* Keep all your existing styles below */
+.footer-section-heading {
+  font-size: 2rem;
+  color: #ff6600;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ff6600;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
