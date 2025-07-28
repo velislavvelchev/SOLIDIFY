@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const {
-        Calendar
-    } = FullCalendar;
+    const {Calendar} = FullCalendar;
 
     const calendarEl = document.getElementById('calendar');
     if (!calendarEl) return;
@@ -27,12 +25,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
         editable: true,
 
-
         events: {
             url: '/schedule/api/events/'
         },
+
         eventDataTransform: function (eventData) {
             if (eventData.rrule) {
+                const start = new Date(eventData.start);
+                const end = new Date(eventData.end);
+                const durationMs = end - start;
+
+                const durationMin = Math.round(durationMs / (1000 * 60));
+                const hours = Math.floor(durationMin / 60);
+                const minutes = durationMin % 60;
+
+                // Forcefully always include both units if either is non-zero
+                let isoDuration = 'PT';
+                if (hours > 0) isoDuration += `${hours}H`;
+                if (minutes > 0) isoDuration += `${minutes}M`;
+                if (hours === 0 && minutes === 0) isoDuration = 'PT1M'; // fallback minimum duration
+
                 return {
                     id: eventData.id,
                     title: eventData.title,
@@ -41,9 +53,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         dtstart: eventData.rrule.dtstart,
                         interval: eventData.rrule.interval
                     },
-                    duration: '01:00',
+                    duration: isoDuration,
                     extendedProps: {
-                        description: eventData.description || ''
+                        description: eventData.description || '',
+                        startTime: start,
+                        endTime: end
                     }
                 };
             }
@@ -58,20 +72,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             };
         },
+
         eventClick: function (info) {
-            // Fill modal content
             modalTitle.textContent = info.event.title;
-            modalStart.textContent = "Start: " + info.event.start.toLocaleString();
-            modalEnd.textContent = info.event.end ? "End: " + info.event.end.toLocaleString() : '';
+
+            // ✅ FIX: Fallback for rrule-based events using extendedProps
+            const start = info.event.start || info.event.extendedProps.startTime;
+            const end = info.event.end || info.event.extendedProps.endTime;
+
+            modalStart.textContent = "Start: " + (start ? new Date(start).toLocaleString() : "N/A");
+            modalEnd.textContent = end ? "End: " + new Date(end).toLocaleString() : '';
+
             modalDescription.textContent = info.event.extendedProps.description || '';
 
-            // Set delete form action using event id (this line is new)
             let deleteForm = document.getElementById('modalDeleteForm');
             if (deleteForm) {
-                setDeleteFormAction(deleteForm, info.event.id); // This function will be in delete-event.js
+                setDeleteFormAction(deleteForm, info.event.id);
             }
 
-            // Show modal
             modal.style.display = 'flex';
         },
 
@@ -79,24 +97,24 @@ document.addEventListener('DOMContentLoaded', function () {
             updateCalendarEvent(
                 info,
                 function onSuccess() {
-                    // Optionally, do something on success
+                    // Optional success hook
                 },
-                function onError(errorMsg) { // <-- Accept error message!
-                    showErrorModal(errorMsg); // <-- Show error in modal!
+                function onError(errorMsg) {
+                    showErrorModal(errorMsg);
                     info.revert();
                 }
             );
         }
     });
+
     calendar.render();
 
-    // Close modal logic
+    // Modal close logic
     if (modalClose) {
         modalClose.onclick = function () {
             modal.style.display = 'none';
         };
     }
-    // Also close when clicking outside modal-content
     if (modal) {
         modal.onclick = function (e) {
             if (e.target === modal) {
@@ -106,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
 function showErrorModal(message) {
     const errorModal = document.getElementById('errorModal');
     const errorModalMsg = document.getElementById('errorModalMessage');
@@ -114,7 +131,6 @@ function showErrorModal(message) {
     errorModalMsg.textContent = message || 'An error occurred.';
     errorModal.style.display = 'flex';
 
-    // OK button closes modal
     if (errorModalOk) {
         errorModalOk.onclick = function () {
             errorModal.style.display = 'none';
