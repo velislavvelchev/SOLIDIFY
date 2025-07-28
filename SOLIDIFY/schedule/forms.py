@@ -104,6 +104,10 @@ class ScheduleRoutineBaseForm(forms.ModelForm):
             if conflicts.exists():
                 self.add_error(None, "This routine overlaps with another scheduled routine.")
 
+        # Skip recurrence check if an error already exists
+        if self.errors:
+            return cleaned_data
+
         # Recurrence-based conflict check
         recurrence = cleaned_data.get('recurrence')
 
@@ -115,7 +119,12 @@ class ScheduleRoutineBaseForm(forms.ModelForm):
         if self.instance.pk:
             possible_conflicts = possible_conflicts.exclude(pk=self.instance.pk)
 
+
         for conflict in possible_conflicts:
+            # If both routines are non-recurring and on different dates, skip
+            if recurrence == 'none' and conflict.recurrence == 'none':
+                if start_time.date() != conflict.start_time.date():
+                    continue
 
             if recurrences_conflict(recurrence, conflict.recurrence, start_time, conflict.start_time, interval, conflict.interval):
                 self.add_error(
