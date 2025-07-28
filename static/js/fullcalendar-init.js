@@ -93,10 +93,31 @@ document.addEventListener('DOMContentLoaded', function () {
         },
 
         eventDrop: function (info) {
+            const newStart = info.event.start;
+            const newEnd = info.event.end;
+            const movedId = info.event.id;
+
+            const hasConflict = calendar.getEvents().some(ev => {
+                if (ev.id === movedId) return false; // Don't compare with itself
+
+                const evStart = ev.start || ev.extendedProps.startTime;
+                const evEnd = ev.end || ev.extendedProps.endTime;
+
+                if (!evStart || !evEnd || !newStart || !newEnd) return false;
+
+                return (newStart < evEnd && newEnd > evStart);
+            });
+
+            if (hasConflict) {
+                showErrorModal("You can't overlap another event.");
+                info.revert(); //
+                return;
+            }
+
             updateCalendarEvent(
                 info,
                 function onSuccess() {
-                    // Optional success hook
+                    // Optional: success toast or feedback
                 },
                 function onError(errorMsg) {
                     showErrorModal(errorMsg);
