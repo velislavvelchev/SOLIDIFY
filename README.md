@@ -218,6 +218,27 @@ Access the application [here](https://solidify-e4esdsgbdabdadhh.italynorth-01.az
 
 <img width="699" height="507" alt="image" src="https://github.com/user-attachments/assets/9d3e6bdf-df2d-4d98-a367-104f2904c97e" />
 
+### 👨‍👦 About Us Page
+
+- Additional Information on the idea of the app.
+
+<img width="702" height="334" alt="image" src="https://github.com/user-attachments/assets/685794c9-5b52-42ab-875f-b8d6a6b7f39f" />
+
+
+### 📧 Contact Us Page
+
+- Allows the user to send an e-mail to the SOLIDIFY Team.
+
+<img width="697" height="346" alt="image" src="https://github.com/user-attachments/assets/7a75c912-bdbb-409b-a684-3470c90e433a" />
+
+
+### 🎡 404 Page
+
+<img width="699" height="342" alt="image" src="https://github.com/user-attachments/assets/287cd6fc-f15d-45d6-9fb6-3901be039c73" />
+
+### 🚫 403 Page
+
+<img width="694" height="359" alt="image" src="https://github.com/user-attachments/assets/71493c43-2367-4667-8c88-3532cdf00511" />
 
 ## 💉Technologies
 
