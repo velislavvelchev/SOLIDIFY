@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const movedId = info.event.id;
 
             const hasConflict = calendar.getEvents().some(ev => {
-                if (ev.id === movedId) return false; // Don't compare with itself
+                if (ev.id === movedId) return false;
 
                 const evStart = ev.start || ev.extendedProps.startTime;
                 const evEnd = ev.end || ev.extendedProps.endTime;
@@ -110,15 +110,51 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (hasConflict) {
                 showErrorModal("You can't overlap another event.");
-                info.revert(); //
+                info.revert();
                 return;
             }
 
+            if (info.event._def.recurringDef || info.event.extendedProps.rrule) {
+                // Show warning modal about updating recurring series
+                const confirmModal = document.getElementById('recurringUpdateModal');
+                const confirmBtn = document.getElementById('confirmRecurringUpdate');
+                const cancelBtn = document.getElementById('cancelRecurringUpdate');
+
+                if (confirmModal && confirmBtn && cancelBtn) {
+                    confirmModal.style.display = 'flex';
+
+                    // Clean up existing listeners to avoid stacking
+                    confirmBtn.onclick = function () {
+                        confirmModal.style.display = 'none';
+                        updateCalendarEvent(
+                            info,
+                            function onSuccess() {
+                                 window.location.reload();
+                            },
+                            function onError(errorMsg) {
+                                showErrorModal(errorMsg);
+                                info.revert();
+                            }
+                        );
+                    };
+
+                    cancelBtn.onclick = function () {
+                        confirmModal.style.display = 'none';
+                        info.revert();
+                    };
+                } else {
+                    // Fallback: if modal doesn't exist, revert and show error
+                    showErrorModal("Could not show confirmation modal.");
+                    info.revert();
+                }
+
+                return; // Block further processing
+            }
+
+            // Normal (non-recurring) event update
             updateCalendarEvent(
                 info,
-                function onSuccess() {
-                    // Optional: success toast or feedback
-                },
+                function onSuccess() {},
                 function onError(errorMsg) {
                     showErrorModal(errorMsg);
                     info.revert();
