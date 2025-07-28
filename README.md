@@ -14,7 +14,8 @@
 
 - Allows the user to log in and displays relevant error message.
 
-![[Pasted image 20250728205936.png]]
+<img width="701" height="349" alt="image" src="https://github.com/user-attachments/assets/e8de35d7-2015-4836-9d87-dac47c3247d4" />
+
 
 
 #### Register
