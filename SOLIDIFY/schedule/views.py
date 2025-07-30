@@ -31,12 +31,10 @@ class CalendarEventUpdateAPIView(UpdateAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        # Only allow users to update their own events
         return ScheduledRoutine.objects.filter(routine__user=self.request.user)
 
-    # Override partial_update to customize response
+    # PATCH logic, called when PATCH is used (user drags the routine)
     def partial_update(self, request, *args, **kwargs):
-        # PATCH logic, called when PATCH is used
         partial = kwargs.pop('partial', True)
         instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data, partial=partial)
@@ -44,16 +42,9 @@ class CalendarEventUpdateAPIView(UpdateAPIView):
             serializer.save()
             return Response({"success": True})
         else:
-            # Get first error message, flatten if needed
-            error_msg = serializer.errors
-            if isinstance(error_msg, dict):
-                # Return first error message string
-                error_values = list(error_msg.values())
-                error_list = error_values[0] if error_values else ["Invalid input"]
-                error_str = error_list[0] if isinstance(error_list, list) else error_list
-            else:
-                error_str = "Invalid input"
-            return Response({"success": False, "error": error_str}, status=400)
+            error = next(iter(serializer.errors.values()))[0]
+            return Response({"success": False, "error": error}, status=400)
+
 
 class CalendarPageView(LoginRequiredMixin, TemplateView):
     template_name = 'schedule/calendar.html'

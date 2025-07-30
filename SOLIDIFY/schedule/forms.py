@@ -7,6 +7,7 @@ from django.utils.dateparse import parse_datetime
 
 from SOLIDIFY.schedule.models import ScheduledRoutine
 from SOLIDIFY.schedule.utils import recurrences_conflict
+from SOLIDIFY.schedule.validators import ScheduledRoutineValidator
 
 
 class ScheduleRoutineBaseForm(forms.ModelForm):
@@ -57,12 +58,89 @@ class ScheduleRoutineBaseForm(forms.ModelForm):
 
 
 
+    # def clean(self):
+    #     cleaned_data = super().clean()
+    #     start_utc_str = cleaned_data.get('start_time_utc')
+    #     end_utc_str = cleaned_data.get('end_time_utc')
+    #     routine = cleaned_data.get('routine')
+    #
+    #     interval = cleaned_data.get('interval') or 1
+    #     cleaned_data['interval'] = interval
+    #     self.instance.interval = interval
+    #
+    #     start_time = parse_datetime(start_utc_str)
+    #     if start_time is not None:
+    #         start_time = timezone.make_aware(start_time, datetime.timezone.utc)
+    #         cleaned_data['start_time'] = start_time
+    #
+    #
+    #
+    #     end_time = parse_datetime(end_utc_str)
+    #     if end_time is not None:
+    #         end_time = timezone.make_aware(end_time, datetime.timezone.utc)
+    #         cleaned_data['end_time'] = end_time
+    #
+    #
+    #     # Validate: start < end
+    #     if start_time and end_time:
+    #         if start_time >= end_time:
+    #             self.add_error('start_time', "Start time must be before end time.")
+    #             self.add_error('end_time', "End time must be after start time.")
+    #
+    #     # Validate: can't schedule in the past
+    #     now = timezone.now()
+    #     if start_time and start_time < now:
+    #         self.add_error('start_time', "You cannot schedule a routine in the past.")
+    #
+    #     # Validate: no overlap with existing routines for this user
+    #     if routine and start_time and end_time and hasattr(self, '_user') and self._user:
+    #         conflicts = ScheduledRoutine.objects.filter(
+    #             routine__user=self._user,
+    #             start_time__lt=end_time,
+    #             end_time__gt=start_time,
+    #         )
+    #         # Exclude self when editing
+    #         if self.instance.pk:
+    #             conflicts = conflicts.exclude(pk=self.instance.pk)
+    #         if conflicts.exists():
+    #             self.add_error(None, "This routine overlaps with another scheduled routine.")
+    #
+    #     # Skip recurrence check if an error already exists
+    #     if self.errors:
+    #         return cleaned_data
+    #
+    #     # Recurrence-based conflict check
+    #     recurrence = cleaned_data.get('recurrence')
+    #
+    #     possible_conflicts = ScheduledRoutine.objects.filter(
+    #         routine__user=self._user,
+    #         start_time__time__lt=end_time.time(),
+    #         end_time__time__gt=start_time.time()
+    #     )
+    #     if self.instance.pk:
+    #         possible_conflicts = possible_conflicts.exclude(pk=self.instance.pk)
+    #
+    #
+    #     for conflict in possible_conflicts:
+    #         # If both routines are non-recurring and on different dates, skip
+    #         if recurrence == 'none' and conflict.recurrence == 'none':
+    #             if start_time.date() != conflict.start_time.date():
+    #                 continue
+    #
+    #         if recurrences_conflict(recurrence, conflict.recurrence, start_time, conflict.start_time, interval, conflict.interval):
+    #             self.add_error(
+    #                 None,
+    #                 "This routine's recurrence and time overlaps with another existing recurring routine."
+    #             )
+    #             break
+    #     return cleaned_data
+
+
     def clean(self):
         cleaned_data = super().clean()
         start_utc_str = cleaned_data.get('start_time_utc')
         end_utc_str = cleaned_data.get('end_time_utc')
         routine = cleaned_data.get('routine')
-
         interval = cleaned_data.get('interval') or 1
         cleaned_data['interval'] = interval
         self.instance.interval = interval
@@ -72,66 +150,24 @@ class ScheduleRoutineBaseForm(forms.ModelForm):
             start_time = timezone.make_aware(start_time, datetime.timezone.utc)
             cleaned_data['start_time'] = start_time
 
-
-
         end_time = parse_datetime(end_utc_str)
         if end_time is not None:
             end_time = timezone.make_aware(end_time, datetime.timezone.utc)
             cleaned_data['end_time'] = end_time
 
 
-        # Validate: start < end
-        if start_time and end_time:
-            if start_time >= end_time:
-                self.add_error('start_time', "Start time must be before end time.")
-                self.add_error('end_time', "End time must be after start time.")
-
-        # Validate: can't schedule in the past
-        now = timezone.now()
-        if start_time and start_time < now:
-            self.add_error('start_time', "You cannot schedule a routine in the past.")
-
-        # Validate: no overlap with existing routines for this user
-        if routine and start_time and end_time and hasattr(self, '_user') and self._user:
-            conflicts = ScheduledRoutine.objects.filter(
-                routine__user=self._user,
-                start_time__lt=end_time,
-                end_time__gt=start_time,
+        if routine and start_time and end_time and self._user:
+            validator = ScheduledRoutineValidator(
+                user=self._user,
+                start=start_time,
+                end=end_time,
+                recurrence=cleaned_data.get('recurrence'),
+                interval=interval,
+                instance=self.instance
             )
-            # Exclude self when editing
-            if self.instance.pk:
-                conflicts = conflicts.exclude(pk=self.instance.pk)
-            if conflicts.exists():
-                self.add_error(None, "This routine overlaps with another scheduled routine.")
+            for field, msg in validator.validate():
+                self.add_error(field, msg)
 
-        # Skip recurrence check if an error already exists
-        if self.errors:
-            return cleaned_data
-
-        # Recurrence-based conflict check
-        recurrence = cleaned_data.get('recurrence')
-
-        possible_conflicts = ScheduledRoutine.objects.filter(
-            routine__user=self._user,
-            start_time__time__lt=end_time.time(),
-            end_time__time__gt=start_time.time()
-        )
-        if self.instance.pk:
-            possible_conflicts = possible_conflicts.exclude(pk=self.instance.pk)
-
-
-        for conflict in possible_conflicts:
-            # If both routines are non-recurring and on different dates, skip
-            if recurrence == 'none' and conflict.recurrence == 'none':
-                if start_time.date() != conflict.start_time.date():
-                    continue
-
-            if recurrences_conflict(recurrence, conflict.recurrence, start_time, conflict.start_time, interval, conflict.interval):
-                self.add_error(
-                    None,
-                    "This routine's recurrence and time overlaps with another existing recurring routine."
-                )
-                break
         return cleaned_data
 
 

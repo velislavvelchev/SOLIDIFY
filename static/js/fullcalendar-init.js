@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const {Calendar} = FullCalendar;
+    const { Calendar } = FullCalendar;
 
     const calendarEl = document.getElementById('calendar');
     if (!calendarEl) return;
@@ -12,6 +12,37 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalDescription = document.getElementById('modalDescription');
     const modalClose = document.getElementById('modalClose');
 
+    function revertWithError(info, message) {
+        showErrorModal(message);
+        info.revert();
+    }
+
+    function confirmAndUpdateRecurringEvent(info) {
+        const confirmModal = document.getElementById('recurringUpdateModal');
+        const confirmBtn = document.getElementById('confirmRecurringUpdate');
+        const cancelBtn = document.getElementById('cancelRecurringUpdate');
+
+        if (confirmModal && confirmBtn && cancelBtn) {
+            confirmModal.style.display = 'flex';
+
+            confirmBtn.onclick = function () {
+                confirmModal.style.display = 'none';
+                updateCalendarEvent(
+                    info,
+                    () => window.location.reload(),
+                    (errorMsg) => revertWithError(info, errorMsg)
+                );
+            };
+
+            cancelBtn.onclick = function () {
+                confirmModal.style.display = 'none';
+                info.revert();
+            };
+        } else {
+            revertWithError(info, "Could not show confirmation modal.");
+        }
+    }
+
     const calendar = new Calendar(calendarEl, {
         plugins: FullCalendar.globalPlugins,
         forceEventDuration: true,
@@ -21,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
 
-        eventTimeFormat: {hour: 'numeric', minute: '2-digit', meridiem: 'short'},
+        eventTimeFormat: { hour: 'numeric', minute: '2-digit', meridiem: 'short' },
 
         editable: true,
 
@@ -46,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         freq: eventData.rrule.freq?.toLowerCase(),
                         dtstart: eventData.rrule.dtstart,
                         interval: eventData.rrule.interval,
-                        until: eventData.rrule.until || undefined // optional, if your backend supports it
+                        until: eventData.rrule.until || undefined
                     },
                     duration: {
                         hours,
@@ -71,11 +102,9 @@ document.addEventListener('DOMContentLoaded', function () {
             };
         },
 
-
         eventClick: function (info) {
             modalTitle.textContent = info.event.title;
 
-            // ✅ FIX: Fallback for rrule-based events using extendedProps
             const start = info.event.start || info.event.extendedProps.startTime;
             const end = info.event.end || info.event.extendedProps.endTime;
 
@@ -84,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             modalDescription.textContent = info.event.extendedProps.description || '';
 
-            let deleteForm = document.getElementById('modalDeleteForm');
+            const deleteForm = document.getElementById('modalDeleteForm');
             if (deleteForm) {
                 setDeleteFormAction(deleteForm, info.event.id);
             }
@@ -93,73 +122,17 @@ document.addEventListener('DOMContentLoaded', function () {
         },
 
         eventDrop: function (info) {
-            const newStart = info.event.start;
-            const newEnd = info.event.end;
-            const movedId = info.event.id;
+            const isRecurring = info.event._def.recurringDef || info.event.extendedProps.rrule;
 
-            const hasConflict = calendar.getEvents().some(ev => {
-                if (ev.id === movedId) return false;
-
-                const evStart = ev.start || ev.extendedProps.startTime;
-                const evEnd = ev.end || ev.extendedProps.endTime;
-
-                if (!evStart || !evEnd || !newStart || !newEnd) return false;
-
-                return (newStart < evEnd && newEnd > evStart);
-            });
-
-            if (hasConflict) {
-                showErrorModal("You can't overlap another event.");
-                info.revert();
-                return;
+            if (isRecurring) {
+                confirmAndUpdateRecurringEvent(info);
+            } else {
+                updateCalendarEvent(
+                    info,
+                    () => {}, // No-op on success
+                    (errorMsg) => revertWithError(info, errorMsg)
+                );
             }
-
-            if (info.event._def.recurringDef || info.event.extendedProps.rrule) {
-                // Show warning modal about updating recurring series
-                const confirmModal = document.getElementById('recurringUpdateModal');
-                const confirmBtn = document.getElementById('confirmRecurringUpdate');
-                const cancelBtn = document.getElementById('cancelRecurringUpdate');
-
-                if (confirmModal && confirmBtn && cancelBtn) {
-                    confirmModal.style.display = 'flex';
-
-                    // Clean up existing listeners to avoid stacking
-                    confirmBtn.onclick = function () {
-                        confirmModal.style.display = 'none';
-                        updateCalendarEvent(
-                            info,
-                            function onSuccess() {
-                                 window.location.reload();
-                            },
-                            function onError(errorMsg) {
-                                showErrorModal(errorMsg);
-                                info.revert();
-                            }
-                        );
-                    };
-
-                    cancelBtn.onclick = function () {
-                        confirmModal.style.display = 'none';
-                        info.revert();
-                    };
-                } else {
-                    // Fallback: if modal doesn't exist, revert and show error
-                    showErrorModal("Could not show confirmation modal.");
-                    info.revert();
-                }
-
-                return; // Block further processing
-            }
-
-            // Normal (non-recurring) event update
-            updateCalendarEvent(
-                info,
-                function onSuccess() {},
-                function onError(errorMsg) {
-                    showErrorModal(errorMsg);
-                    info.revert();
-                }
-            );
         }
     });
 
@@ -171,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
             modal.style.display = 'none';
         };
     }
+
     if (modal) {
         modal.onclick = function (e) {
             if (e.target === modal) {
@@ -184,6 +158,7 @@ function showErrorModal(message) {
     const errorModal = document.getElementById('errorModal');
     const errorModalMsg = document.getElementById('errorModalMessage');
     const errorModalOk = document.getElementById('errorModalOk');
+
     errorModalMsg.textContent = message || 'An error occurred.';
     errorModal.style.display = 'flex';
 
@@ -192,6 +167,7 @@ function showErrorModal(message) {
             errorModal.style.display = 'none';
         };
     }
+
     if (errorModal) {
         errorModal.onclick = function (e) {
             if (e.target === errorModal) {

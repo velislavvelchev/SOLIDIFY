@@ -28,18 +28,27 @@ function updateCalendarEvent(info, onSuccess, onError) {
             end: info.event.end ? info.event.end.toISOString() : null
         })
     })
-    .then(response => response.json())
-    .then(data => {
+    .then(async (response) => {
+        let data;
+        try {
+            data = await response.json();
+        } catch (err) {
+            throw new Error("Server returned an unexpected response.");
+        }
+
+        if (!response.ok) {
+            throw new Error(data.error || 'Update failed');
+        }
+
         if (data.success) {
             if (onSuccess) onSuccess(data);
         } else {
-            console.log('Error from backend:', data.error);  // <--- ADD THIS LINE
-            if (onError) onError(data.error || 'Update failed');
+            if (onError) onError(data.error || 'Unexpected backend error');
         }
     })
     .catch(error => {
-        console.log('Network or JS error:', error);         // <--- ADD THIS LINE
-        if (onError) onError(error);
+        console.error('Update error:', error);
+        if (onError) onError(error.message || 'Unknown error');
     });
 }
 
