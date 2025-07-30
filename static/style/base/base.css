@@ -32,3 +32,8 @@ body.details-page {
     text-align: center;
     letter-spacing: 0.02em;
 }
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
