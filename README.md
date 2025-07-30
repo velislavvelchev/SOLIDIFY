@@ -282,7 +282,7 @@ PW: 123veli123
 ### 🦑 Installation
 
 
-#### 1. Running the project locally with no containers.
+### 1. Running the project locally with no containers.
 
 For the environment variables use something like [this](https://docs.google.com/document/d/1DgmINSGi4I7SYaIzo_K567U5Tuu-ivZoU0d7CnvGplA/edit?tab=t.0)
 
@@ -318,7 +318,7 @@ For the environment variables use something like [this](https://docs.google.com/
     python manage.py runserver
     ```
 
-#### 2. Running the project locally with docker containers (DB, WSGI, Web Server).
+### 2. Running the project locally with docker containers (DB, WSGI, Web Server).
 
 For the environment variables use something like [this](https://docs.google.com/document/d/1kDrTfBuGKt_SKKG1BkJ6bl4zAyhjcTq2MogVrdrAR3s/edit?tab=t.0)
 
