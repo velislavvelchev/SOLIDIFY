@@ -2,14 +2,14 @@
 @import url('base/base.css');
 @import url('base/nav.css');
 @import url('base/footer.css');
+@import url('base/modal.css');
+@import url('base/dynamic-pages.css');
+@import url('base/forms.css');
+@import url('base/details.css');
+@import url('base/list.css');
 @import url('common/about-us.css');
 @import url('common/contact-us.css');
 @import url('accounts/register.css');
 @import url('accounts/login.css');
 @import url('schedule/calendar.css');
-@import url('modal.css');
-@import url('dynamic-pages.css');
-@import url('forms.css');
-@import url('details.css');
-@import url('list.css');
 /* Add any additional global styles here */
