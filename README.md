@@ -331,32 +331,33 @@ For the environment variables use something like [this](https://docs.google.com/
 2. Create and activate venv
 
 3. Create the stack in Docker by running the command below:
-		- Note: Adjust the port within the docker-compose file as needed if you are already running another Postgres instance on port 5433
-		  <img width="207" height="62" alt="image" src="https://github.com/user-attachments/assets/e4df16ca-d206-4482-b7bd-80dfa052bfd8" />
+- Note: Adjust the port within the docker-compose file as needed if you are already running another Postgres instance on port 5433
 
+ <img width="207" height="62" alt="image" src="https://github.com/user-attachments/assets/e4df16ca-d206-4482-b7bd-80dfa052bfd8" />
+		  
 		
-		- Build the container stack
+- Build the container stack
     
     ```shell
     docker-compose up --build
 
     ```
-    It should look something like this
-    	<img width="508" height="614" alt="image" src="https://github.com/user-attachments/assets/19ed9829-bd95-413f-b6f9-26b4d087bcc3" />
 
-	<img width="625" height="273" alt="image" src="https://github.com/user-attachments/assets/c725797c-ce5e-47cb-a9cb-ad1d2d5a1fea" />
+   It should look something like this
+
+   <img width="508" height="614" alt="image" src="https://github.com/user-attachments/assets/19ed9829-bd95-413f-b6f9-26b4d087bcc3" />
+
+   <img width="625" height="273" alt="image" src="https://github.com/user-attachments/assets/c725797c-ce5e-47cb-a9cb-ad1d2d5a1fea" />
 
 
 
-
-
-4. Open another terminal and apply the migrations:
+5. Open another terminal and apply the migrations:
     ```shell
     docker-compose exec web python manage.py migrate
 
     ```
 
-5. The project is already started:
+6. The project is already started:
 		You should now be able to access it at http://127.0.0.1:8000/  or port 80 (nginx)
 		
 
