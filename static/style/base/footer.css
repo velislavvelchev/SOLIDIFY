@@ -6,6 +6,7 @@ footer {
   backdrop-filter: blur(12px);
   padding: 5px 60px;
   color: white;
+  padding-bottom: 0px;
 }
 
 .footer-section-heading {
@@ -20,14 +21,13 @@ footer {
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 40px;
+  gap: 120px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .footer-grid > div {
-  display: flex;
   flex-direction: column;
 }
 
