@@ -282,6 +282,10 @@ PW: 123veli123
 ### 🦑 Installation
 
 
+### 1. Running the project locally with no containers.
+
+For the environment variables use something like [this](https://docs.google.com/document/d/1DgmINSGi4I7SYaIzo_K567U5Tuu-ivZoU0d7CnvGplA/edit?tab=t.0)
+
 1. Clone the repository:
     
     ```shell
@@ -289,15 +293,71 @@ PW: 123veli123
     ```
     
 2. Create and activate venv
-   
-3. Install requirements.txt:
+
+3. Create db locally:
+    
+    ```shell
+    createdb -U postgres -h localhost -p 5432 solidify_db
+
+    ```
+4. Install requirements.txt:
     
     ```shell
     pip install -r requirements.txt
     ```
-4. Start the project:
-    
 
+5. Apply the migrations:
+    
+    ```shell
+    python manage.py makemigrations
+    ```
+
+6. Start the project:
+    
     ```shell
     python manage.py runserver
     ```
+
+### 2. Running the project locally with docker containers (DB, WSGI, Web Server).
+
+For the environment variables use something like [this](https://docs.google.com/document/d/1kDrTfBuGKt_SKKG1BkJ6bl4zAyhjcTq2MogVrdrAR3s/edit?tab=t.0)
+
+1. Clone the repository:
+    
+    ```shell
+    git clone https://github.com/velislavvelchev/SOLIDIFY
+    ```
+    
+2. Create and activate venv
+
+3. Create the stack in Docker by running the command below:
+- Note: Adjust the port within the docker-compose file as needed if you are already running another Postgres instance on port 5433
+
+ <img width="207" height="62" alt="image" src="https://github.com/user-attachments/assets/e4df16ca-d206-4482-b7bd-80dfa052bfd8" />
+		  
+		
+- Build the container stack
+    
+    ```shell
+    docker-compose up --build
+
+    ```
+
+   It should look something like this
+
+   <img width="508" height="614" alt="image" src="https://github.com/user-attachments/assets/19ed9829-bd95-413f-b6f9-26b4d087bcc3" />
+
+   <img width="625" height="273" alt="image" src="https://github.com/user-attachments/assets/c725797c-ce5e-47cb-a9cb-ad1d2d5a1fea" />
+
+
+
+5. Open another terminal and apply the migrations:
+    ```shell
+    docker-compose exec web python manage.py migrate
+
+    ```
+
+6. The project is already started:
+		You should now be able to access it at http://127.0.0.1:8000/  or port 80 (nginx)
+		
+
