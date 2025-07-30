@@ -1,0 +1,65 @@
+.flatpickr-input {
+  border-radius: 0.75rem;
+  border: 1px solid #334155;
+  background-color: #0f172a;
+  color: rgba(255, 255, 255, 0.38);
+  padding: 10px;
+  box-shadow: 0 0 0 1px #3b82f6 inset;
+}
+
+.flatpickr-calendar {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  color: rgba(229, 231, 235, 0.4);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.flatpickr-calendar .flatpickr-day.today {
+  background: #2563eb;
+  color: white;
+}
+
+.flatpickr-calendar .flatpickr-day.selected {
+  background: #22c55e;
+  color: white;
+}
+
+
+/* Header text (month, year, day labels) */
+.flatpickr-current-month,
+.flatpickr-months,
+.flatpickr-weekdays {
+  color: #ffffff;
+}
+
+/* Day numbers */
+.flatpickr-day {
+  color: #ffffff;
+}
+
+/* Selected day */
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+  background: #22c55e; /* Optional: green background for selected day */
+  color: white;
+}
+
+/* Hover effect on day */
+.flatpickr-day:hover {
+  background-color: #3b82f6;
+  color: white;
+}
+
+
+/* Time picker fields (bottom of calendar) */
+.flatpickr-time input {
+  color: #ffffff;
+  background-color: #1e293b;
+  border: none;
+}
+
+.flatpickr-time {
+  border-top: 1px solid #444;
+}

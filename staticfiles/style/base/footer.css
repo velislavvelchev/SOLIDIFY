@@ -1,36 +1,20 @@
 footer {
-  position: fixed;
-  bottom: -150px; /* Hidden below the viewport */
-  left: 0;
+  margin-top: auto;
   width: 100%;
-  color: white;
-  transition: bottom 0.4s ease-in-out;
+  position: static;
   z-index: 1000;
-  padding: 5px 60px;
   backdrop-filter: blur(12px);
-}
-
-footer:hover {
-  bottom: 0;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 40px;
-  z-index: 999;
+  padding: 5px 60px;
+  color: white;
 }
 
 .footer-section-heading {
-    font-size: 2rem;
-    color: #ff6600;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #ff6600;
-    padding-bottom: 0.5rem;
-    text-align: center;
+  font-size: 2rem;
+  color: #ff6600;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ff6600;
+  padding-bottom: 0.5rem;
+  text-align: center;
 }
 
 .footer-grid {
@@ -40,7 +24,6 @@ body::after {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-
 }
 
 .footer-grid > div {
@@ -57,27 +40,25 @@ body::after {
   transition: color 0.3s ease;
 }
 
-footer h6 {
-  margin-bottom: 10px;
-  font-size: 1rem;    /* Optional: consistent styling */
-  font-weight: 600;   /* Optional: bold for section titles */
+.footer-grid a:hover {
+  color: #1a252fe6;
 }
 
-
+footer h6 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+}
 
 footer a {
   color: #ddd;
   text-decoration: none;
   margin: 2px 0;
-  font-size: 1.0rem;
+  font-size: 1rem;
 }
 
 footer a:hover {
   text-decoration: underline;
-}
-
-.footer-grid a:hover {
-  color: #1a252fe6; /* Tailwind-style sky-blue hover */
 }
 
 .social-icons {
@@ -107,39 +88,9 @@ footer a:hover {
   transform: scale(1.2);
 }
 
-footer {
-  position: static; /* Changed from fixed */
-  width: 100%;
-  color: white;
-  z-index: 1000;
-  padding: 5px 60px;
-  backdrop-filter: blur(12px);
-  margin-top: auto; /* Pushes footer to bottom */
-}
-
-/* Remove hover effect and ::after pseudo-element */
+/* Layout baseline */
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensures footer stays at true bottom */
+  min-height: 100vh;
 }
-
-/* Keep all your existing styles below */
-.footer-section-heading {
-  font-size: 2rem;
-  color: #ff6600;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid #ff6600;
-  padding-bottom: 0.5rem;
-  text-align: center;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 40px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-

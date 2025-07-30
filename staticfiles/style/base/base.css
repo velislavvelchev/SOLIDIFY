@@ -34,6 +34,36 @@ body.details-page {
 }
 
 html, body {
-  max-width: 100%;
   overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  padding-top: 70px; /* Match your header height or a bit more */
+}
+
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 70px;
+}
+
+.wrapper {
+  flex: 1 0 auto;
+  min-height: 100vh;
+}
+
+body {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
 }

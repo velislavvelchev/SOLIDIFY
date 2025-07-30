@@ -28,7 +28,7 @@ form {
     border-radius: 30px;
     box-shadow: 0 20px 40px rgb(47, 36, 36);
     max-width: 400px;
-    max-height: 700px;
+    /*max-height: 700px;*/
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -215,4 +215,15 @@ input[type="checkbox"]:checked::after {
 
 .helptext, .helptext * {
     font-weight: 500;
+}
+
+/* Hide spinner for number input fields */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield; /* Firefox */
 }
