@@ -51,9 +51,10 @@ Dropdowns ⤵️:
 - **Routines**:
 	- All Routines
 	- Create Routine
+ 
 Single-click navigation pages ⛓️:
-	- **Schedule Routine**
-	- **Calendar**
+- **Schedule Routine**
+- **Calendar**
 
 
 - UI if the user is not logged in:
