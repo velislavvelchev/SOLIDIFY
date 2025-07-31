@@ -5,6 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 INSTALLED_APPS = [
     'django.contrib.auth',
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -46,6 +47,67 @@ TEMPLATES = [
         },
     },
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_title": "SOLIDIFY Admin",
+    "site_header": "SOLIDIFY Admin Panel",
+    "site_brand": "SOLIDIFY",
+    "welcome_sign": "Welcome to SOLIDIFY Admin",
+    "copyright": "SOLIDIFY",
+    "search_model": ["accounts.AppUser", "routines.Routine"],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "site_icon": "images/favicon.ico",
+    "site_logo": "images/favicon.ico",
+    "show_ui_builder": True,
+    "icons": {
+        "auth.Group": "fas fa-users-cog",
+        "accounts.AppUser": "fas fa-user",
+        "routines.Routine": "fas fa-tasks",
+        "schedule.ScheduledRoutine": "fas fa-calendar-alt",
+    },
+    "custom_links": {
+        "accounts.AppUser": [{
+            "name": "View in App",
+            "url": "https://yourapp.com/profile/",
+            "icon": "fas fa-external-link-alt",
+            "permissions": ["accounts.view_appuser"]
+        }]
+    },
+    "hide_models": ["auth.Permission"],
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": "navbar-gray",
+    "accent": "accent-primary",
+    "navbar": "navbar-navy navbar-dark",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": False,
+    "sidebar": "sidebar-dark-primary",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "sandstone",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-outline-primary",
+        "secondary": "btn-outline-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    }
+}
 
 WSGI_APPLICATION = 'SOLIDIFY.wsgi.application'
 
