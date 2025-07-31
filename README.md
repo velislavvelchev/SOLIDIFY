@@ -32,8 +32,8 @@ Access the application [here](https://solidify-e4esdsgbdabdadhh.italynorth-01.az
 ### 🎩 Header
 
 **User Unauthenticated**:
-	- **Log In**: Displays a login button if the user is not logged in.
-	- **Sign Up**: Displays a sign up button if the user is not logged in.
+- **Log In**: Displays a login button if the user is not logged in.
+- **Sign Up**: Displays a sign up button if the user is not logged in.
 
 
 **User Authenticated**:
