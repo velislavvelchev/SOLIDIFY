@@ -1,11 +1,11 @@
-<img width="1547" height="789" alt="image" src="https://github.com/user-attachments/assets/d65624d0-5455-453e-8c36-f94b14951766" /># 🧠 SOLIDIFY
+# 🧠 SOLIDIFY
 ### SOLIDIFY is a Django application inspired by neuroscience that  helps users build and maintain their habit routines, by grouping them into categories and events which can then be scheduled into a calendar.
 
 Access the PROD version of the application [here](https://solidify-e4esdsgbdabdadhh.italynorth-01.azurewebsites.net/) where you can also register.
 
 Instructions on how to start the application locally can be found at the bottom of this page.
 
-Scroll down to see how to get started ⬇️
+Scroll down to see how to get started or read through the documentation ⬇️
 
 
 ## 🚀 Features
@@ -62,10 +62,11 @@ Single-click navigation pages ⛓️:
 - **Calendar**
 
 
-- UI if the user is not logged in:
+
+#### UI if the user is not logged in:
  <img width="1037" height="64" alt="image" src="https://github.com/user-attachments/assets/28a4c4bb-9fe6-40de-8d48-530d36c2e313" />
 
-- UI if the user is logged in:
+#### UI if the user is logged in:
 
 <img width="815" height="64" alt="image" src="https://github.com/user-attachments/assets/b809a56b-38aa-4da6-a633-766e9403a401" />
 
