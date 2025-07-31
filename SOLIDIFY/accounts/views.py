@@ -1,13 +1,14 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView
-from django.urls import reverse_lazy
+from django.shortcuts import redirect, render
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView, DetailView
 from SOLIDIFY.accounts.forms import AppUserCreationForm, ProfileEditForm, AppUserLoginForm
 from SOLIDIFY.accounts.models import Profile
 
 
-# Create your views here.
+
 class UserRegisterView(CreateView):
     form_class = AppUserCreationForm
     template_name = 'accounts/register.html'
@@ -49,3 +50,14 @@ class ProfileEditView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
             }
         )
 
+# redirect the user to django admin login if they make a logout request from the admin panel
+def admin_logout_view(request):
+    logout(request)
+    referer = request.META.get('HTTP_REFERER', '')
+    if '/admin' in referer:
+        return redirect('/admin/login/')
+    return redirect(reverse('login'))
+
+# redirect to 403 if the user has no permissions
+def permission_denied_view(request, exception=None):
+    return render(request, '403.html', status=403)

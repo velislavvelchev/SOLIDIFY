@@ -1,23 +1,17 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
+from django.views.generic import TemplateView, CreateView, DeleteView
 
 from rest_framework.generics import ListAPIView, UpdateAPIView
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
+from .serializers import ScheduledRoutineCalendarSerializer
 
 from .forms import ScheduleRoutineCreateForm
 from .models import ScheduledRoutine
-from django.views.generic import TemplateView, CreateView, DeleteView
-
-from .serializers import ScheduledRoutineCalendarSerializer
 from ..accounts.permissions import ApiPermission
 from ..routines.models import Routine
 
-
-# Create your views here.
 
 
 class CalendarEventAPIView(ListAPIView):
@@ -26,6 +20,8 @@ class CalendarEventAPIView(ListAPIView):
 
     def get_queryset(self):
         return ScheduledRoutine.objects.filter(routine__user=self.request.user)
+
+
 
 
 class CalendarEventUpdateAPIView(UpdateAPIView):
@@ -48,8 +44,13 @@ class CalendarEventUpdateAPIView(UpdateAPIView):
             return Response({"success": False, "error": error}, status=400)
 
 
+
+
+
 class CalendarPageView(LoginRequiredMixin, TemplateView):
     template_name = 'schedule/calendar.html'
+
+
 
 
 class CreateScheduleRoutineView(LoginRequiredMixin, CreateView):
@@ -68,6 +69,7 @@ class CreateScheduleRoutineView(LoginRequiredMixin, CreateView):
         # Limit routines to those belonging to the current user
         form.fields['routine'].queryset = Routine.objects.filter(user=self.request.user)
         return form
+
 
 
 

@@ -1,0 +1,42 @@
+/* Buttons */
+.btn-cancel {
+    background: #ff46a3;
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.5em 1.2em;
+    border: none;
+    transition: background 0.2s;
+    outline: none;
+}
+
+.btn-cancel:hover,
+.btn-cancel:focus {
+    background: #a5006c;
+    color: #fff;
+    outline: none;
+}
+
+
+.btn-danger {
+    color: #fff;
+    background: #009688;
+    border-radius: 8px;
+    padding: 0.5em 1.2em;
+    border: none;
+    transition: background 0.2s;
+}
+
+.btn-danger:hover {
+    background: #a5006c;
+    color: #fff;
+}
+
+.btn-danger .bi-trash,
+.btn-danger svg {
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+
+.btn { padding: 0.5em 1.5em; margin: 0 0.5em; border-radius: 8px; border: none; }
+.btn-confirm { background: #24cc89; color: #fff; }
+.btn-cancel { background: #222; color: #fff; }

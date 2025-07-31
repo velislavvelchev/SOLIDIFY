@@ -46,46 +46,6 @@
     letter-spacing: 0.04em;
 }
 
-/* Buttons */
-.btn-cancel {
-    background: #ff46a3;
-    color: #fff;
-    border-radius: 8px;
-    padding: 0.5em 1.2em;
-    border: none;
-    transition: background 0.2s;
-    box-shadow: 0 2px 8px #a5006c44;
-    outline: none;
-}
-
-.btn-cancel:hover,
-.btn-cancel:focus {
-    background: #a5006c;
-    color: #fff;
-    outline: none;
-}
-
-
-.btn-danger {
-    color: #fff;
-    background: #f86b38;
-    border-radius: 8px;
-    padding: 0.5em 1.2em;
-    border: none;
-    transition: background 0.2s;
-    box-shadow: 0 2px 8px #a5006c44;
-}
-
-.btn-danger:hover {
-    background: #a5006c;
-    color: #fff;
-}
-
-.btn-danger .bi-trash,
-.btn-danger svg {
-    font-size: 1.5em;
-    vertical-align: middle;
-}
 
 .modal-actions {
     margin-top: 2.1em;
@@ -94,6 +54,4 @@
 }
 
 .modal-actions { margin-top: 1.5rem; }
-.btn { padding: 0.5em 1.5em; margin: 0 0.5em; border-radius: 8px; border: none; }
-.btn-confirm { background: #24cc89; color: #fff; }
-.btn-cancel { background: #222; color: #fff; }
+

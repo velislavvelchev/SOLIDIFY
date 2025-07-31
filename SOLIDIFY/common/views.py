@@ -1,4 +1,6 @@
+from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse
 from django.views.generic import TemplateView
 from django.views.generic import FormView
 from django.contrib import messages
@@ -53,3 +55,4 @@ class ContactUsView(FormView):
 
         messages.success(self.request, "Your email has been sent successfully!")
         return super().form_valid(form)
+
