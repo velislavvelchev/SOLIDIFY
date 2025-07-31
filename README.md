@@ -241,6 +241,13 @@ Single-click navigation pages ⛓️:
 
 <img width="694" height="359" alt="image" src="https://github.com/user-attachments/assets/71493c43-2367-4667-8c88-3532cdf00511" />
 
+### 🎷 Django Admin Panel
+
+<img width="1513" height="785" alt="image" src="https://github.com/user-attachments/assets/32e0cc7d-8320-4a9a-a4f9-a1e424a9fd00" />
+
+<img width="1547" height="789" alt="image" src="https://github.com/user-attachments/assets/720fb20b-b3a6-439f-816a-e0b014769a36" />
+
+
 ## 💉Technologies
 
 - **Python**: Core language for functionality.
@@ -257,6 +264,7 @@ Single-click navigation pages ⛓️:
 - **Gunicorn**: WSGI server.
 - **Nginx**: Web server (DEV only).
 - **Docker**: Container stack (DEV only).
+- **Django-Jazzmin**: Django-Admin Customization.
 
 
 ## 🧑‍🔬Users for Testing
@@ -267,7 +275,7 @@ PW: superadmin
 
 **Admin** 💂‍♂️
 User: admin@admin.com
-PW: admin
+PW: 123admin123
 
 **Regular User** 👨‍🦯
 User: veli@gmail.com
