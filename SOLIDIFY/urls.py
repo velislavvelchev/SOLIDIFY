@@ -3,6 +3,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+handler403 = 'SOLIDIFY.utils.permission_denied_view'
+
 urlpatterns = ([
        path('admin/', admin.site.urls),
     path('', include('SOLIDIFY.common.urls')),

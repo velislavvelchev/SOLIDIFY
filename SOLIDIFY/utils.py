@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.utils.safestring import mark_safe
 
 def helptext_to_ul(text):
@@ -9,3 +10,8 @@ def helptext_to_ul(text):
         return ""
     html = "<ul>\n" + "\n".join(f"<li>{line}</li>" for line in lines) + "\n</ul>"
     return mark_safe(html)
+
+
+
+def permission_denied_view(request, exception=None):
+    return render(request, '403.html', status=403)

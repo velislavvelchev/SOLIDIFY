@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const { Calendar } = FullCalendar;
+    const {Calendar} = FullCalendar;
 
     const calendarEl = document.getElementById('calendar');
     if (!calendarEl) return;
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
 
-        eventTimeFormat: { hour: 'numeric', minute: '2-digit', meridiem: 'short' },
+        eventTimeFormat: {hour: 'numeric', minute: '2-digit', meridiem: 'short'},
 
         editable: true,
 
@@ -129,7 +129,8 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 updateCalendarEvent(
                     info,
-                    () => {}, // No-op on success
+                    () => {
+                    }, // No-op on success
                     (errorMsg) => revertWithError(info, errorMsg)
                 );
             }

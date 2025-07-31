@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 
 from rest_framework.generics import ListAPIView, UpdateAPIView
@@ -12,6 +13,7 @@ from .models import ScheduledRoutine
 from django.views.generic import TemplateView, CreateView, DeleteView
 
 from .serializers import ScheduledRoutineCalendarSerializer
+from ..accounts.permissions import ApiPermission
 from ..routines.models import Routine
 
 
@@ -20,7 +22,7 @@ from ..routines.models import Routine
 
 class CalendarEventAPIView(ListAPIView):
     serializer_class = ScheduledRoutineCalendarSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [ApiPermission]
 
     def get_queryset(self):
         return ScheduledRoutine.objects.filter(routine__user=self.request.user)
@@ -28,7 +30,7 @@ class CalendarEventAPIView(ListAPIView):
 
 class CalendarEventUpdateAPIView(UpdateAPIView):
     serializer_class = ScheduledRoutineCalendarSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [ApiPermission]
 
     def get_queryset(self):
         return ScheduledRoutine.objects.filter(routine__user=self.request.user)
