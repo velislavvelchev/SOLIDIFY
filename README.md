@@ -37,20 +37,20 @@ Access the application [here](https://solidify-e4esdsgbdabdadhh.italynorth-01.az
 
 
 **User Authenticated**:
-	Dropdowns ⤵️:
-	- **Account**:  
-		- Profile Details
-		- Edit Profile
-		- Logout
-	- **Categories**:
-		- All Categories
-		- Create Category
-	- **Habits**: 
-		- All Habits
-		- Create Habit
-	- **Routines**:
-		- All Routines
-		- Create Routine
+Dropdowns ⤵️:
+- **Account**:  
+	- Profile Details
+	- Edit Profile
+	- Logout
+- **Categories**:
+	- All Categories
+	- Create Category
+- **Habits**: 
+	- All Habits
+	- Create Habit
+- **Routines**:
+	- All Routines
+	- Create Routine
 Single-click navigation pages ⛓️:
 	- **Schedule Routine**
 	- **Calendar**
