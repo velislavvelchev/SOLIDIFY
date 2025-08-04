@@ -1,7 +1,12 @@
 # 🧠 SOLIDIFY
 ### SOLIDIFY is a Django application inspired by neuroscience that  helps users build and maintain their habit routines, by grouping them into categories and events which can then be scheduled into a calendar.
 
-Access the application [here](https://solidify-e4esdsgbdabdadhh.italynorth-01.azurewebsites.net/)
+Access the PROD version of the application [here](https://solidify-e4esdsgbdabdadhh.italynorth-01.azurewebsites.net/) where you can also register.
+
+Instructions on how to start the application locally can be found at the bottom of this page.
+
+Scroll down to see how to get started or read through the documentation ⬇️
+
 
 ## 🚀 Features
 
@@ -32,34 +37,36 @@ Access the application [here](https://solidify-e4esdsgbdabdadhh.italynorth-01.az
 ### 🎩 Header
 
 **User Unauthenticated**:
-	- **Log In**: Displays a login button if the user is not logged in.
-	- **Sign Up**: Displays a sign up button if the user is not logged in.
+- **Log In**: Displays a login button if the user is not logged in.
+- **Sign Up**: Displays a sign up button if the user is not logged in.
 
 
 **User Authenticated**:
-	Dropdowns ⤵️:
-		- **Account**:  
-			- Profile Details
-			- Edit Profile
-			- Logout
-		- **Categories**:
-			- All Categories
-			- Create Category
-		- **Habits**: 
-			- All Habits
-			- Create Habit
-		- **Routines**:
-			- All Routines
-			- Create Routine
-	Single-click navigation pages ⛓️:
-		- **Schedule Routine**
-		- **Calendar**
+Dropdowns ⤵️:
+- **Account**:  
+	- Profile Details
+	- Edit Profile
+	- Logout
+- **Categories**:
+	- All Categories
+	- Create Category
+- **Habits**: 
+	- All Habits
+	- Create Habit
+- **Routines**:
+	- All Routines
+	- Create Routine
+ 
+Single-click navigation pages ⛓️:
+- **Schedule Routine**
+- **Calendar**
 
 
-- UI if the user is not logged in:
+
+#### UI if the user is not logged in:
  <img width="1037" height="64" alt="image" src="https://github.com/user-attachments/assets/28a4c4bb-9fe6-40de-8d48-530d36c2e313" />
 
-- UI if the user is logged in:
+#### UI if the user is logged in:
 
 <img width="815" height="64" alt="image" src="https://github.com/user-attachments/assets/b809a56b-38aa-4da6-a633-766e9403a401" />
 
@@ -240,6 +247,13 @@ Access the application [here](https://solidify-e4esdsgbdabdadhh.italynorth-01.az
 
 <img width="694" height="359" alt="image" src="https://github.com/user-attachments/assets/71493c43-2367-4667-8c88-3532cdf00511" />
 
+### 🎷 Django Admin Panel
+
+<img width="1513" height="785" alt="image" src="https://github.com/user-attachments/assets/32e0cc7d-8320-4a9a-a4f9-a1e424a9fd00" />
+
+<img width="1547" height="789" alt="image" src="https://github.com/user-attachments/assets/720fb20b-b3a6-439f-816a-e0b014769a36" />
+
+
 ## 💉Technologies
 
 - **Python**: Core language for functionality.
@@ -256,6 +270,7 @@ Access the application [here](https://solidify-e4esdsgbdabdadhh.italynorth-01.az
 - **Gunicorn**: WSGI server.
 - **Nginx**: Web server (DEV only).
 - **Docker**: Container stack (DEV only).
+- **Django-Jazzmin**: Django-Admin Customization.
 
 
 ## 🧑‍🔬Users for Testing
@@ -266,7 +281,7 @@ PW: superadmin
 
 **Admin** 💂‍♂️
 User: admin@admin.com
-PW: admin
+PW: 123admin123
 
 **Regular User** 👨‍🦯
 User: veli@gmail.com
