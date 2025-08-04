@@ -30,5 +30,3 @@ def handle_user_creation(sender, instance, created, **kwargs):
             recipient_list=[instance.email]
         ).start()
 
-        print("📩 Welcome email signal triggered for:", instance.email)
-
