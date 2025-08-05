@@ -66,10 +66,8 @@ class CreateScheduleRoutineView(LoginRequiredMixin, CreateView):
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
-        # Limit routines to those belonging to the current user
         form.fields['routine'].queryset = Routine.objects.filter(user=self.request.user)
         return form
-
 
 
 

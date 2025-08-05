@@ -1,6 +1,5 @@
 from django import forms
 from .models import Routine
-from ..categories.models import Category
 from ..habits.models import Habit
 from ..mixins import CoreModelFormMixin
 

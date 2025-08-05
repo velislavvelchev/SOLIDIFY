@@ -9,7 +9,7 @@ from .forms import CreateHabitForm, EditHabitForm
 from django.http import JsonResponse, HttpResponseRedirect
 from .models import Habit
 from .serializers import HabitSimpleSerializer
-from ..categories.models import Category
+
 
 
 # Create your views here.

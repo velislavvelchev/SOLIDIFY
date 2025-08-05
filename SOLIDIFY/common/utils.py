@@ -20,5 +20,5 @@ class EmailThread(threading.Thread):
                 fail_silently=False
             )
         except Exception as e:
-            print("❌ Email send failed:", e)
+            print("Email send failed:", e)
 

@@ -1,9 +1,5 @@
 from django import forms
-from SOLIDIFY.habits.models import Habit
-
-from django import forms
 from .models import Habit
-from ..categories.models import Category
 from ..mixins import CoreModelFormMixin
 
 

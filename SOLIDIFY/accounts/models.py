@@ -9,8 +9,6 @@ from SOLIDIFY.accounts.validators import NameValidator
 
 # Create your models here.
 class AppUser(AbstractBaseUser, PermissionsMixin):
-    # authentication logic here
-    # ask for as few things as possible
     email = models.EmailField(
         unique=True,
     )
@@ -20,14 +18,12 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
         unique=True,
     )
 
-    # django admin will not work without this field
     is_staff = models.BooleanField(
         _("staff status"),
         default=False,
         help_text=_("Designates whether the user can log into this admin site."),
     )
 
-    # vital for authentication
     is_active = models.BooleanField(
         _("active"),
         default=True,
@@ -42,7 +38,7 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
     # first credential
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
-    # used upon sending e-mails
+
     EMAIL_FIELD = 'email'
 
     def __str__(self):
@@ -72,7 +68,6 @@ class Profile(models.Model):
         validators=[NameValidator('Last name')]
     )
 
-    # change this to image field with pillow
     profile_picture = models.URLField(
         null=True,
         blank=True,

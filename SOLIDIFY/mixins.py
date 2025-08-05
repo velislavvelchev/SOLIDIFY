@@ -1,4 +1,3 @@
-from django import forms
 
 class CoreModelFormMixin:
     unique_field_name = None            # e.g. 'category_type', 'habit_name', etc.

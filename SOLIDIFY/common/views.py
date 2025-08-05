@@ -1,16 +1,13 @@
-from django.contrib.auth import logout
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
 from django.views.generic import TemplateView
 from django.views.generic import FormView
 from django.contrib import messages
-from django.shortcuts import redirect
+
 from django.conf import settings
 from rest_framework.reverse import reverse_lazy
 
 from .forms import ContactUsForm
 from .utils import EmailThread
-from decouple import config
+
 
 # Create your views here.
 class HomePageView(TemplateView):

@@ -1,7 +1,4 @@
 from django import forms
-
-from SOLIDIFY.categories.models import Category
-from django import forms
 from .models import Category
 from ..mixins import CoreModelFormMixin
 
@@ -17,7 +14,7 @@ class CategoryBaseForm(CoreModelFormMixin, forms.ModelForm):
         exclude = ('user', )
         widgets = {
             'category_type': forms.Select(attrs={
-                'placeholder': 'Select category type',  # Note: placeholder has no effect on <select>, but label/empty_label can help
+                'placeholder': 'Select category type',
             }),
             'description': forms.Textarea(attrs={
                 'placeholder': 'Describe this category (optional)',
@@ -30,9 +27,9 @@ class CategoryBaseForm(CoreModelFormMixin, forms.ModelForm):
 
 
 
-
 class CreateCategoryForm(CategoryBaseForm):
     pass
+
 
 class EditCategoryForm(CategoryBaseForm):
     class Meta(CategoryBaseForm.Meta):
