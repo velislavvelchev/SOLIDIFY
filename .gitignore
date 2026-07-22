@@ -4,3 +4,4 @@ __pycache__
 .env.dev.docker
 .env.dev
 .venv
+CLAUDE.md
