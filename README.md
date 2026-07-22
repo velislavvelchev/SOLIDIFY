@@ -1,7 +1,7 @@
 # 🧠 SOLIDIFY
 ### SOLIDIFY is a Django application inspired by neuroscience that  helps users build and maintain their habit routines, by grouping them into categories and events which can then be scheduled into a calendar.
 
-Access the PROD version of the application [here](https://solidify-e4esdsgbdabdadhh.italynorth-01.azurewebsites.net/) where you can also register.
+Access the PROD version of the application [here](https://solidify-4ddk.onrender.com/) where you can also register.
 
 Instructions on how to start the application locally can be found at the bottom of this page.
 
@@ -265,7 +265,8 @@ Single-click navigation pages ⛓️:
 - **RRulePlugin**: Creating rules on the calendar.
 - **HTML**: Language for the structure of the templates.
 - **CSS**: Styling the application.
-- **Azure**: Deployment platform.
+- **Render**: Deployment platform.
+- **Neon**: Managed serverless Postgres.
 - **Whitenoise**: Serves static files.
 - **Gunicorn**: WSGI server.
 - **Nginx**: Web server (DEV only).
@@ -273,106 +274,81 @@ Single-click navigation pages ⛓️:
 - **Django-Jazzmin**: Django-Admin Customization.
 
 
-## 🧑‍🔬Users for Testing
+## 🧑‍🔬 Testing
 
-**Superuser** 🏋️‍♂️
-User: superadmin@admin.com
-PW: superadmin
+The easiest way to try the app is to **register a new account** at [/accounts/register/](https://solidify-4ddk.onrender.com/accounts/register/) — takes a few seconds.
 
-**Admin** 💂‍♂️
-User: admin@admin.com
-PW: 123admin123
+If you want admin panel access on a local run, create a superuser with:
 
-**Regular User** 👨‍🦯
-User: veli@gmail.com
-PW: 123veli123
+```shell
+python manage.py createsuperuser
+```
 
 
 ## 🚀 Running the app locally
 
 ### Prerequisites
 
-- Python and Django installed.
+- **Python 3.13**
+- **PostgreSQL 17** running locally on port `5432` (or use Docker — see below)
 
-### 🦑 Installation
-
-
-### 1. Running the project locally with no containers.
-
-For the environment variables use something like [this](https://docs.google.com/document/d/1DgmINSGi4I7SYaIzo_K567U5Tuu-ivZoU0d7CnvGplA/edit?tab=t.0)
+### Setup
 
 1. Clone the repository:
-    
+
     ```shell
     git clone https://github.com/velislavvelchev/SOLIDIFY
+    cd SOLIDIFY
     ```
-    
-2. Create and activate venv
 
-3. Create db locally:
-    
+2. Create and activate a virtual environment:
+
     ```shell
-    createdb -U postgres -h localhost -p 5432 solidify_db
-
+    python -m venv .venv
+    # Windows
+    .venv\Scripts\activate
+    # macOS / Linux
+    source .venv/bin/activate
     ```
-4. Install requirements.txt:
-    
+
+3. Install dependencies:
+
     ```shell
     pip install -r requirements.txt
     ```
 
-5. Apply the migrations:
-    
+4. Create the local database:
+
     ```shell
-    python manage.py makemigrations
+    createdb -U postgres -h localhost -p 5432 solidify_db
     ```
 
-6. Start the project:
-    
+5. Copy `.env.example` to `.env` and fill in the values (mainly the DB and email credentials).
+
+6. Apply migrations and (optionally) create a superuser:
+
+    ```shell
+    python manage.py migrate
+    python manage.py createsuperuser
+    ```
+
+7. Start the dev server:
+
     ```shell
     python manage.py runserver
     ```
 
-### 2. Running the project locally with docker containers (DB, WSGI, Web Server).
+The app will be available at http://127.0.0.1:8000/.
 
-For the environment variables use something like [this](https://docs.google.com/document/d/1kDrTfBuGKt_SKKG1BkJ6bl4zAyhjcTq2MogVrdrAR3s/edit?tab=t.0)
+### Alternative: run everything in Docker
 
-1. Clone the repository:
-    
-    ```shell
-    git clone https://github.com/velislavvelchev/SOLIDIFY
-    ```
-    
-2. Create and activate venv
+The repo also ships with a `Dockerfile`, `docker-compose.yml`, and an `nginx/` config that spin up the app, Postgres, and Nginx together. This isn't required for the current deployment (Render handles it), but is useful for a fully-containerized local setup.
 
-3. Create the stack in Docker by running the command below:
-- Note: Adjust the port within the docker-compose file as needed if you are already running another Postgres instance on port 5433
+```shell
+docker-compose up --build
+docker-compose exec web python manage.py migrate
+```
 
- <img width="207" height="62" alt="image" src="https://github.com/user-attachments/assets/e4df16ca-d206-4482-b7bd-80dfa052bfd8" />
-		  
-		
-- Build the container stack
-    
-    ```shell
-    docker-compose up --build
-
-    ```
-
-   It should look something like this
-
-   <img width="508" height="614" alt="image" src="https://github.com/user-attachments/assets/19ed9829-bd95-413f-b6f9-26b4d087bcc3" />
-
-   <img width="625" height="273" alt="image" src="https://github.com/user-attachments/assets/c725797c-ce5e-47cb-a9cb-ad1d2d5a1fea" />
-
-
-
-5. Open another terminal and apply the migrations:
-    ```shell
-    docker-compose exec web python manage.py migrate
-
-    ```
-
-6. The project is already started:
-		You should now be able to access it at http://127.0.0.1:8000/  or port 80 (nginx)
+Access via http://127.0.0.1:8000/ (gunicorn) or http://127.0.0.1/ (nginx). If port `5433` is already taken on your host, adjust the `db` port mapping in `docker-compose.yml`.
 		
 
